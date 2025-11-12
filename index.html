@@ -547,7 +547,32 @@
   display: block; max-width: 92vw; max-height: 88vh; width: auto; height: auto;
   background:#000;
 }
+    
+/* Indicator poziție în lightbox */
+.orex-counter {
+  position: absolute; left: .75rem; bottom: .5rem;
+  padding: .25rem .5rem; border-radius: .5rem;
+  font-size: .8rem; color: #e5e7eb;
+  background: rgba(15,23,42,.55);
+  border: 1px solid #64748b;
+  user-select: none;
+}
 
+/* Butoane navigare stânga/dreapta */
+.orex-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 46px; height: 46px; border-radius: .8rem;
+  border: 1px solid #64748b; background: rgba(15,23,42,.55);
+  color: #e5e7eb; font-size: 1.1rem; line-height: 46px; text-align: center;
+  cursor: pointer; transition: all .25s ease; user-select: none;
+}
+.orex-nav:hover { background: rgba(99,102,241,.22); border-color:#8ea0ff; }
+.orex-prev { left: .75rem; }
+.orex-next { right: .75rem; }
+@media (max-width: 520px){
+  .orex-nav { width: 42px; height: 42px; line-height: 42px; }
+}
+    
 /* Buton închidere „X” */
 .orex-close {
   position: absolute; top: .5rem; right: .5rem;
@@ -618,6 +643,7 @@
   
 </head>
 <body>
+  
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav-container">
@@ -1066,16 +1092,102 @@
 <div id="orex-lightbox" aria-hidden="true">
   <div class="orex-lightbox-inner">
     <button class="orex-close" aria-label="Închide">×</button>
+    <button class="orex-nav orex-prev" aria-label="Anterior">‹</button>
+    <button class="orex-nav orex-next" aria-label="Următor">›</button>
     <img id="orex-lightbox-img" alt="">
+    <div class="orex-counter" id="orex-counter">0 / 0</div>
   </div>
 </div>
 
+<script>
+(function(){
+  const overlay = document.getElementById('orex-lightbox');
+  const imgBox  = document.getElementById('orex-lightbox-img');
+  const btnClose = overlay.querySelector('.orex-close');
+  const btnPrev  = overlay.querySelector('.orex-prev');
+  const btnNext  = overlay.querySelector('.orex-next');
+  const thumbs = Array.from(document.querySelectorAll('img.js-lightbox'));
+
+  let current = -1; // indexul imaginii curente
+
+  function show(idx){
+    if (!thumbs.length) return;
+    // buclă circulară
+    if (idx < 0) idx = thumbs.length - 1;
+    if (idx >= thumbs.length) idx = 0;
+    current = idx;
+
+    const el = thumbs[current];
+    imgBox.src = el.currentSrc || el.src;
+    imgBox.alt = el.alt || '';
+  }
+
+  function open(idx){
+    show(idx);
+    overlay.style.display = 'flex';
+    document.documentElement.style.overflow = 'hidden';
+    overlay.setAttribute('aria-hidden','false');
+  }
+
+  function close(){
+    overlay.style.display = 'none';
+    imgBox.src = ''; imgBox.alt = '';
+    document.documentElement.style.overflow = '';
+    overlay.setAttribute('aria-hidden','true');
+    current = -1;
+  }
+
+  // click pe thumbnails
+  thumbs.forEach((el, i)=>{
+    el.addEventListener('click', (e)=>{
+      e.preventDefault();
+      open(i);
+    });
+  });
+
+  // navigare
+  btnPrev.addEventListener('click', ()=> show(current-1));
+  btnNext.addEventListener('click', ()=> show(current+1));
+  btnClose.addEventListener('click', close);
+  const counter = document.getElementById('orex-counter');
+
+  // închidere la click în afara „inner”
+  overlay.addEventListener('click', (e)=>{
+    if (e.target === overlay) close();
+  });
+
+  // taste: ESC, ←, →
+  window.addEventListener('keydown', (e)=>{
+    if (overlay.getAttribute('aria-hidden') === 'true') return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(current-1);
+    if (e.key === 'ArrowRight') show(current+1);
+  });
+
+  // click pe imagine → următoarea (comod pe mobil)
+  imgBox.addEventListener('click', ()=> show(current+1));
+})();
+</script>
+              
           <script>
 (function(){
   const overlay = document.getElementById('orex-lightbox');
   const imgBox  = document.getElementById('orex-lightbox-img');
   const btnClose = overlay.querySelector('.orex-close');
   const thumbs = Array.from(document.querySelectorAll('img.js-lightbox'));
+function show(idx){
+  if (!thumbs.length) return;
+  if (idx < 0) idx = thumbs.length - 1;
+  if (idx >= thumbs.length) idx = 0;
+  current = idx;
+
+  const el = thumbs[current];
+  imgBox.src = el.currentSrc || el.src;
+  imgBox.alt = el.alt || '';
+
+  // setăm „1 / N”
+  if (counter) counter.textContent = (current + 1) + ' / ' + thumbs.length;
+}
 
   function openLightbox(src, alt){
     imgBox.src = src; imgBox.alt = alt || '';
