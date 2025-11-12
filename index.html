@@ -772,12 +772,15 @@
     </p>
 
     <!-- Tabs simple -->
-    <div style="display:flex; gap:.5rem; margin-bottom:1rem; flex-wrap:wrap;">
-      <button onclick="document.getElementById('gal-modern').style.display='grid';document.getElementById('gal-arhiva').style.display='none';"
-              class="btn btn-primary">Noul concept OREX</button>
-      <button onclick="document.getElementById('gal-modern').style.display='none';document.getElementById('gal-arhiva').style.display='grid';"
-              class="btn btn-outline">Arhivă – perioada socialistă</button>
-    </div>
+   <div class="gallery-tabs" style="display:flex; gap:.5rem; margin-bottom:1rem; flex-wrap:wrap; justify-content:center;">
+  <button id="btn-modern"
+          onclick="switchGallery('modern')"
+          class="btn btn-primary">Ultimele modele OREX</button>
+
+  <button id="btn-arhiva"
+          onclick="switchGallery('arhiva')"
+          class="btn btn-outline">Arhivă – perioada socialistă</button>
+</div>
 
     <!-- Grid comun: stil -->
     <style>
@@ -822,6 +825,17 @@
       @media (max-width: 520px){
         .gal-card img{ height: 180px; }
       }
+      /* Forțăm culoarea textului pentru butonul „Arhivă” când e neactiv */
+.gallery-tabs #btn-arhiva.btn.btn-outline {
+  color: #d1d5db !important;   /* gri mai închis */
+  border-color: #555;          /* păstrăm conturul */
+  font-weight: 500;
+}
+.gallery-tabs #btn-arhiva.btn.btn-outline:hover {
+  color: #f9fafb !important;   /* se luminează la hover */
+  border-color: #8ea0ff;
+  background: rgba(255,255,255,0.08);
+}
     </style>
 
     <!-- 1) Noul concept OREX -->
@@ -900,8 +914,10 @@
   function switchGallery(which){
     document.getElementById('gal-modern').style.display = (which==='modern')?'grid':'none';
     document.getElementById('gal-arhiva').style.display = (which==='arhiva')?'grid':'none';
-    document.getElementById('btn-modern').className = (which==='modern')?'btn btn-primary':'btn btn-outline';
-    document.getElementById('btn-arhiva').className = (which==='arhiva')?'btn btn-primary':'btn btn-outline';
+
+    // comutăm vizual starea butoanelor
+    document.getElementById('btn-modern').className = (which==='modern') ? 'btn btn-primary' : 'btn btn-outline';
+    document.getElementById('btn-arhiva').className = (which==='arhiva') ? 'btn btn-primary' : 'btn btn-outline';
   }
 </script>
           
