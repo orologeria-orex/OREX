@@ -522,6 +522,45 @@
         padding: 1.2rem 1.3rem;
       }
     }
+
+/* LIGHTBOX OREX – fundal metalic + fade-in */
+#orex-lightbox {
+  position: fixed; inset: 0; display: none;
+  align-items: center; justify-content: center;
+  background: radial-gradient(1200px 800px at 50% 40%, rgba(30,41,59,.95), rgba(2,6,23,.98));
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+  animation: orexFade .25s ease;
+}
+@keyframes orexFade { from { opacity: 0 } to { opacity: 1 } }
+
+.orex-lightbox-inner {
+  position: relative; max-width: 92vw; max-height: 88vh;
+  border-radius: 1rem;
+  box-shadow: 0 25px 60px rgba(0,0,0,.6), inset 0 1px 4px rgba(255,255,255,.15);
+  border: 1px solid #4b5563;
+  overflow: hidden;
+  background: linear-gradient(145deg,#2c2c2c,#3a3a3a);
+}
+
+#orex-lightbox img {
+  display: block; max-width: 92vw; max-height: 88vh; width: auto; height: auto;
+  background:#000;
+}
+
+/* Buton închidere „X” */
+.orex-close {
+  position: absolute; top: .5rem; right: .5rem;
+  width: 38px; height: 38px; border-radius: .75rem;
+  border: 1px solid #64748b; background: rgba(15,23,42,.6);
+  color: #e5e7eb; font-size: 1.1rem; line-height: 36px; text-align: center;
+  cursor: pointer; transition: all .25s ease;
+}
+.orex-close:hover { background: rgba(99,102,241,.2); border-color:#8ea0ff; }
+
+/* Cursor zoom pe imaginile din galerie */
+.gal-card img { cursor: zoom-in; }
+    
     /* Efect de iluminare subtilă la hover pe cadrul video / animație */
 .metal-frame {
   transition: box-shadow 0.6s ease, border-color 0.6s ease;
@@ -694,7 +733,7 @@
       <figure class="gal-card">
         <img
           src="Orex-nourosu.jpg"
-          alt="Orex nou rosu"
+          alt="Orex nou rosu" class="js-lightbox"
           style="display:block; width:100%; height:260px; object-fit:cover;">
         <figcaption class="gal-caption">
           Orex® • Gama Comte des Carpates • Deluxe C — cadran roșu sângeriu
@@ -705,7 +744,7 @@
       <figure class="gal-card">
         <img
           src="Orex-noublack.jpg"
-          alt="Orex nou black"
+          alt="Orex nou black" class="js-lightbox"
           style="display:block; width:100%; height:260px; object-fit:cover;">
         <figcaption class="gal-caption">
           Orex® • Gama Comte des Carpates • Deluxe C — cadran negru mistic
@@ -716,7 +755,7 @@
       <figure class="gal-card">
         <img
           src="Orex-noublue.jpg"
-          alt="Orex nou albastru"
+          alt="Orex nou albastru" class="js-lightbox"
           style="display:block; width:100%; height:260px; object-fit:cover;">
         <figcaption class="gal-caption">
           Orex® — cadran albastru ceramic
@@ -1023,5 +1062,48 @@
       });
     }
   </script>
+          <!-- LIGHTBOX OREX -->
+<div id="orex-lightbox" aria-hidden="true">
+  <div class="orex-lightbox-inner">
+    <button class="orex-close" aria-label="Închide">×</button>
+    <img id="orex-lightbox-img" alt="">
+  </div>
+</div>
+
+          <script>
+(function(){
+  const overlay = document.getElementById('orex-lightbox');
+  const imgBox  = document.getElementById('orex-lightbox-img');
+  const btnClose = overlay.querySelector('.orex-close');
+  const thumbs = Array.from(document.querySelectorAll('img.js-lightbox'));
+
+  function openLightbox(src, alt){
+    imgBox.src = src; imgBox.alt = alt || '';
+    overlay.style.display = 'flex';
+    document.documentElement.style.overflow = 'hidden'; // blochează scroll-ul paginii
+    overlay.setAttribute('aria-hidden','false');
+  }
+  function closeLightbox(){
+    overlay.style.display = 'none';
+    imgBox.src = ''; imgBox.alt = '';
+    document.documentElement.style.overflow = '';
+    overlay.setAttribute('aria-hidden','true');
+  }
+
+  // click pe thumbs
+  thumbs.forEach(el=>{
+    el.addEventListener('click', (e)=>{
+      e.preventDefault();
+      openLightbox(el.currentSrc || el.src, el.alt);
+    });
+  });
+
+  // închidere: X, click în afara imaginii, ESC
+  btnClose.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeLightbox(); });
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
+})();
+</script>
+
 </body>
 </html>
