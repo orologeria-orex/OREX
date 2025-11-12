@@ -522,6 +522,19 @@
               0 0 30px rgba(180, 200, 255, 0.3);
   border-color: #8ea0ff;
 }
+    /* Efect metalic subtil pe motto */
+.metallic-text {
+  background: linear-gradient(90deg, #a0a8b5, #ffffff, #a0a8b5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  transition: background-position 1.5s ease;
+}
+
+.metallic-text:hover {
+  background-position: 200% center;
+  text-shadow: 0 0 8px rgba(150, 170, 255, 0.3);
+}
   </style>
 </head>
 <body>
@@ -549,7 +562,9 @@
       <div>
         <div class="hero-kicker">Cu inima din Elveția Carpaților</div>
         <h1>Orex®<h1>
-         <p style="font-size: 0.8rem; line-height: 1.5; color:#e5e7eb;">
+         <p class="metallic-text" style="font-style: italic; font-size: 0.85rem; margin-top: 0.5rem;">
+  „Timpul are formă — <strong>Orex®</strong> îi dă chip.”
+</p>
   Marca <strong>Orex®</strong> este o lentilă în timp — un proiect orologier ambițios, independent,
   dedicat renașterii ceasurilor premium românești.  
   Ea continuă moștenirea unui nume legendar, născut în inima unei industrii
