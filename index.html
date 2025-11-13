@@ -7,6 +7,8 @@
   <meta name="description" content="Orex – marcă orologieră premium, moștenitoare a unui brand românesc cu tradiție de peste o jumătate de secol.">
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
+
     :root {
       --bg-main: #020617;
       --fg-main: #e5e7eb;
@@ -211,24 +213,32 @@
       margin-top: 1.5rem;
     }
     .card-premium {
-      background: radial-gradient(circle at top left, #111827 0%, #020617 60%);
-      border-radius: 1.1rem;
-      border: 1px solid rgba(148,163,184,0.45);
-      padding: 0.75rem;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.55);
-      transition: 0.25s ease;
-    }
-    .card-premium:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-      border-color: var(--accent);
-    }
-    .card-premium img {
-      border-radius: 0.9rem;
-      height: 220px;
-      object-fit: cover;
-      cursor: zoom-in;
-    }
+  background:
+    radial-gradient(circle at 0% 0%, rgba(148,163,184,0.25), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(15,23,42,0.9), #020617 70%);
+  border-radius: 1.1rem;
+  border: 1px solid rgba(148,163,184,0.5);
+  padding: 0.8rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.8);
+  border-color: var(--accent);
+}
+
+.card-premium img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.9rem;
+  display: block;
+  cursor: zoom-in;
+}
+
     .card-body { padding: 0.6rem 0.25rem 0.25rem; font-size: 0.82rem; }
     .card-title { font-weight: 600; margin-bottom: 0.25rem; }
     .card-meta { font-size: 0.78rem; color: var(--fg-muted); }
@@ -351,6 +361,17 @@
       border: 1px solid #64748b;
       user-select: none;
     }
+/* Titluri premium */
+.section-title,
+.card-title {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  letter-spacing: 0.12em;
+}
+
+.card-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}  
   </style>
 </head>
 <body>
@@ -409,55 +430,77 @@
   </section>
 
   <!-- COLECȚII -->
-  <section id="colectii" class="section">
-    <h2 class="section-title">Colecțiile OREX</h2>
-    <div class="divider"></div>
-    <p class="lead-text">
-      Gama <strong>Comte des Carpates</strong>, cu linii moderne, și <strong>Orex Heritage</strong>, dedicată modelelor istorice.
-    </p>
+ <section id="colectii" class="section">
+  <h2 class="section-title">Orex – Colecția Nouă</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Modele moderne din gama <strong>Comte des Carpates</strong>, concepute în stil contemporan.
+  </p>
 
-    <div class="collections-grid">
-      <article class="card-premium">
-        <img src="Orex-noublack.jpg" alt="Orex Comte des Carpates Deluxe C – cadran negru" class="js-lightbox">
-        <div class="card-body">
-          <div class="card-title">Orex® • Comte des Carpates – Deluxe C</div>
-          <div class="card-meta">
-            carcasă oțel 316 L • 41 mm • safir antireflex • WR 10 atm • mecanism automatic elvețian Sellita SW200-1
-          </div>
-        </div>
-      </article>
+  <div class="collections-grid">
+    <article class="card-premium">
+      <img src="Orex-noublack.jpg" alt="Orex Comte des Carpates Deluxe C – cadran negru" class="js-lightbox">
+      <div class="card-body">
+        <div class="card-title">Orex® • Deluxe C</div>
+        <div class="card-meta">cadran negru • oțel 316L • Sellita SW200-1</div>
+      </div>
+    </article>
 
-      <article class="card-premium">
-        <img src="Orex-blue.jpg" alt="Orex Comte des Carpates – cadran albastru" class="js-lightbox">
-        <div class="card-body">
-          <div class="card-title">Orex® • Comte des Carpates – Bleu Royale</div>
-          <div class="card-meta">
-            finisaj sun-ray • coroană canelată • brățară din oțel cu închidere tip „click”.
-          </div>
-        </div>
-      </article>
+    <article class="card-premium">
+      <img src="Orex-blue.jpg" alt="Orex Comte des Carpates Bleu Royale" class="js-lightbox">
+      <div class="card-body">
+        <div class="card-title">Orex® • Bleu Royale</div>
+        <div class="card-meta">cadran sun-ray albastru • brățară oțel</div>
+      </div>
+    </article>
+  </div>
+</section>
 
-      <article class="card-premium">
-        <img src="Orex-heritage-1.jpg" alt="Orex Heritage – model din perioada socialistă" class="js-lightbox">
-        <div class="card-body">
-          <div class="card-title">Orex® Heritage – anii ’70</div>
-          <div class="card-meta">
-            cadran clasic, geam acrilic, mecanism manual • reinterpretare fidelă a unui design de epocă.
-          </div>
-        </div>
-      </article>
+<!-- COLECȚIA ARHIVĂ -->
+<section id="arhiva" class="section">
+  <h2 class="section-title">Orex – Colecția de Arhivă</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Modele originale din perioada socialistă, restaurate digital după fotografii de epocă.
+  </p>
 
-      <article class="card-premium">
-        <img src="Orex-heritage-2.jpg" alt="Orex Heritage – profil carcasă" class="js-lightbox">
-        <div class="card-body">
-          <div class="card-title">Orex® Heritage – profil carcasă</div>
-          <div class="card-meta">
-            carcasă cromată / aurie • capace presate • inscripții originale „Made in Romania”.
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
+  <div class="collections-grid">
+    <article class="card-premium">
+      <img src="Orex-heritage-1.jpg" alt="Orex Heritage ’70" class="js-lightbox">
+      <div class="card-body">
+        <div class="card-title">Orex® Heritage ’70</div>
+        <div class="card-meta">model manual • cadran de epocă • geam acrilic</div>
+      </div>
+    </article>
+
+    <article class="card-premium">
+      <img src="Orex-heritage-2.jpg" alt="Orex Heritage profil carcasă" class="js-lightbox">
+      <div class="card-body">
+        <div class="card-title">Orex® Heritage – Profil</div>
+        <div class="card-meta">carcasă cromată • linii clasice ale anilor ’70</div>
+      </div>
+    </article>
+  </div>
+  #colectii {
+  background: radial-gradient(circle at top, rgba(15,23,42,0.85), rgba(2,6,23,1));
+}
+
+#arhiva {
+  background: radial-gradient(circle at top, rgba(24,24,27,0.95), #020617 70%);
+  border-top: 1px solid rgba(63,63,70,0.8);
+  border-bottom: 1px solid rgba(63,63,70,0.8);
+}
+
+#arhiva .section-title {
+  color: #e5e7eb;
+}
+
+#arhiva .card-premium {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(250,204,21,0.12), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(12,10,9,0.95), #020617 70%);
+}
+</section>
 
   <!-- GALERIE -->
   <section id="galerie" class="section">
