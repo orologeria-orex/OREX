@@ -5,25 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OREX – Marca Deluxe</title>
   <meta name="description" content="Orex – marcă orologieră premium, moștenitoare a unui brand românesc cu tradiție de peste o jumătate de secol.">
-  <style>
-    /*––––––––––––––––––––––––––––––––––
-       THEME PREMIUM OREX
-    ––––––––––––––––––––––––––––––––––*/
 
+  <style>
     :root {
       --bg-main: #020617;
-      --bg-alt: #020617;
       --fg-main: #e5e7eb;
       --fg-muted: #9ca3af;
       --accent: #8ea0ff;
-      --border-soft: rgba(148,163,184,0.4);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -32,27 +23,17 @@
       line-height: 1.5;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { color: inherit; text-decoration: none; }
 
     /* HEADER */
-
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       background: rgba(15,23,42,0.96);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(148,163,184,0.4);
     }
-
     .header-inner {
       max-width: 1120px;
       margin: 0 auto;
@@ -62,39 +43,26 @@
       justify-content: space-between;
       gap: 1rem;
     }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .logo-img {
-      height: 40px;
-      filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
-    }
-
+    .logo-wrap { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-img { height: 40px; filter: drop-shadow(0 0 6px rgba(255,255,255,0.25)); }
     .logo-text {
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--fg-muted);
     }
-
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1.4rem;
       font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
     }
-
     nav a {
       position: relative;
       color: #d1d5db;
     }
-
     nav a::after {
       content: "";
       position: absolute;
@@ -105,145 +73,87 @@
       background: linear-gradient(90deg, #4b5563, #e5e7eb, #4b5563);
       transition: width 0.25s ease;
     }
-
-    nav a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 8px rgba(255,255,255,0.5);
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
+    nav a:hover { color: #fff; }
+    nav a:hover::after { width: 100%; }
 
     @media (max-width: 720px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        gap: 0.9rem;
-      }
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      nav { gap: 0.9rem; }
     }
 
-    /* HERO VIDEO */
-
-    .hero-premium {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      max-height: 520px;
-    }
-
-    .hero-premium video {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: brightness(0.85);
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(15,23,42,0.10) 0%, rgba(15,23,42,0.8) 60%, rgba(15,23,42,0.98) 100%);
+    /* HERO (fără video, doar cu fundal elegant) */
+    .hero {
+      min-height: 340px;
+      padding: 3.5rem 1.25rem 3rem;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 2rem 1rem;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.6), rgba(15,23,42,1));
+      border-bottom: 1px solid rgba(148,163,184,0.4);
     }
-
-    .hero-content {
-      max-width: 720px;
-    }
-
+    .hero-inner { max-width: 720px; }
     .hero-kicker {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--fg-muted);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
-
     .hero-title {
-      font-size: 2.6rem;
+      font-size: 2.2rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
-
     .hero-sub {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--fg-muted);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.3rem;
     }
-
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
       justify-content: center;
     }
-
-    .btn-primary {
+    .btn-primary, .btn-ghost {
       padding: 0.6rem 1.8rem;
       border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: linear-gradient(135deg, rgba(148,163,184,0.35), rgba(255,255,255,0.18));
-      color: #0f172a;
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       cursor: pointer;
       transition: 0.25s ease;
+      border: 1px solid rgba(229,231,235,0.8);
     }
-
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(148,163,184,0.4), rgba(255,255,255,0.22));
+      color: #0f172a;
+    }
     .btn-primary:hover {
       background: linear-gradient(135deg, rgba(229,231,235,0.9), rgba(255,255,255,0.6));
       transform: translateY(-1px);
       box-shadow: 0 8px 24px rgba(0,0,0,0.55);
     }
-
     .btn-ghost {
-      padding: 0.6rem 1.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.8);
       background: transparent;
       color: #e5e7eb;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      cursor: pointer;
-      transition: 0.25s ease;
+      border-color: rgba(148,163,184,0.8);
     }
-
     .btn-ghost:hover {
       background: rgba(15,23,42,0.9);
       border-color: #e5e7eb;
       box-shadow: 0 8px 24px rgba(0,0,0,0.55);
     }
 
-    @media (max-width: 720px) {
-      .hero-title {
-        font-size: 1.7rem;
-        letter-spacing: 0.16em;
-      }
-      .hero-sub {
-        font-size: 0.8rem;
-      }
-    }
-
-    /* SECȚIUNI DE BAZĂ */
-
-    .section-premium {
+    /* SECȚIUNI */
+    .section {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 3.2rem 1.25rem;
+      padding: 3rem 1.25rem;
     }
-
-    .section-premium.narrow {
-      max-width: 880px;
-    }
-
+    .section.narrow { max-width: 880px; }
     .section-title {
       text-align: center;
       text-transform: uppercase;
@@ -252,14 +162,12 @@
       margin-bottom: 0.5rem;
       color: #d1d5db;
     }
-
     .divider {
       width: 80px;
       height: 2px;
       margin: 0 auto 2rem;
       background: linear-gradient(90deg, #4b5563, #9ca3af, #4b5563);
     }
-
     .lead-text {
       font-size: 0.85rem;
       color: var(--fg-muted);
@@ -268,8 +176,7 @@
       margin: 0 auto 1.75rem;
     }
 
-    /* DESPRE BRAND */
-
+    /* DESPRE */
     .about-text {
       font-size: 0.85rem;
       color: var(--fg-main);
@@ -277,18 +184,13 @@
       margin: 0 auto;
       text-align: center;
     }
-
-    .about-text strong {
-      font-weight: 600;
-    }
-
     .motto {
       margin-top: 0.75rem;
       font-size: 0.8rem;
       color: var(--fg-muted);
       font-style: italic;
+      text-align: center;
     }
-
     .metallic-text {
       background: linear-gradient(90deg, #a0a8b5, #ffffff, #a0a8b5);
       -webkit-background-clip: text;
@@ -296,21 +198,18 @@
       background-size: 200% auto;
       transition: background-position 1.5s ease;
     }
-
     .metallic-text:hover {
       background-position: 200% center;
       text-shadow: 0 0 8px rgba(150,170,255,0.4);
     }
 
-    /* COLECȚII */
-
+    /* COLECȚII / GALERIE */
     .collections-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
       margin-top: 1.5rem;
     }
-
     .card-premium {
       background: radial-gradient(circle at top left, #111827 0%, #020617 60%);
       border-radius: 1.1rem;
@@ -319,43 +218,26 @@
       box-shadow: 0 16px 40px rgba(0,0,0,0.55);
       transition: 0.25s ease;
     }
-
     .card-premium:hover {
       transform: translateY(-3px);
       box-shadow: 0 20px 50px rgba(0,0,0,0.7);
       border-color: var(--accent);
     }
-
     .card-premium img {
       border-radius: 0.9rem;
-      height: 230px;
+      height: 220px;
       object-fit: cover;
       cursor: zoom-in;
     }
-
-    .card-body {
-      padding: 0.6rem 0.25rem 0.25rem;
-      font-size: 0.82rem;
-    }
-
-    .card-title {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .card-meta {
-      font-size: 0.78rem;
-      color: var(--fg-muted);
-    }
+    .card-body { padding: 0.6rem 0.25rem 0.25rem; font-size: 0.82rem; }
+    .card-title { font-weight: 600; margin-bottom: 0.25rem; }
+    .card-meta { font-size: 0.78rem; color: var(--fg-muted); }
 
     @media (max-width: 520px) {
-      .card-premium img {
-        height: 200px;
-      }
+      .card-premium img { height: 200px; }
     }
 
-    /* MECANISM VIDEO */
-
+    /* MECANISM */
     .video-frame {
       max-width: 900px;
       margin: 0 auto;
@@ -368,7 +250,6 @@
         inset 0 -1px 6px rgba(0,0,0,0.6),
         0 20px 60px rgba(0,0,0,0.85);
     }
-
     .video-frame-inner {
       position: relative;
       padding-bottom: 56.25%;
@@ -376,7 +257,6 @@
       overflow: hidden;
       border-radius: 1rem;
     }
-
     .video-frame-inner iframe {
       position: absolute;
       inset: 0;
@@ -385,7 +265,6 @@
       border: 0;
       border-radius: 1rem;
     }
-
     .video-note {
       font-size: 0.75rem;
       color: var(--fg-muted);
@@ -393,8 +272,7 @@
       text-align: center;
     }
 
-    /* CONTACT */
-
+    /* CONTACT & FOOTER */
     .contact-box {
       max-width: 520px;
       margin: 0.5rem auto 0;
@@ -402,12 +280,7 @@
       font-size: 0.82rem;
       color: var(--fg-muted);
     }
-
-    .contact-box a {
-      color: var(--accent);
-    }
-
-    /* FOOTER */
+    .contact-box a { color: var(--accent); }
 
     footer {
       border-top: 1px solid rgba(148,163,184,0.3);
@@ -415,7 +288,6 @@
       font-size: 0.75rem;
       color: var(--fg-muted);
     }
-
     .footer-inner {
       max-width: 1120px;
       margin: 0 auto;
@@ -426,12 +298,7 @@
       align-items: center;
     }
 
-    .footer-inner small {
-      opacity: 0.8;
-    }
-
-    /* LIGHTBOX OREX */
-
+    /* LIGHTBOX OREX (păstrat, dar nu afectează layout-ul) */
     #orex-lightbox {
       position: fixed;
       inset: 0;
@@ -441,11 +308,7 @@
       background: radial-gradient(1200px 800px at 50% 40%, rgba(30,41,59,.96), rgba(2,6,23,.99));
       backdrop-filter: blur(2px);
       z-index: 9999;
-      animation: orexFade .25s ease;
     }
-
-    @keyframes orexFade { from { opacity: 0 } to { opacity: 1 } }
-
     .orex-lightbox-inner {
       position: relative;
       max-width: 92vw;
@@ -456,14 +319,12 @@
       overflow: hidden;
       background: radial-gradient(circle at top left,#111827 0%,#020617 60%);
     }
-
     #orex-lightbox-img {
       display: block;
       max-width: 92vw;
       max-height: 88vh;
       background: #000;
     }
-
     .orex-close {
       position: absolute; top: .5rem; right: .5rem;
       width: 38px; height: 38px; border-radius: .75rem;
@@ -472,7 +333,6 @@
       cursor: pointer; transition: all .25s ease;
     }
     .orex-close:hover { background: rgba(99,102,241,.25); border-color:#8ea0ff; }
-
     .orex-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
       width: 46px; height: 46px; border-radius: .8rem;
@@ -483,7 +343,6 @@
     .orex-nav:hover { background: rgba(99,102,241,.22); border-color:#8ea0ff; }
     .orex-prev { left: .75rem; }
     .orex-next { right: .75rem; }
-
     .orex-counter {
       position: absolute; left: .75rem; bottom: .5rem;
       padding: .25rem .6rem; border-radius: .6rem;
@@ -492,11 +351,6 @@
       border: 1px solid #64748b;
       user-select: none;
     }
-
-    @media (max-width: 520px){
-      .orex-nav { width: 42px; height: 42px; line-height: 42px; }
-    }
-
   </style>
 </head>
 <body>
@@ -505,7 +359,6 @@
   <header>
     <div class="header-inner">
       <div class="logo-wrap">
-        <!-- Schimbă orex-logo.png cu logo-ul tău real -->
         <img src="orex-logo.png" alt="Orex Logo" class="logo-img">
         <div class="logo-text">Marca Deluxe Orex®</div>
       </div>
@@ -519,32 +372,28 @@
     </div>
   </header>
 
-  <!-- HERO CU VIDEO -->
-  <section class="hero-premium" id="acasa">
-    <!-- Înlocuiește orex-hero.mp4 cu filmul tău -->
-    <video src="orex-hero.mp4" autoplay muted loop playsinline></video>
-    <div class="hero-overlay">
-      <div class="hero-content">
-        <div class="hero-kicker">Marca Deluxe Orex®</div>
-        <h1 class="hero-title">Timpul are formă</h1>
-        <p class="hero-sub">
-          O marcă orologieră premium, independentă, dedicată renașterii ceasurilor românești,
-          cu respect pentru moștenirea unui nume legendar.
-        </p>
-        <div class="hero-buttons">
-          <button class="btn-primary" onclick="document.getElementById('colectii').scrollIntoView({behavior:'smooth'})">
-            Descoperă colecția
-          </button>
-          <button class="btn-ghost" onclick="document.getElementById('mecanism').scrollIntoView({behavior:'smooth'})">
-            Vezi mecanismul
-          </button>
-        </div>
+  <!-- HERO SIMPLU -->
+  <section class="hero" id="acasa">
+    <div class="hero-inner">
+      <div class="hero-kicker">Marca Deluxe Orex®</div>
+      <h1 class="hero-title">Timpul are formă</h1>
+      <p class="hero-sub">
+        O marcă orologieră premium, independentă, dedicată renașterii ceasurilor românești,
+        cu respect pentru moștenirea unui nume legendar.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="document.getElementById('colectii').scrollIntoView({behavior:'smooth'})">
+          Descoperă colecția
+        </button>
+        <button class="btn-ghost" onclick="document.getElementById('mecanism').scrollIntoView({behavior:'smooth'})">
+          Vezi mecanismul
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- DESPRE MARCĂ -->
-  <section id="despre" class="section-premium narrow">
+  <!-- DESPRE -->
+  <section id="despre" class="section narrow">
     <h2 class="section-title">Marca Deluxe Orex®</h2>
     <div class="divider"></div>
     <p class="about-text">
@@ -560,16 +409,14 @@
   </section>
 
   <!-- COLECȚII -->
-  <section id="colectii" class="section-premium">
+  <section id="colectii" class="section">
     <h2 class="section-title">Colecțiile OREX</h2>
     <div class="divider"></div>
     <p class="lead-text">
-      Două universuri orologiere: <strong>Gama Comte des Carpates</strong>, cu linii moderne,
-      și <strong>Orex Heritage</strong>, dedicată modelelor istorice, reinterpretate pentru prezent.
+      Gama <strong>Comte des Carpates</strong>, cu linii moderne, și <strong>Orex Heritage</strong>, dedicată modelelor istorice.
     </p>
 
     <div class="collections-grid">
-      <!-- Model modern 1 -->
       <article class="card-premium">
         <img src="Orex-noublack.jpg" alt="Orex Comte des Carpates Deluxe C – cadran negru" class="js-lightbox">
         <div class="card-body">
@@ -580,40 +427,26 @@
         </div>
       </article>
 
-      <!-- Model modern 2 -->
       <article class="card-premium">
-        <img src="Orex-noublue.jpg" alt="Orex Comte des Carpates – cadran albastru" class="js-lightbox">
+        <img src="Orex-blue.jpg" alt="Orex Comte des Carpates – cadran albastru" class="js-lightbox">
         <div class="card-body">
           <div class="card-title">Orex® • Comte des Carpates – Bleu Royale</div>
           <div class="card-meta">
-            finisaj sun-ray • coroană canelată • brățară din oțel cu închidere tip „click”
+            finisaj sun-ray • coroană canelată • brățară din oțel cu închidere tip „click”.
           </div>
         </div>
       </article>
 
- <!-- Model modern 3 -->
       <article class="card-premium">
-        <img src="Orex-nourosu.jpg" alt="Orex Comte des Carpates – cadran albastru" class="js-lightbox">
+        <img src="Orex-heritage-1.jpg" alt="Orex Heritage – model din perioada socialistă" class="js-lightbox">
         <div class="card-body">
-          <div class="card-title">Orex® • Comte des Carpates – Bleu Royale</div>
+          <div class="card-title">Orex® Heritage – anii ’70</div>
           <div class="card-meta">
-            finisaj sun-ray • coroană canelată • brățară din oțel cu închidere tip „click”
-          </div>
-        </div>
-      </article>
-  
-      <!-- Model heritage 1 -->
-      <article class="card-premium">
-        <img src="Orex-26rubis.jpg" alt="Orex model automatic cu 26 rubine din perioada socialistă" class="js-lightbox">
-        <div class="card-body">
-          <div class="card-title">Orex® automatic 26 rubine – anii ’70</div>
-          <div class="card-meta">
-            cadran clasic, geam acrilic, mecanism automatic • reinterpretarea unui design din epocă.
+            cadran clasic, geam acrilic, mecanism manual • reinterpretare fidelă a unui design de epocă.
           </div>
         </div>
       </article>
 
-      <!-- Model heritage 2 -->
       <article class="card-premium">
         <img src="Orex-heritage-2.jpg" alt="Orex Heritage – profil carcasă" class="js-lightbox">
         <div class="card-body">
@@ -626,13 +459,12 @@
     </div>
   </section>
 
-  <!-- GALERIE DEDICATĂ -->
-  <section id="galerie" class="section-premium">
+  <!-- GALERIE -->
+  <section id="galerie" class="section">
     <h2 class="section-title">Galerie</h2>
     <div class="divider"></div>
     <p class="lead-text">
-      Detalii de cadran, profil de carcasă, mecanisme și capace spate – o selecție vizuală
-      din universul modern Orex®.
+      Detalii de cadran, profil de carcasă, mecanisme și capace spate – selecție vizuală din universul Orex®.
     </p>
 
     <div class="collections-grid">
@@ -640,12 +472,12 @@
         <img src="Orex-detail-dial.jpg" alt="Detaliu cadran Orex" class="js-lightbox">
         <div class="card-body">
           <div class="card-title">Detaliu cadran</div>
-          <div class="card-meta">indici aplicati • lumină controlată • finisaj radial.</div>
+          <div class="card-meta">indici aplicați • lumină controlată • finisaj radial.</div>
         </div>
       </article>
 
       <article class="card-premium">
-        <img src="orex-front.JPG" alt="Profil carcasă Orex" class="js-lightbox">
+        <img src="Orex-detail-case.jpg" alt="Profil carcasă Orex" class="js-lightbox">
         <div class="card-body">
           <div class="card-title">Profil carcasă</div>
           <div class="card-meta">tranziții lustru / periat • coroană ergonomică.</div>
@@ -653,34 +485,25 @@
       </article>
 
       <article class="card-premium">
-        <img src="orex-stealogo.JPG" alt="Steaua lui Drăculea" class="js-lightbox">
+        <img src="Orex-detail-movement.jpg" alt="Mecanism Orex" class="js-lightbox">
         <div class="card-body">
-          <div class="card-title">Elemente heraldice distinctive ale lui Drăculea</div>
-          <div class="card-meta">steaua cu opt colturi cu rubin natural pătrat, dragonul încolacit si aripile de liliac stilizate.</div>
+          <div class="card-title">Mecanism</div>
+          <div class="card-meta">balansier, tren de roți, punți – inima ceasului.</div>
         </div>
       </article>
 
       <article class="card-premium">
-        <img src="orex-mecanism.jpg" alt="Capac spate Orex" class="js-lightbox">
+        <img src="Orex-detail-back.jpg" alt="Capac spate Orex" class="js-lightbox">
         <div class="card-body">
-          <div class="card-title">Capacul spate cu sticlă și vedere la mecanismul elvețian automatic Sellita SW200-1</div>
-          <div class="card-meta">graveuri, suruburi, rotor, seria modelului, WR 10atm, oțel inoxidabil 316L, vizualizare mecanism.</div>
-        </div>
-      </article>
-    </div>
-
-     <article class="card-premium">
-        <img src="orex-lateral.jpg" alt="Corp ceas cu elemente de prindere laterală" class="js-lightbox">
-        <div class="card-body">
-          <div class="card-title">Elemente de prindere laterală pentru ergonomie la manipulare</div>
-          <div class="card-meta">forma cilindrica, caneluri de prindere intre degete, polish ”negru”.</div>
+          <div class="card-title">Capac spate</div>
+          <div class="card-meta">graveuri, seria modelului, vizualizare mecanism.</div>
         </div>
       </article>
     </div>
   </section>
 
   <!-- MECANISM VIDEO -->
-  <section id="mecanism" class="section-premium narrow">
+  <section id="mecanism" class="section narrow">
     <h2 class="section-title">Funcționarea mecanismului</h2>
     <div class="divider"></div>
     <p class="lead-text">
@@ -699,19 +522,17 @@
         </iframe>
       </div>
       <p class="video-note">
-        Film realizat de <a href="https://www.youtube.com/@JaredOwen" target="_blank" rel="noreferrer">Jared Owen</a> – YouTube.  
-        Material utilizat prin încorporare, cu respectarea politicilor platformei.
+        Film realizat de <a href="https://www.youtube.com/@JaredOwen" target="_blank" rel="noreferrer">Jared Owen</a> – YouTube.
       </p>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section-premium narrow">
+  <section id="contact" class="section narrow">
     <h2 class="section-title">Contact</h2>
     <div class="divider"></div>
     <div class="contact-box">
-      Pentru corespondență orologieră și proiectul <strong>Orex®</strong>:
-      <br>
+      Pentru corespondență orologieră și proiectul <strong>Orex®</strong>:<br>
       <a href="mailto:orexwatch@yahoo.com">orexwatch@yahoo.com</a>
     </div>
   </section>
@@ -720,11 +541,11 @@
   <footer>
     <div class="footer-inner">
       <small>© <span id="year"></span> Marca Deluxe Orex®. Toate drepturile rezervate.</small>
-      <small>Site de prezentare a Orologeriei Orex — proiect orologier privat.</small>
+      <small>Site de prezentare conceptuală — proiect orologier privat.</small>
     </div>
   </footer>
 
-  <!-- LIGHTBOX OREX -->
+  <!-- LIGHTBOX -->
   <div id="orex-lightbox" aria-hidden="true">
     <div class="orex-lightbox-inner">
       <button class="orex-close" aria-label="Închide">×</button>
@@ -739,7 +560,7 @@
     // anul din footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // LIGHTBOX OREX cu navigare + counter
+    // Lightbox
     (function(){
       const overlay  = document.getElementById('orex-lightbox');
       const imgBox   = document.getElementById('orex-lightbox-img');
@@ -748,7 +569,6 @@
       const btnNext  = overlay.querySelector('.orex-next');
       const counter  = document.getElementById('orex-counter');
       const thumbs   = Array.from(document.querySelectorAll('img.js-lightbox'));
-
       let current = -1;
 
       function show(idx){
@@ -756,7 +576,6 @@
         if (idx < 0) idx = thumbs.length - 1;
         if (idx >= thumbs.length) idx = 0;
         current = idx;
-
         const el = thumbs[current];
         imgBox.src = el.currentSrc || el.src;
         imgBox.alt = el.alt || '';
@@ -789,18 +608,13 @@
       btnPrev.addEventListener('click', ()=> show(current-1));
       btnNext.addEventListener('click', ()=> show(current+1));
       btnClose.addEventListener('click', close);
-
-      overlay.addEventListener('click', (e)=>{
-        if (e.target === overlay) close();
-      });
-
+      overlay.addEventListener('click', (e)=>{ if (e.target === overlay) close(); });
       window.addEventListener('keydown', (e)=>{
         if (overlay.getAttribute('aria-hidden') === 'true') return;
         if (e.key === 'Escape') close();
         if (e.key === 'ArrowLeft') show(current-1);
         if (e.key === 'ArrowRight') show(current+1);
       });
-
       imgBox.addEventListener('click', ()=> show(current+1));
     })();
   </script>
