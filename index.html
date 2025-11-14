@@ -26,6 +26,19 @@
     }
 
     a { color: inherit; text-decoration: none; }
+/* Steaua din HERO */
+.hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem; /* distanța între stea și text */
+}
+
+.hero-title .hero-stea {
+  height: 28px;     /* ajustezi cât vrei: 22–34px */
+  width: auto;
+  transform: translateY(-1px); /* micro-aliniere optic */
+}
 
     /* HEADER */
     header {
@@ -424,8 +437,11 @@
   <!-- HERO SIMPLU -->
   <section class="hero" id="acasa">
     <div class="hero-inner">
-      <div class="hero-kicker">Ceasul Orex®</div>
-      <h1 class="hero-title">Timpul are formă</h1>
+    <div class="hero-kicker">Ceasul Orex®</div>
+    <h1 class="hero-title">
+      <img src="orex-stea8.png" class="hero-stea" alt="">
+      Timpul are formă
+    </h1>
       <p class="hero-sub">
         O marcă orologieră premium dedicată iubitorilor de frumos,
         cu un design clasic, conceput cu respect pentru moștenirea unui nume legendar.
