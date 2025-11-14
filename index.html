@@ -212,29 +212,31 @@
       gap: 1.5rem;
       margin-top: 1.5rem;
     }
-    .card-premium {
+  .card-premium {
   background:
     radial-gradient(circle at 0% 0%, rgba(148,163,184,0.25), transparent 55%),
     radial-gradient(circle at 100% 100%, rgba(15,23,42,0.9), #020617 70%);
-  border-radius: 1.1rem;
+  border-radius: 1rem;
   border: 1px solid rgba(148,163,184,0.5);
-  padding: 0.8rem;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.65);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  padding: 0.6rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  transition: 0.25s ease;
+  overflow: hidden;              /* 👈 NU mai poate ieși poza din card */
 }
 
 .card-premium:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 60px rgba(0,0,0,0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.75);
   border-color: var(--accent);
 }
 
+/* POZĂ MAI MICĂ, CENTRATĂ, FĂRĂ IEȘIRE */
 .card-premium img {
   width: 100%;
-  height: 120px;   /* ← 2/3 din 180px */
+  max-height: 150px;             /* 👈 controlează înălțimea pozei */
   object-fit: cover;
   object-position: center;
-  border-radius: 0.65rem;
+  border-radius: 0.7rem;
   display: block;
   cursor: zoom-in;
 }
