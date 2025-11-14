@@ -168,7 +168,35 @@
   max-width: 900px;
   margin: 0 auto 1.5rem auto;
 }
-  
+
+/* Containere PERFECT egale pentru cele două videoclipuri */
+.video-frame {
+  aspect-ratio: 16 / 9;            /* toate cardurile au exact aceleași proporții */
+  background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
+  border-radius: 1.25rem;
+  border: 2px solid #555;
+  box-shadow:
+    inset 0 1px 4px rgba(255,255,255,0.25),
+    inset 0 -1px 6px rgba(0,0,0,0.5),
+    0 10px 30px rgba(0,0,0,0.7);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Videoclipurile CENTRATE perfect în container */
+.video-frame iframe,
+.video-frame video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* face video-ul să umple containerul */
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 1.2rem;
+}
+    
 /* Logo OREX – efect metalic fin */
 .logo-img {
   height: 52px;                        /* ajustează după gust */
