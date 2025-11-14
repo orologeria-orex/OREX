@@ -103,7 +103,60 @@
   display: flex;
   justify-content: center;
 }
+    
+/* Linie metalică premium între titlu și slogan */
+.hero-separator {
+  width: 160px;
+  height: 2px;
+  margin: 0.4rem auto 0.7rem auto;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.5) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  border-radius: 2px;
+  animation: orexSep 4s ease-in-out infinite;
+}
 
+@keyframes orexSep {
+  0%   { opacity: 0.6; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+    /* Mottoul din secțiunea Despre – stil identic cu sloganul din HERO */
+.motto {
+  font-size: 2.1rem;         /* aceeași înălțime ca HERO */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* Efect metallic subtil */
+.metallic-text {
+  background: linear-gradient(90deg,
+    #e5e7eb 0%,
+    #ffffff 50%,
+    #cbd5e1 100%
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+  animation: metallicShift 5s ease-in-out infinite;
+  text-shadow: 0 0 2px rgba(255,255,255,0.4);
+}
+
+/* Reflex metalic lent (foarte discret) */
+@keyframes metallicShift {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.18); }
+  100% { filter: brightness(1); }
+}
+    
 /* Logo OREX – efect metalic fin */
 .logo-img {
   height: 52px;                        /* ajustează după gust */
@@ -538,7 +591,7 @@
   <h2 class="hero-subtitle">
     CEASUL OREX®
   </h2>
-      
+     <div class="hero-separator"></div>
     <div class="hero-headline">
  <h1 class="hero-line">
   TIMPUL ARE FORMĂ
@@ -570,7 +623,7 @@
       păstrând spiritul unei povești de peste o jumătate de secol.
     </p>
     <p class="motto metallic-text">
-      „Timpul are formă — <strong>Orex®</strong> îi dă chip.”
+      „Să fie într-un ceas bun!”
     </p>
   </section>
 
