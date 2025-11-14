@@ -169,42 +169,6 @@
   margin: 0 auto 1.5rem auto;
 }
 
-/* GRID pentru cele două videoclipuri */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.8rem;
-  margin-top: 1.5rem;
-}
-
-/* CARD video – două containere egale */
-.video-frame {
-  position: relative;
-  padding-bottom: 56.25%;   /* raport 16:9 */
-  height: 0;
-  overflow: hidden;
-  border-radius: 1.25rem;
-  background: #111827;
-  border: 1px solid rgba(148,163,184,0.6);
-  box-shadow:
-    inset 0 1px 4px rgba(255,255,255,0.2),
-    inset 0 -1px 6px rgba(0,0,0,0.6),
-    0 14px 35px rgba(0,0,0,0.8);
-}
-
-/* VIDEO/IFRAME în interiorul cardului */
-.video-frame iframe,
-.video-frame video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 1.1rem;
-  object-fit: cover;
-}
-    
 /* Logo OREX – efect metalic fin */
 .logo-img {
   height: 52px;                        /* ajustează după gust */
@@ -868,13 +832,34 @@
     un scurt clip de prezentare a unui ceas Orex.
   </p>
 
-  <div class="video-grid">
+  <!-- CONTAINERELE VIDEO, FĂRĂ CSS EXTERN, DOAR INLINE -->
+
+  <div style="
+    max-width: 960px;
+    margin: 1.5rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  ">
 
     <!-- VIDEO 1 – MECANISM (YouTube) -->
-    <div class="video-frame">
+    <div style="
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 1.25rem;
+      background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
+      border: 2px solid #555;
+      box-shadow:
+        inset 0 1px 4px rgba(255,255,255,0.25),
+        inset 0 -1px 6px rgba(0,0,0,0.5),
+        0 10px 30px rgba(0,0,0,0.7);
+    ">
       <iframe
-        src="https://www.youtube-nocookie.com/embed/9_QsCLYs2mY?rel=0&modestbranding=1&controls=1"
+        src="https://www.youtube-nocookie.com/embed/9_QsCLYs2mY?rel=0&modestbranding=1&controls=1&showinfo=0"
         title="Funcționarea mecanismului de ceas"
+        style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:1.1rem;"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen>
@@ -882,8 +867,25 @@
     </div>
 
     <!-- VIDEO 2 – CEAS OREX (fișierul tău local) -->
-    <div class="video-frame">
-      <video controls>
+    <div style="
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 1.25rem;
+      background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
+      border: 2px solid #555;
+      box-shadow:
+        inset 0 1px 4px rgba(255,255,255,0.25),
+        inset 0 -1px 6px rgba(0,0,0,0.5),
+        0 10px 30px rgba(0,0,0,0.7);
+    ">
+      <video controls style="
+        position:absolute; top:0; left:0;
+        width:100%; height:100%;
+        border:none; border-radius:1.1rem;
+        object-fit:cover;
+      ">
         <source src="teaser-orexreal24s.mp4" type="video/mp4">
         Browserul nu poate reda acest videoclip.
       </video>
