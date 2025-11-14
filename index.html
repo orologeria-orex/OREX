@@ -26,18 +26,43 @@
     }
 
     a { color: inherit; text-decoration: none; }
-/* Steaua din HERO */
+
+/* Steaua premium din HERO */
 .hero-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem; /* distanța între stea și text */
+  gap: 0.6rem;
 }
 
-.hero-title .hero-stea {
-  height: 34px;     /* ajustezi cât vrei: 22–34px */
+.hero-stea {
+  height: 34px;                /* Ajustează 26–38px */
   width: auto;
-  transform: translateY(-1px); /* micro-aliniere optic */
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.35));
+  animation: orexPulse 4s ease-in-out infinite,
+             orexShine 6s linear infinite;
+  transform: translateY(-1px);
+  transition: transform 0.25s ease, filter 0.3s ease;
+}
+
+/* Mic efect de ridicare la hover */
+.hero-stea:hover {
+  transform: translateY(-3px) scale(1.04);
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.55));
+}
+
+/* Puls subtil — respiră ca un obiect metalic iluminat */
+@keyframes orexPulse {
+  0%   { filter: drop-shadow(0 0 2px rgba(255,255,255,0.35)); }
+  50%  { filter: drop-shadow(0 0 6px rgba(255,255,255,0.6)); }
+  100% { filter: drop-shadow(0 0 2px rgba(255,255,255,0.35)); }
+}
+
+/* Reflex metalic — lumina alunecă ușor peste muchii */
+@keyframes orexShine {
+  0% { opacity: 0.95; transform: translateY(-1px) rotate(0deg); }
+  50% { opacity: 1; transform: translateY(-1px) rotate(2deg); }
+  100% { opacity: 0.95; transform: translateY(-1px) rotate(0deg); }
 }
 
     /* HEADER */
