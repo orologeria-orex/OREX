@@ -172,49 +172,27 @@
 /* GRID pentru cele două videoclipuri */
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.8rem;
-  align-items: stretch;
-}
-@media (min-width: 900px) {
-  .video-grid {
-    position: relative;
-  }
-
-  .video-grid::before {
-    content: "";
-    position: absolute;
-    top: 10%;
-    bottom: 10%;
-    left: 50%;
-    width: 1px;
-    transform: translateX(-0.5px);
-    background: linear-gradient(
-      to bottom,
-      rgba(148,163,184,0),
-      rgba(148,163,184,0.6),
-      rgba(148,163,184,0)
-    );
-    pointer-events: none;
-  }
+  margin-top: 1.5rem;
 }
 
-/* CARD video – ambele egale */
+/* CARD video – două containere egale */
 .video-frame {
   position: relative;
-  padding-bottom: 56.25%;      /* 16:9 stabil */
+  padding-bottom: 56.25%;   /* raport 16:9 */
   height: 0;
   overflow: hidden;
   border-radius: 1.25rem;
-  background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
-  border: 2px solid #555;
+  background: #111827;
+  border: 1px solid rgba(148,163,184,0.6);
   box-shadow:
-    inset 0 1px 4px rgba(255,255,255,0.25),
-    inset 0 -1px 6px rgba(0,0,0,0.5),
-    0 10px 30px rgba(0,0,0,0.7);
+    inset 0 1px 4px rgba(255,255,255,0.2),
+    inset 0 -1px 6px rgba(0,0,0,0.6),
+    0 14px 35px rgba(0,0,0,0.8);
 }
 
-/* VIDEO / IFRAME – centrat, umple cardul */
+/* VIDEO/IFRAME în interiorul cardului */
 .video-frame iframe,
 .video-frame video {
   position: absolute;
@@ -223,7 +201,7 @@
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 1.15rem;
+  border-radius: 1.1rem;
   object-fit: cover;
 }
     
@@ -883,36 +861,36 @@
 
   <!-- MECANISM VIDEO -->
   <section id="mecanism" class="section narrow">
-    <h2 class="section-title">Funcționarea mecanismului</h2>
-    <div class="divider"></div>
-    <p class="lead-text">
-      Film demonstrativ care prezintă principiul de funcționare al unui ceas mecanic:
-      balansier, tren de roți, angrenaje și ansamblul de reglaj.
-    </p>
+  <h2 class="section-title">Funcționarea mecanismului</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Două perspective video: un film demonstrativ despre mecanismul unui ceas mecanic și
+    un scurt clip de prezentare a unui ceas Orex.
+  </p>
 
-    <div class="video-grid">
+  <div class="video-grid">
 
-  <!-- VIDEO 1 — mecanism -->
-  <div class="video-frame">
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/9_QsCLYs2mY?rel=0&modestbranding=1&controls=1"
-      title="Mecanism ceas"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
+    <!-- VIDEO 1 – MECANISM (YouTube) -->
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/9_QsCLYs2mY?rel=0&modestbranding=1&controls=1"
+        title="Funcționarea mecanismului de ceas"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- VIDEO 2 – CEAS OREX (fișierul tău local) -->
+    <div class="video-frame">
+      <video controls>
+        <source src="teaser-orexreal24s.mp4" type="video/mp4">
+        Browserul nu poate reda acest videoclip.
+      </video>
+    </div>
+
   </div>
-
-  <!-- VIDEO 2 — videoclipul tău -->
-  <div class="video-frame">
-    <video controls class="orex-video">
-      <source src="teaser-orexreal24s.mp4" type="video/mp4">
-      Browserul nu poate reda video.
-    </video>
-  </div>
-      
-</div>
-  </section>
+</section>
 
   <!-- CONTACT -->
   <section id="contact" class="section narrow">
