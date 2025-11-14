@@ -64,7 +64,33 @@
   50% { opacity: 1; transform: translateY(-1px) rotate(2deg); }
   100% { opacity: 0.95; transform: translateY(-1px) rotate(0deg); }
 }
-    
+ /* Container pentru cele două titluri */
+.hero-headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;     /* distanța dintre cele două propoziții */
+  margin-bottom: 1.2rem;
+}
+
+/* Titlurile premium */
+.hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;     /* distanța între text și stea */
+  font-size: 2.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Dimensiunea stelei în HERO */
+.hero-stea {
+  height: 74px;      /* poți pune 28, 30, 32 după preferință */
+  width: auto;
+}
+   
 /* Logo OREX – efect metalic fin */
 .logo-img {
   height: 52px;                        /* ajustează după gust */
@@ -498,10 +524,19 @@
   <section class="hero" id="acasa">
     <div class="hero-inner">
     <div class="hero-kicker">Ceasul Orex®</div>
-    <h1 class="hero-title">
-      <img src="orex-stea8.png" class="hero-stea" alt="">
-      Timpul are formă
-    </h1>
+      
+    <div class="hero-headline">
+  <h1 class="hero-title">
+    <img src="orex-stea8.png" class="hero-stea" alt="">
+    TIMPUL ARE FORMĂ
+  </h1>
+
+  <h1 class="hero-title">
+    OREX ÎI DĂ UN CHIP
+    <img src="orex-stea8.png" class="hero-stea" alt="">
+  </h1>
+</div>
+      
       <p class="hero-sub">
         O marcă orologieră premium dedicată iubitorilor de frumos,
         cu un design clasic, conceput cu respect pentru moștenirea unui nume legendar.
