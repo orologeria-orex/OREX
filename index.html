@@ -36,7 +36,7 @@
 }
 
 .hero-stea {
-  height: 54px;                /* Ajustează 26–38px */
+  height: 64px;                /* Ajustează 26–38px */
   width: auto;
   filter: drop-shadow(0 0 2px rgba(255,255,255,0.35));
   animation: orexPulse 4s ease-in-out infinite,
@@ -64,7 +64,42 @@
   50% { opacity: 1; transform: translateY(-1px) rotate(2deg); }
   100% { opacity: 0.95; transform: translateY(-1px) rotate(0deg); }
 }
+    
+/* Logo OREX – efect metalic fin */
+.logo-img {
+  height: 42px;                        /* ajustează după gust */
+  width: auto;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));
+  animation: orexLogoShine 8s ease-in-out infinite;
+  transition: transform 0.25s ease, filter 0.3s ease;
+}
 
+/* Hover elegant pe logo */
+.logo-img:hover {
+  transform: translateY(-2px) scale(1.03);
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.65));
+}
+
+/* Reflex foarte subtil – 2 grade */
+@keyframes orexLogoShine {
+  0% { transform: rotate(0deg); opacity: 0.95; }
+  50% { transform: rotate(1.5deg); opacity: 1; }
+  100% { transform: rotate(0deg); opacity: 0.95; }
+}
+    
+/* HERO mai îngust */
+#hero {
+  padding-top: 3rem;       /* înainte probabil era 6–8rem */
+  padding-bottom: 3rem;
+}
+
+.hero-title {
+  margin-bottom: 0.75rem;  /* text mai compact */
+}
+
+.hero-subtitle {
+  margin-bottom: 1.25rem;  /* micșorăm spațiul */
+}
     /* HEADER */
     header {
       position: sticky;
