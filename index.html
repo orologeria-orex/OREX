@@ -205,33 +205,41 @@
   margin-bottom: 1.25rem;  /* micșorăm spațiul */
 }
 
-    /* Cardurile din secțiunea Colecții */
+    /* Cardurile din Colectii – centru pentru conținut */
 .card-premium {
-  text-align: center;       /* centrează titlul, descrierea și butonul */
+  text-align: center;
 }
 
- /* Buton Detalii Tehnice – variantă elegantă, minimală */
+/* Buton Detalii – variantă elegantă */
 .btn-detalii-elegant {
-  display: inline-flex;          /* ca să aibă dimensiunea textului */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
   padding: 0.55rem 1.4rem;
-  margin: 1rem auto 1.4rem auto; /* CHEIA: butonul devine centrat */
+  margin: 1rem auto 1.4rem auto;  /* centru în card */
 
   font-size: 0.95rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-decoration: none;
-  
+
+  width: fit-content;
   color: #e2e8f0;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 0.75rem;
-  
   backdrop-filter: blur(4px);
   transition: all 0.28s ease;
+}
+
+.btn-detalii-elegant:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-2px);
+}
   
   width: fit-content;            /* CHEIA: împiedică întinderea completă */
 }
@@ -724,13 +732,9 @@
           cadran negru • oțel 316L • safir antireflex • Sellita SW200-1 • brățară oțel
         </div>
       </div>
-
-<a href="#detalii-deluxe-c" class="btn-detalii-elegant">
-  <span>Detalii tehnice</span>
-</a>
-      
-    </article>
-
+      <a href="#detalii-deluxe-c" class="btn-detalii-elegant">
+        <span>Detalii tehnice</span>
+      </a>
     </article>
 
     <!-- Card 2 – albastru -->
@@ -744,14 +748,12 @@
           cadran albastru • periaj sun-ray • oțel 316L • sticlă safir-cristal antireflex • Sellita SW200-1 • brățară oțel
         </div>
       </div>
-
-<a href="#detalii-deluxe-c" class="btn-detalii-elegant">
-  <span>Detalii tehnice</span>
-</a>
-      
+      <a href="#detalii-deluxe-ocean" class="btn-detalii-elegant">
+        <span>Detalii tehnice</span>
+      </a>
     </article>
 
-    <!-- Card 3 – roșu (dacă ai imagine) -->
+    <!-- Card 3 – roșu -->
     <article class="card-premium">
       <img src="Orex-nourosu.jpg"
            alt="Orex® Comte des Carpates Deluxe ”C” – Sânge de Vampir"
@@ -762,13 +764,11 @@
           cadran roșu • oțel 316L • sticlă safir-cristal antireflex • Sellita SW200-1 • brățară oțel
         </div>
       </div>
+      <a href="#detalii-deluxe-vampir" class="btn-detalii-elegant">
+        <span>Detalii tehnice</span>
+      </a>
     </article>
   </div>
-
-<a href="#detalii-deluxe-c" class="btn-detalii-elegant">
-  <span>Detalii tehnice</span>
-</a>
-  
 </section>
 
 <!-- COLECȚIA OREX – ARHIVĂ -->
