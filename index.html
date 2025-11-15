@@ -273,7 +273,73 @@
   width: 100%;
   left: 0;
 }
-   
+
+    /* GRID pentru fișele tehnice */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Card tehnic */
+.spec-card {
+  background: radial-gradient(circle at top left, #111827 0%, #020617 60%);
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.6);
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+}
+
+/* Titlu fișă tehnică */
+.spec-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.35rem;
+  color: #e5e7eb;
+}
+
+/* Subtitlu/descriere scurtă */
+.spec-tagline {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 0.7rem;
+}
+
+/* Lista de specificații (dl) */
+.spec-list {
+  margin: 0;
+  padding: 0;
+}
+
+.spec-list div {
+  display: grid;
+  grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+  column-gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.spec-list dt {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+}
+
+.spec-list dd {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #e5e7eb;
+}
+
+/* Pe ecrane foarte mici, listă pe două rânduri (etichetă deasupra valorii) */
+@media (max-width: 520px) {
+  .spec-list div {
+    grid-template-columns: 1fr;
+  }
+}
+    
     /* HEADER */
     header {
       position: sticky;
@@ -767,6 +833,186 @@
       <a href="#detalii-deluxe-vampir" class="btn-detalii-elegant">
         <span>Detalii tehnice</span>
       </a>
+    </article>
+  </div>
+</section>
+
+  <!-- DETALII TEHNICE – COLECȚIA NOUĂ OREX -->
+<section id="detalii-tehnice" class="section narrow">
+  <h2 class="section-title">Detalii tehnice – Comte des Carpates</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Specificații principale pentru modelele din gama <strong>Deluxe „C”</strong> – carcasă, dimensiuni, sticlă, mecanism și alte detalii orologiere relevante.
+  </p>
+
+  <div class="spec-grid">
+
+    <!-- MODEL 1 – Deluxe „C” • Miezul Nopții -->
+    <article id="detalii-deluxe-c" class="spec-card">
+      <h3 class="spec-title">Orex® • Deluxe „C” • Miezul Nopții</h3>
+      <p class="spec-tagline">Cadran negru profund, expresie de eleganță nocturnă.</p>
+      <dl class="spec-list">
+        <div>
+          <dt>Referință</dt>
+          <dd>Comte des Carpates • Deluxe „C” – Midnight</dd>
+        </div>
+        <div>
+          <dt>Carcasă</dt>
+          <dd>Oțel inoxidabil 316L, finisaj polișat / periat</dd>
+        </div>
+        <div>
+          <dt>Diametru</dt>
+          <dd>41 mm</dd>
+        </div>
+        <div>
+          <dt>Grosime</dt>
+          <dd>aprox. 12 mm</dd>
+        </div>
+        <div>
+          <dt>Sticlă</dt>
+          <dd>Safir-cristal, tratament antireflexiv pe ambele fețe</dd>
+        </div>
+        <div>
+          <dt>Etanșeitate</dt>
+          <dd>WR 10 atm (100 m)</dd>
+        </div>
+        <div>
+          <dt>Cadran</dt>
+          <dd>Negru, finish fin, indici aplicați, luminanță discretă</dd>
+        </div>
+        <div>
+          <dt>Brățară</dt>
+          <dd>Oțel 316L, închidere tip „click”</dd>
+        </div>
+        <div>
+          <dt>Mecanism</dt>
+          <dd>Automat elvețian Sellita SW200-1</dd>
+        </div>
+        <div>
+          <dt>Frecvență</dt>
+          <dd>28.800 vibrații/oră (4 Hz)</dd>
+        </div>
+        <div>
+          <dt>Rezervă de mers</dt>
+          <dd>aprox. 38 ore</dd>
+        </div>
+        <div>
+          <dt>Toleranță</dt>
+          <dd>aprox. ±12 sec/zi (reglabil în service)</dd>
+        </div>
+      </dl>
+    </article>
+
+    <!-- MODEL 2 – Deluxe „C” • Ocean Reflex -->
+    <article id="detalii-deluxe-ocean" class="spec-card">
+      <h3 class="spec-title">Orex® • Deluxe „C” • Ocean Reflex</h3>
+      <p class="spec-tagline">Cadran albastru sun-ray, reflexii inspirate de adâncimea oceanului.</p>
+      <dl class="spec-list">
+        <div>
+          <dt>Referință</dt>
+          <dd>Comte des Carpates • Deluxe „C” – Ocean Reflex</dd>
+        </div>
+        <div>
+          <dt>Carcasă</dt>
+          <dd>Oțel inoxidabil 316L, profile atent șlefuite</dd>
+        </div>
+        <div>
+          <dt>Diametru</dt>
+          <dd>41 mm</dd>
+        </div>
+        <div>
+          <dt>Grosime</dt>
+          <dd>aprox. 12 mm</dd>
+        </div>
+        <div>
+          <dt>Sticlă</dt>
+          <dd>Safir-cristal, antireflex intern & extern</dd>
+        </div>
+        <div>
+          <dt>Etanșeitate</dt>
+          <dd>WR 10 atm (100 m)</dd>
+        </div>
+        <div>
+          <dt>Cadran</dt>
+          <dd>Albastru, periaj radial „sun-ray”, indici și limbi metalice</dd>
+        </div>
+        <div>
+          <dt>Brățară</dt>
+          <dd>Oțel 316L, design integrat, închidere sigură</dd>
+        </div>
+        <div>
+          <dt>Mecanism</dt>
+          <dd>Automat elvețian Sellita SW200-1</dd>
+        </div>
+        <div>
+          <dt>Frecvență</dt>
+          <dd>28.800 vibrații/oră (4 Hz)</dd>
+        </div>
+        <div>
+          <dt>Rezervă de mers</dt>
+          <dd>aprox. 38 ore</dd>
+        </div>
+        <div>
+          <dt>Toleranță</dt>
+          <dd>aprox. ±12 sec/zi (reglabil în service)</dd>
+        </div>
+      </dl>
+    </article>
+
+    <!-- MODEL 3 – Deluxe „C” • Sânge de Vampir -->
+    <article id="detalii-deluxe-vampir" class="spec-card">
+      <h3 class="spec-title">Orex® • Deluxe „C” • Sânge de Vampir</h3>
+      <p class="spec-tagline">Cadran roșu intens, accent dramatic, dedicat colecționarilor curajoși.</p>
+      <dl class="spec-list">
+        <div>
+          <dt>Referință</dt>
+          <dd>Comte des Carpates • Deluxe „C” – Sânge de Vampir</dd>
+        </div>
+        <div>
+          <dt>Carcasă</dt>
+          <dd>Oțel inoxidabil 316L, muchii fațetate, joc de lumini</dd>
+        </div>
+        <div>
+          <dt>Diametru</dt>
+          <dd>41 mm</dd>
+        </div>
+        <div>
+          <dt>Grosime</dt>
+          <dd>aprox. 12 mm</dd>
+        </div>
+        <div>
+          <dt>Sticlă</dt>
+          <dd>Safir-cristal, tratament antireflex</dd>
+        </div>
+        <div>
+          <dt>Etanșeitate</dt>
+          <dd>WR 10 atm (100 m)</dd>
+        </div>
+        <div>
+          <dt>Cadran</dt>
+          <dd>Roșu intens, finish lucios sau satinat (concept), indici aplicați</dd>
+        </div>
+        <div>
+          <dt>Brățară</dt>
+          <dd>Oțel 316L, finisaj mix periat/polișat</dd>
+        </div>
+        <div>
+          <dt>Mecanism</dt>
+          <dd>Automat elvețian Sellita SW200-1</dd>
+        </div>
+        <div>
+          <dt>Frecvență</dt>
+          <dd>28.800 vibrații/oră (4 Hz)</dd>
+        </div>
+        <div>
+          <dt>Rezervă de mers</dt>
+          <dd>aprox. 38 ore</dd>
+        </div>
+        <div>
+          <dt>Toleranță</dt>
+          <dd>aprox. ±12 sec/zi (reglabil în service)</dd>
+        </div>
+      </dl>
     </article>
   </div>
 </section>
