@@ -790,7 +790,59 @@
     grid-template-columns: 1fr;
   }
 }
-    
+    /* --- GALERIE OREX --- */
+
+#galerie .gal-grid {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.gal-card {
+  background: #020617;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.85);
+}
+
+.gal-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.gal-card:hover .gal-img {
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.gal-caption {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.gal-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 0.25rem;
+}
+
+.gal-meta {
+  font-size: 0.83rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* mobil – un card pe rând */
+@media (max-width: 640px) {
+  #galerie .gal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
     /* HEADER */
     header {
       position: sticky;
@@ -1576,44 +1628,60 @@
   </p>
 </section>
 
- <article class="card-premium">
-      <img src="orex-front.jpg"
-           alt="Cadran noul Orex®"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">Cadran noul Orex®</div>
-        <div class="card-meta">
-          Cadran tip ”bronz japonez”, finisaj periat radial, finisaj tip ”sun ray”, indecși la orele 3-6-9, inscriptie Automatique.
-        </div>
-      </div>
-    </article>
-    
-    <article class="card-premium">
-      <img src="orex-lateral.jpg"
-           alt="Profil carcasă Orex®"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">Profil carcasă Orex®</div>
-        <div class="card-meta">
-          Oțel inoxidabil 316L, tranziții cu lustru tip ”polish negru” • caneluri pentru o prindere ergonomică • 6 suruburi pentru prinderea capacului spate • bezel.
-        </div>
-      </div>
-    </article>
+<!-- GALERIE -->
+<section id="galerie" class="section light">
+  <div class="container">
+    <h2 class="section-title">Galerie OREX</h2>
+    <div class="divider"></div>
+    <p class="lead-text">
+      Detalii ale noului Orex® – cadran, profil de carcasă, capac spate cu vedere la mecanismul elvețian.
+    </p>
 
-    <article class="card-premium">
-      <img src="orex-mecanism.jpg"
-           alt="Capac spate cu geam transparent cu vizualizare Mecanism elvețian Sellita SW200-1"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">Capac spate cu vedere la mecanism</div>
-        <div class="card-meta">
-          Capac cu șase șuruburi, oțel inoxidabil 316L, inscripții gravate, WR 10 atm, oțel inoxidabil 316L, rotor, balansier, punți.
-        </div>
-      </div>
-    </article>
+    <div class="gal-grid">
+
+      <figure class="gal-card">
+        <img src="orex-front.jpg"
+             alt="Cadran noul Orex®"
+             class="gal-img js-lightbox">
+        <figcaption class="gal-caption">
+          <div class="gal-title">Cadran noul Orex®</div>
+          <div class="gal-meta">
+            Cadran tip „bronz japonez”, finisaj periat radial, efect „sun ray”, indici la orele 3–6–9,
+            inscripție <em>Automatique</em>.
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="gal-card">
+        <img src="orex-lateral.jpg"
+             alt="Profil carcasă Orex®"
+             class="gal-img js-lightbox">
+        <figcaption class="gal-caption">
+          <div class="gal-title">Profil carcasă Orex®</div>
+          <div class="gal-meta">
+            Oțel inoxidabil 316L, tranziții cu lustru tip „polish negru”, caneluri pentru prindere ergonomică,
+            6 șuruburi pentru capacul spate, bezel bine definit.
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="gal-card">
+        <img src="orex-mecanism.jpg"
+             alt="Capac spate cu geam transparent și mecanism Sellita SW200-1"
+             class="gal-img js-lightbox">
+        <figcaption class="gal-caption">
+          <div class="gal-title">Capac spate cu vedere la mecanism</div>
+          <div class="gal-meta">
+            Capac cu șase șuruburi, oțel inoxidabil 316L, inscripții gravate, WR 10 atm, rotor decorat, balansier și punți vizibile
+            ale mecanismului elvețian Sellita SW200-1.
+          </div>
+        </figcaption>
+      </figure>
+
+    </div>
   </div>
 </section>
-</section>
+
 
   <!-- MECANISM VIDEO -->
   <section id="mecanism" class="section narrow">
