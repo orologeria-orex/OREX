@@ -205,28 +205,35 @@
   margin-bottom: 1.25rem;  /* micșorăm spațiul */
 }
 
+    /* Cardurile din secțiunea Colecții */
+.card-premium {
+  text-align: center;       /* centrează titlul, descrierea și butonul */
+}
+
  /* Buton Detalii Tehnice – variantă elegantă, minimală */
 .btn-detalii-elegant {
-  display: inline-flex;
+  display: inline-flex;          /* ca să aibă dimensiunea textului */
   align-items: center;
   justify-content: center;
 
-  margin: 1rem auto 1.4rem auto;
   padding: 0.55rem 1.4rem;
+  margin: 1rem auto 1.4rem auto; /* CHEIA: butonul devine centrat */
 
   font-size: 0.95rem;
   font-weight: 500;
   text-transform: uppercase;
-  text-decoration: none;
   letter-spacing: 0.05em;
-
+  text-decoration: none;
+  
   color: #e2e8f0;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 0.75rem;
-
+  
   backdrop-filter: blur(4px);
   transition: all 0.28s ease;
+  
+  width: fit-content;            /* CHEIA: împiedică întinderea completă */
 }
 
 /* Icon optional (linie subțire sub text) */
