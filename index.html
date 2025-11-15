@@ -676,19 +676,44 @@
   }
 }
 
-/* --- ARHIVA OREX – stil distinct față de colecția nouă --- */
+/* --- ARHIVA OREX – complet separată de colecții și galerie --- */
 
-/* gridul de arhivă – folosim deja .collections-grid, îl rafinăm local */
-#arhiva .collections-grid {
+/* titlurile de sub-secțiune (Orex Mecanic / Orex Quartz) */
+.archive-group-title {
   max-width: 1000px;
-  margin: 2rem auto 0;
+  margin: 2.2rem auto 0.6rem auto;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #e5e7eb;
+  text-align: left;
+  position: relative;
+}
+
+.archive-group-title::after {
+  content: "";
+  display: block;
+  margin-top: 0.4rem;
+  width: 140px;
+  height: 1px;
+  background: linear-gradient(to right,
+    rgba(148,163,184,0.1),
+    rgba(148,163,184,0.7),
+    rgba(148,163,184,0.1)
+  );
+}
+
+/* grid pentru arhivă – independent de .collections-grid */
+.archive-grid {
+  max-width: 1000px;
+  margin: 0 auto 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.6rem;
 }
 
-/* cardurile de arhivă – fond ușor diferit, „vintage premium” */
-#arhiva .card-premium {
+/* card individual din arhivă */
+.archive-card {
   background: radial-gradient(circle at top, #111827 0%, #020617 60%);
   border-radius: 1rem;
   border: 1px solid rgba(148,163,184,0.7);
@@ -713,8 +738,8 @@
   color: #e5e7eb;
 }
 
-/* imagine „vintage”, dar clară */
-#arhiva .card-premium img {
+/* imaginea de arhivă */
+.archive-img {
   width: 100%;
   border-radius: 0.75rem;
   margin-top: 1.3rem;
@@ -724,36 +749,33 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.7);
 }
 
-/* efect la hover – puțin mai intens, ca o piesă de colecție scoasă în lumină */
-#arhiva .card-premium:hover img {
+.archive-card:hover .archive-img {
   transform: translateY(-4px);
   filter: saturate(1.05) contrast(1.06);
   box-shadow: 0 16px 40px rgba(0,0,0,0.95);
 }
 
-/* titlul și textul arhivei */
-#arhiva .card-title {
+/* textul din cardurile de arhivă */
+.archive-body {
+  margin-top: 0.7rem;
+  text-align: center;
+}
+
+.archive-name {
   font-size: 0.92rem;
   font-weight: 600;
   color: #e5e7eb;
   margin-bottom: 0.25rem;
-  text-align: center;
 }
 
-#arhiva .card-meta {
+.archive-meta {
   font-size: 0.82rem;
   color: #cbd5e1;
   line-height: 1.6;
-  text-align: center;
 }
 
-/* pe ecrane mici – un singur card pe rând */
-@media (max-width: 640px) {
-  #arhiva .collections-grid {
-    grid-template-columns: 1fr;
-  }
-}
-    .archive-note {
+/* nota de la finalul secțiunii */
+.archive-note {
   max-width: 900px;
   margin: 1.8rem auto 0;
   font-size: 0.85rem;
@@ -762,44 +784,9 @@
   line-height: 1.6;
 }
 
-/* Titlurile de sub-secțiune din Arhivă (Orex Mecanic / Orex Quartz) */
-.archive-group-title {
-  max-width: 1000px;
-  margin: 2.2rem auto 0.6rem auto;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #e5e7eb;
-  text-align: left;
-  position: relative;
-}
-
-/* linie discretă sub text */
-.archive-group-title::after {
-  content: "";
-  display: block;
-  margin-top: 0.4rem;
-  width: 140px;
-  height: 1px;
-  background: linear-gradient(to right,
-    rgba(148,163,184,0.1),
-    rgba(148,163,184,0.7),
-    rgba(148,163,184,0.1)
-  );
-}
-
-/* grid pentru fiecare grup din arhivă */
-#arhiva .archive-group {
-  max-width: 1000px;
-  margin: 0 auto 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.6rem;
-}
-
-/* pe ecrane mici, un singur card pe rând */
+/* responsive: un card pe rând pe ecrane mici */
 @media (max-width: 640px) {
-  #arhiva .archive-group {
+  .archive-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -1495,68 +1482,68 @@
 
   <!-- GRUP 1: OREX MECANIC -->
   <h3 class="archive-group-title">Orex Mecanic</h3>
-  <div class="collections-grid archive-group archive-mecanic">
+  <div class="archive-grid">
 
-    <article class="card-premium">
+    <article class="archive-card">
       <div class="archive-era">Anii ’80</div>
       <img src="OREX-17rubisred.jpg"
            alt="OREX® 17 rubine roșu – model din perioada socialistă"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">OREX® 17 rubine ’80</div>
-        <div class="card-meta">
+           class="archive-img js-lightbox">
+      <div class="archive-body">
+        <div class="archive-name">OREX® 17 rubine ’80</div>
+        <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
         </div>
       </div>
     </article>
 
-    <article class="card-premium">
+    <article class="archive-card">
       <div class="archive-era">Anii ’80</div>
       <img src="OREX-17rubisblack.jpg"
            alt="OREX® 17 rubine negru – model din perioada socialistă"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">OREX® 17 rubine ’80</div>
-        <div class="card-meta">
+           class="archive-img js-lightbox">
+      <div class="archive-body">
+        <div class="archive-name">OREX® 17 rubine ’80</div>
+        <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
         </div>
       </div>
     </article>
 
-    <article class="card-premium">
+    <article class="archive-card">
       <div class="archive-era">Anii ’80</div>
       <img src="OREX-19rubis.jpg"
            alt="OREX® 19 rubine – model din perioada socialistă"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">OREX® 19 rubine ’80</div>
-        <div class="card-meta">
+           class="archive-img js-lightbox">
+      <div class="archive-body">
+        <div class="archive-name">OREX® 19 rubine ’80</div>
+        <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
         </div>
       </div>
     </article>
 
-    <article class="card-premium">
+    <article class="archive-card">
       <div class="archive-era">Anii ’80</div>
       <img src="OREX-21rubis.JPG"
            alt="OREX® 21 rubine – model din perioada socialistă"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">OREX® 21 rubine ’80</div>
-        <div class="card-meta">
+           class="archive-img js-lightbox">
+      <div class="archive-body">
+        <div class="archive-name">OREX® 21 rubine ’80</div>
+        <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
         </div>
       </div>
     </article>
 
-    <article class="card-premium">
+    <article class="archive-card">
       <div class="archive-era">Anii ’80</div>
       <img src="OREX-26rubis.jpg"
            alt="OREX® automatic 26 rubine – model din perioada socialistă"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">OREX® automatic 26 rubine ’80</div>
-        <div class="card-meta">
+           class="archive-img js-lightbox">
+      <div class="archive-body">
+        <div class="archive-name">OREX® automatic 26 rubine ’80</div>
+        <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism automatic sovietic tip Slava • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
         </div>
       </div>
@@ -1564,25 +1551,22 @@
 
   </div>
 
-  <!-- GRUP 2: OREX QUARTZ -->
+  <!-- GRUP 2: OREX QUARTZ (placeholder deocamdată) -->
   <h3 class="archive-group-title">Orex Quartz</h3>
-  <div class="collections-grid archive-group archive-quartz">
-    <!-- Deocamdată poți lăsa placeholder / vei adăuga pozele când le ai -->
+  <div class="archive-grid">
 
-    <article class="card-premium">
+    <article class="archive-card">
       <div class="archive-era">Anii ’80–’90</div>
       <img src="OREX-quartz-01.jpg"
-           alt="OREX® Quartz – exemplu de model din perioada târzie"
-           class="js-lightbox">
-      <div class="card-body">
-        <div class="card-title">OREX® Quartz ’80–’90</div>
-        <div class="card-meta">
+           alt="OREX® Quartz – model din perioada târzie"
+           class="archive-img js-lightbox">
+      <div class="archive-body">
+        <div class="archive-name">OREX® Quartz ’80–’90</div>
+        <div class="archive-meta">
           indicatoare subțiri, cadran curat, mecanism quartz • reprezentativ pentru tranziția de la mecanic la quartz în producția românească.
         </div>
       </div>
     </article>
-
-    <!-- Mai poți adăuga aici și alte modele Quartz, după ce ai imaginile -->
 
   </div>
 
