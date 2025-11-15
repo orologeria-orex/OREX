@@ -675,7 +675,93 @@
     padding-left: 1rem;
   }
 }
-    
+
+/* --- ARHIVA OREX – stil distinct față de colecția nouă --- */
+
+/* gridul de arhivă – folosim deja .collections-grid, îl rafinăm local */
+#arhiva .collections-grid {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.6rem;
+}
+
+/* cardurile de arhivă – fond ușor diferit, „vintage premium” */
+#arhiva .card-premium {
+  background: radial-gradient(circle at top, #111827 0%, #020617 60%);
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.7);
+  padding: 0.9rem 0.9rem 1.1rem 0.9rem;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+/* eticheta cu perioada („Anii ’80”) */
+.archive-era {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.7rem;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0.14rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.8);
+  background: rgba(15,23,42,0.96);
+  color: #e5e7eb;
+}
+
+/* imagine „vintage”, dar clară */
+#arhiva .card-premium img {
+  width: 100%;
+  border-radius: 0.75rem;
+  margin-top: 1.3rem;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(1.02);
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+
+/* efect la hover – puțin mai intens, ca o piesă de colecție scoasă în lumină */
+#arhiva .card-premium:hover img {
+  transform: translateY(-4px);
+  filter: saturate(1.05) contrast(1.06);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.95);
+}
+
+/* titlul și textul arhivei */
+#arhiva .card-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+#arhiva .card-meta {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* pe ecrane mici – un singur card pe rând */
+@media (max-width: 640px) {
+  #arhiva .collections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+    .archive-note {
+  max-width: 900px;
+  margin: 1.8rem auto 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.6;
+}
+
     /* HEADER */
     header {
       position: sticky;
@@ -1367,6 +1453,7 @@
 
   <div class="collections-grid">
     <article class="card-premium">
+      <div class="archive-era">Anii ’80</div>
       <img src="OREX-17rubisred.jpg"
            alt="OREX® 17 rubine roșu – model din perioada socialistă"
            class="js-lightbox">
@@ -1379,6 +1466,7 @@
     </article>
 
     <article class="card-premium">
+      <div class="archive-era">Anii ’80</div>
       <img src="OREX-17rubisblack.jpg"
            alt="OREX® 17 rubine negru – model din perioada socialistă"
            class="js-lightbox">
@@ -1391,6 +1479,7 @@
     </article>
 
  <article class="card-premium">
+   <div class="archive-era">Anii ’80</div>
       <img src="OREX-19rubis.jpg"
            alt="OREX® 19 rubine – model din perioada socialistă"
            class="js-lightbox">
@@ -1403,6 +1492,7 @@
     </article>
 
 <article class="card-premium">
+  <div class="archive-era">Anii ’80</div>
       <img src="OREX-21rubis.JPG"
            alt="OREX® 21 rubine – model din perioada socialistă"
            class="js-lightbox">
@@ -1415,6 +1505,7 @@
     </article>
 
     <article class="card-premium">
+      <div class="archive-era">Anii ’80</div>
       <img src="OREX-26rubis.jpg"
            alt="OREX® 26 rubine – model din perioada socialistă"
            class="js-lightbox">
@@ -1426,6 +1517,10 @@
       </div>
     </article>
   </div>
+  <p class="archive-note">
+  Modelele prezentate sunt reconstruite digital după ceasuri originale OREX din perioada socialistă.
+  Fotografiile și randările au rol documentar și omagiază patrimoniul ceasornic OREX.
+</p>
 </section>
 
 <!-- GALERIE DETALII -->
