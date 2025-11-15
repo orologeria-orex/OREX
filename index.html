@@ -1349,8 +1349,30 @@
  ]
 }
 </script>
-<body>
+  .skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #111827;
+  color: #f9fafb;
+  padding: 0.5rem 1rem;
+  z-index: 2000;
+}
 
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  border-radius: 999px;
+}
+
+<body>
+  <a href="#main-content" class="skip-link">Sari la conținut</a>
+
+<!-- H1 ascuns SEO, dacă l-ai adăugat -->
+  <h1 style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
+    Ceasuri Orex® – ceas automat românesc premium din colecția Comte des Carpates, cu mecanism elvețian Sellita SW200-1, oțel 316L și sticlă safir.
+  </h1>
+  
   <!-- HEADER -->
   <header>
     <div class="header-inner">
