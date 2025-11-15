@@ -261,6 +261,61 @@
   transition: width 0.28s ease, left 0.28s ease;
 }
 
+/* Wrapper detalii – ascuns implicit */
+.detalii-wrapper {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Când e activ – apare cu tranziție */
+.detalii-wrapper.active {
+  display: block;
+  animation: detaliiFadeIn 0.28s ease-out forwards;
+  margin-top: 1.5rem;
+}
+
+/* Doar cardul activ e vizibil */
+.detalii-card {
+  display: none;
+}
+
+.detalii-card.active {
+  display: block;
+}
+
+/* Buton închidere detalii */
+.detalii-close-btn {
+  margin: 1.4rem auto 0;
+  display: block;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.7);
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.detalii-close-btn:hover {
+  background: rgba(148,163,184,0.15);
+}
+
+/* animație apariție */
+@keyframes detaliiFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    
 /* Hover premium */
 .btn-detalii-elegant:hover {
   background: rgba(255, 255, 255, 0.09);
@@ -855,9 +910,9 @@
           cadran negru • oțel 316L • safir antireflex • Sellita SW200-1 • brățară oțel
         </div>
       </div>
-      <a href="#detalii-deluxe-c" class="btn-detalii-elegant">
-        <span>Detalii tehnice</span>
-      </a>
+     <a href="#" class="btn-detalii-elegant" data-target="detalii-deluxe-c">
+  <span>Detalii tehnice</span>
+</a>
     </article>
 
     <!-- Card 2 – albastru -->
@@ -871,9 +926,9 @@
           cadran albastru • periaj sun-ray • oțel 316L • sticlă safir-cristal antireflex • Sellita SW200-1 • brățară oțel
         </div>
       </div>
-      <a href="#detalii-deluxe-ocean" class="btn-detalii-elegant">
-        <span>Detalii tehnice</span>
-      </a>
+      <a href="#" class="btn-detalii-elegant" data-target="detalii-deluxe-ocean">
+  <span>Detalii tehnice</span>
+</a>
     </article>
 
     <!-- Card 3 – roșu -->
@@ -887,22 +942,23 @@
           cadran roșu • oțel 316L • sticlă safir-cristal antireflex • Sellita SW200-1 • brățară oțel
         </div>
       </div>
-      <a href="#detalii-deluxe-vampir" class="btn-detalii-elegant">
-        <span>Detalii tehnice</span>
-      </a>
+      <a href="#" class="btn-detalii-elegant" data-target="detalii-deluxe-vampir">
+  <span>Detalii tehnice</span>
+</a>
     </article>
   </div>
 </section>
 
-  <!-- DETALII TEHNICE – COLECȚIA NOUĂ OREX -->
-<!-- MODALE DETALII TEHNICE – OREX COMTE DES CARPATES -->
+<!-- SECTIUNE ASCUNSĂ: DETALII TEHNICE PENTRU COLECȚIA NOUĂ -->
+<section id="detalii-tehnice" class="section narrow detalii-wrapper">
+  <h2 class="section-title">Detalii tehnice</h2>
+  <div class="divider"></div>
 
-<!-- MODAL 1 – Deluxe „C” • Miezul Nopții -->
-<div id="modal-deluxe-c" class="spec-modal" aria-hidden="true">
-  <div class="spec-modal-backdrop"></div>
-  <div class="spec-modal-dialog" role="dialog" aria-modal="true">
-    <button class="spec-close" type="button" aria-label="Închide">×</button>
-    <article class="spec-card">
+  <!-- aici se încarcă dinamic fișa selectată -->
+  <div class="detalii-inner">
+
+    <!-- MODEL 1 – Deluxe „C” • Miezul Nopții -->
+    <article id="detalii-deluxe-c" class="spec-card detalii-card">
       <h3 class="spec-title">Orex® • Deluxe „C” • Miezul Nopții</h3>
       <p class="spec-tagline">Cadran negru profund, expresie de eleganță nocturnă.</p>
       <dl class="spec-list">
@@ -956,15 +1012,9 @@
         </div>
       </dl>
     </article>
-  </div>
-</div>
 
-<!-- MODAL 2 – Deluxe „C” • Ocean Reflex -->
-<div id="modal-deluxe-ocean" class="spec-modal" aria-hidden="true">
-  <div class="spec-modal-backdrop"></div>
-  <div class="spec-modal-dialog" role="dialog" aria-modal="true">
-    <button class="spec-close" type="button" aria-label="Închide">×</button>
-    <article class="spec-card">
+    <!-- MODEL 2 – Deluxe „C” • Ocean Reflex -->
+    <article id="detalii-deluxe-ocean" class="spec-card detalii-card">
       <h3 class="spec-title">Orex® • Deluxe „C” • Ocean Reflex</h3>
       <p class="spec-tagline">Cadran albastru sun-ray, reflexii inspirate de adâncimea oceanului.</p>
       <dl class="spec-list">
@@ -1018,15 +1068,9 @@
         </div>
       </dl>
     </article>
-  </div>
-</div>
 
-<!-- MODAL 3 – Deluxe „C” • Sânge de Vampir -->
-<div id="modal-deluxe-vampir" class="spec-modal" aria-hidden="true">
-  <div class="spec-modal-backdrop"></div>
-  <div class="spec-modal-dialog" role="dialog" aria-modal="true">
-    <button class="spec-close" type="button" aria-label="Închide">×</button>
-    <article class="spec-card">
+    <!-- MODEL 3 – Deluxe „C” • Sânge de Vampir -->
+    <article id="detalii-deluxe-vampir" class="spec-card detalii-card">
       <h3 class="spec-title">Orex® • Deluxe „C” • Sânge de Vampir</h3>
       <p class="spec-tagline">Cadran roșu intens, accent dramatic, dedicat colecționarilor curajoși.</p>
       <dl class="spec-list">
@@ -1080,9 +1124,13 @@
         </div>
       </dl>
     </article>
-  </div>
-</div>
 
+  </div>
+
+  <button type="button" class="detalii-close-btn">
+    Închide detaliile
+  </button>
+</section>
 
 <!-- COLECȚIA OREX – ARHIVĂ -->
 <section id="arhiva" class="section">
@@ -1423,6 +1471,60 @@
       }
     });
   });
+</script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
+  const wrapper = document.getElementById('detalii-tehnice');
+  const cards = document.querySelectorAll('.detalii-card');
+  const closeBtn = document.querySelector('.detalii-close-btn');
+
+  function showCard(id) {
+    if (!wrapper) return;
+
+    // activăm wrapperul
+    wrapper.classList.add('active');
+
+    // resetăm toate cardurile
+    cards.forEach(function (card) {
+      card.classList.remove('active');
+    });
+
+    // activăm doar cardul cerut
+    const card = document.getElementById(id);
+    if (card) {
+      card.classList.add('active');
+      // scroll lin la secțiune
+      wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function hideAll() {
+    if (!wrapper) return;
+    wrapper.classList.remove('active');
+    cards.forEach(function (card) {
+      card.classList.remove('active');
+    });
+  }
+
+  // click pe „Detalii tehnice”
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.dataset.target;
+      if (targetId) {
+        showCard(targetId);
+      }
+    });
+  });
+
+  // click pe butonul „Închide detaliile”
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      hideAll();
+    });
+  }
+});
 </script>
 </body>
 </html>
