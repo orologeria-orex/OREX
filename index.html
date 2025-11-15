@@ -762,6 +762,48 @@
   line-height: 1.6;
 }
 
+/* Titlurile de sub-secțiune din Arhivă (Orex Mecanic / Orex Quartz) */
+.archive-group-title {
+  max-width: 1000px;
+  margin: 2.2rem auto 0.6rem auto;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #e5e7eb;
+  text-align: left;
+  position: relative;
+}
+
+/* linie discretă sub text */
+.archive-group-title::after {
+  content: "";
+  display: block;
+  margin-top: 0.4rem;
+  width: 140px;
+  height: 1px;
+  background: linear-gradient(to right,
+    rgba(148,163,184,0.1),
+    rgba(148,163,184,0.7),
+    rgba(148,163,184,0.1)
+  );
+}
+
+/* grid pentru fiecare grup din arhivă */
+#arhiva .archive-group {
+  max-width: 1000px;
+  margin: 0 auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.6rem;
+}
+
+/* pe ecrane mici, un singur card pe rând */
+@media (max-width: 640px) {
+  #arhiva .archive-group {
+    grid-template-columns: 1fr;
+  }
+}
+    
     /* HEADER */
     header {
       position: sticky;
@@ -1448,10 +1490,13 @@
   <h2 class="section-title">Orex – Colecția de Arhivă</h2>
   <div class="divider"></div>
   <p class="lead-text">
-    Modele OREX „Made in Romania”.
+    Modele originale din perioada socialistă, restaurate digital după modele de epocă • inscripții „Made in Romania”.
   </p>
 
-  <div class="collections-grid">
+  <!-- GRUP 1: OREX MECANIC -->
+  <h3 class="archive-group-title">Orex Mecanic</h3>
+  <div class="collections-grid archive-group archive-mecanic">
+
     <article class="card-premium">
       <div class="archive-era">Anii ’80</div>
       <img src="OREX-17rubisred.jpg"
@@ -1478,8 +1523,8 @@
       </div>
     </article>
 
- <article class="card-premium">
-   <div class="archive-era">Anii ’80</div>
+    <article class="card-premium">
+      <div class="archive-era">Anii ’80</div>
       <img src="OREX-19rubis.jpg"
            alt="OREX® 19 rubine – model din perioada socialistă"
            class="js-lightbox">
@@ -1491,8 +1536,8 @@
       </div>
     </article>
 
-<article class="card-premium">
-  <div class="archive-era">Anii ’80</div>
+    <article class="card-premium">
+      <div class="archive-era">Anii ’80</div>
       <img src="OREX-21rubis.JPG"
            alt="OREX® 21 rubine – model din perioada socialistă"
            class="js-lightbox">
@@ -1507,7 +1552,7 @@
     <article class="card-premium">
       <div class="archive-era">Anii ’80</div>
       <img src="OREX-26rubis.jpg"
-           alt="OREX® 26 rubine – model din perioada socialistă"
+           alt="OREX® automatic 26 rubine – model din perioada socialistă"
            class="js-lightbox">
       <div class="card-body">
         <div class="card-title">OREX® automatic 26 rubine ’80</div>
@@ -1516,33 +1561,36 @@
         </div>
       </div>
     </article>
+
   </div>
-  <p class="archive-note">
-  Modelele prezentate sunt reconstruite digital după ceasuri originale OREX din perioada socialistă.
-  Fotografiile și randările au rol documentar și omagiază patrimoniul ceasornic OREX.
-</p>
-</section>
 
-<!-- GALERIE DETALII -->
-<section id="galerie" class="section">
-  <h2 class="section-title">Galerie</h2>
-  <div class="divider"></div>
-  <p class="lead-text">
-    Detalii de cadran, profil de carcasă, mecanisme și capace spate – o selecție vizuală din universul Orex®.
-  </p>
+  <!-- GRUP 2: OREX QUARTZ -->
+  <h3 class="archive-group-title">Orex Quartz</h3>
+  <div class="collections-grid archive-group archive-quartz">
+    <!-- Deocamdată poți lăsa placeholder / vei adăuga pozele când le ai -->
 
-  <div class="collections-grid">
     <article class="card-premium">
-      <img src="orex-stealogo.JPG"
-           alt="Detaliu cadran cu logo OREX®"
+      <div class="archive-era">Anii ’80–’90</div>
+      <img src="OREX-quartz-01.jpg"
+           alt="OREX® Quartz – exemplu de model din perioada târzie"
            class="js-lightbox">
       <div class="card-body">
-        <div class="card-title">Detaliu cadran si logo</div>
+        <div class="card-title">OREX® Quartz ’80–’90</div>
         <div class="card-meta">
-          Noul logo Orex® model Ordinul Dragonului cu aripi de liliac• stea cu opt colțuri Drăculea • rubin natural sau piatră Swarovski • finisaj radial al cadranului sun-ray.
+          indicatoare subțiri, cadran curat, mecanism quartz • reprezentativ pentru tranziția de la mecanic la quartz în producția românească.
         </div>
       </div>
     </article>
+
+    <!-- Mai poți adăuga aici și alte modele Quartz, după ce ai imaginile -->
+
+  </div>
+
+  <p class="archive-note">
+    Modelele din colecția de arhivă sunt reconstruite digital după ceasuri originale OREX. Ele ilustrează atât perioada
+    mecanică, cât și tranziția către mecanisme quartz din anii târzii ai producției.
+  </p>
+</section>
 
  <article class="card-premium">
       <img src="orex-front.jpg"
