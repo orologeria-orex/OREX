@@ -567,6 +567,114 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* ISTORIA OREX – TIMELINE */
+
+/* container general */
+.history-timeline {
+  max-width: 900px;
+  margin: 2rem auto 0;
+  position: relative;
+  padding-left: 1.75rem;
+  border-left: 1px solid rgba(148,163,184,0.5);
+}
+
+/* fiecare etapă */
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.8rem;
+  padding-left: 1.3rem;
+}
+
+/* punct pe linie */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -0.44rem;
+  top: 0.55rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  border: 2px solid #e5e7eb;
+  background: #020617;
+  box-shadow: 0 0 0 3px rgba(15,23,42,0.9),
+              0 0 12px rgba(148,163,184,0.8);
+}
+
+/* an / perioadă */
+.timeline-year {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #9ca3af;
+  margin-bottom: 0.1rem;
+}
+
+/* titlu etapă */
+.timeline-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 0.3rem;
+}
+
+/* text etapă */
+.timeline-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  margin: 0 0 0.35rem 0;
+}
+
+/* etapă curentă – puțin accent */
+.timeline-current .timeline-item::before { /* placeholder, nu se aplică direct */
+}
+
+.timeline-current .timeline-year {
+  color: #bfdbfe;
+}
+
+.timeline-current .timeline-title {
+  color: #f9fafb;
+}
+
+.timeline-current .timeline-text {
+  color: #e5e7eb;
+}
+
+/* ușoară animație la scroll (din start sunt vizibile, animăm doar intrarea) */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: tlFadeIn 0.5s ease-out forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.05s; }
+.timeline-item:nth-child(2) { animation-delay: 0.1s; }
+.timeline-item:nth-child(3) { animation-delay: 0.15s; }
+.timeline-item:nth-child(4) { animation-delay: 0.2s; }
+.timeline-item:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes tlFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* pe ecrane mici – puțin mai aerisit */
+@media (max-width: 640px) {
+  .history-timeline {
+    padding-left: 1.3rem;
+  }
+  .timeline-item {
+    padding-left: 1rem;
+  }
+}
     
     /* HEADER */
     header {
@@ -950,11 +1058,12 @@
     <div class="header-inner">
       <div class="logo-wrap">
         <img src="orex-logo.png" alt="Orex Logo" class="logo-img">
-        <div class="logo-text">Marca Deluxe Orex®</div>
+        <div class="logo-text">Orologeria Orex®</div>
       </div>
       <nav>
         <a href="#despre">Despre</a>
         <a href="#colectii">Colecții</a>
+        <a href="#istoria-orex">Istoria OREX</a>
         <a href="#galerie">Galerie</a>
         <a href="#mecanism">Tehnologie</a>
         <a href="#contact">Contact</a>
@@ -1011,7 +1120,7 @@
   <h2 class="section-title">Orex – Colecția Nouă</h2>
   <div class="divider"></div>
   <p class="lead-text">
-    Modele moderne din gama <strong>Comte des Carpates</strong>, concepute în stil contemporan.
+    Gama <strong>Comte des Carpates</strong>.
   </p>
 
   <div class="collections-grid">
@@ -1172,6 +1281,82 @@
   </button>
 </section>
 
+<!-- ISTORIA OREX -->
+<section id="istoria-orex" class="section">
+  <h2 class="section-title">Istoria OREX</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    O poveste care leagă ceasornicăria românească de un brand devenit simbol
+    pentru mai multe generații. OREX a însemnat precizie accesibilă, design
+    recognoscibil și sentimentul unei industrii care își dorea să țină pasul cu timpul.
+  </p>
+
+  <div class="history-timeline">
+
+    <!-- Etapa 1 -->
+    <article class="timeline-item">
+      <div class="timeline-year">Anii &#8217;60–&#8217;70</div>
+      <h3 class="timeline-title">Rădăcinile unei mărci românești</h3>
+      <p class="timeline-text">
+        În plină dezvoltare a industriei socialiste, România începe să producă ceasuri
+        sub marcă proprie. OREX apare ca un nume asociat cu ideea de <em>„făcut aici”</em>,
+        într-un context în care ceasul de mână era nu doar instrument, ci și statut.
+      </p>
+    </article>
+
+    <!-- Etapa 2 -->
+    <article class="timeline-item">
+      <div class="timeline-year">Anii &#8217;70–&#8217;80</div>
+      <h3 class="timeline-title">Orex în cotidianul românesc</h3>
+      <p class="timeline-text">
+        Modelele OREX ajung pe încheietura a sute de mii de români. Cadrane simple,
+        lizibile, carcase robuste și mecanisme fiabile – OREX devine un companion
+        discret pentru profesioniști, elevi, ingineri și militari deopotrivă.
+      </p>
+    </article>
+
+    <!-- Etapa 3 -->
+    <article class="timeline-item">
+      <div class="timeline-year">După 1990</div>
+      <h3 class="timeline-title">Tranziția și dispariția treptată</h3>
+      <p class="timeline-text">
+        După schimbările economice, piața se deschide către branduri internaționale.
+        OREX iese treptat din producție, iar ceasurile rămase devin, încet, piese
+        de familie, relicve tehnice și martori ai unei epoci.
+      </p>
+    </article>
+
+    <!-- Etapa 4 -->
+    <article class="timeline-item">
+      <div class="timeline-year">Anii 2000–2020</div>
+      <h3 class="timeline-title">Redescoperire și pasiune de colecționar</h3>
+      <p class="timeline-text">
+        Colecționarii încep să caute vechile modele OREX, să le fotografieze, să le
+        documenteze și să le restaureze. Apare o nouă respectare pentru ceasul românesc,
+        pentru estetica lui și pentru rolul său în istoria locală.
+      </p>
+    </article>
+
+    <!-- Etapa 5 – proiectul tău actual -->
+    <article class="timeline-item timeline-current">
+      <div class="timeline-year">Astăzi</div>
+      <h3 class="timeline-title">Renașterea OREX • Marca Deluxe</h3>
+      <p class="timeline-text">
+        Proiectul <strong>Marca Deluxe Orex®</strong> propune o reinterpretare contemporană
+        a unui nume istoric. Cadrane noi, carcase moderne, mecanisme elvețiene și o atenție
+        extremă la detalii – totul gândit ca un omagiu adus unui brand românesc și
+        unei generații care a crescut cu el.
+      </p>
+      <p class="timeline-text">
+        Seria <strong>Comte des Carpates</strong> duce mai departe ideea de ceas românesc,
+        construit cu standarde actuale, dar cu respect pentru proporțiile, simplitatea
+        și robustețea care au făcut OREX recognoscibil.
+      </p>
+    </article>
+
+  </div>
+</section>
+  
 <!-- COLECȚIA OREX – ARHIVĂ -->
 <section id="arhiva" class="section">
   <h2 class="section-title">Orex – Colecția de Arhivă</h2>
