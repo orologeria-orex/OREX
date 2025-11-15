@@ -1280,6 +1280,21 @@
 }
   </style>
 </head>
+  .skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #111827;
+  color: #f9fafb;
+  padding: 0.5rem 1rem;
+  z-index: 2000;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  border-radius: 999px;
+}
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1349,21 +1364,6 @@
  ]
 }
 </script>
-  .skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  background: #111827;
-  color: #f9fafb;
-  padding: 0.5rem 1rem;
-  z-index: 2000;
-}
-
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  border-radius: 999px;
-}
 
 <body>
   <a href="#main-content" class="skip-link">Sari la conținut</a>
