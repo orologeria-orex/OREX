@@ -234,16 +234,13 @@
   transition: all 0.28s ease;
 }
 
-.btn-detalii-elegant:hover {
+ .btn-detalii-elegant:hover {
   background: rgba(255, 255, 255, 0.09);
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.32);
   transform: translateY(-2px);
 }
   
-  width: fit-content;            /* CHEIA: împiedică întinderea completă */
-}
-
 /* Icon optional (linie subțire sub text) */
 .btn-detalii-elegant span {
   position: relative;
@@ -1238,30 +1235,32 @@
     </div>
   </header>
 
-  <!-- HERO SIMPLU -->
- <div class="hero-full">
-  <h2 class="hero-subtitle">
-    CEASUL OREX®
-  </h2>
-     <div class="hero-separator"></div>
+  <!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-inner">
+    <h2 class="hero-subtitle">CEASUL OREX®</h2>
+    <div class="hero-separator"></div>
+
     <div class="hero-headline">
- <h1 class="hero-line">
-  TIMPUL ARE FORMĂ
-  <img src="orex-stea8.png" class="hero-stea" alt="">
-  OREX ÎI DĂ UN CHIP
- </h1>
-</div>
-   </div>
-         <div class="hero-buttons">
-        <button class="btn-primary" onclick="document.getElementById('colectii').scrollIntoView({behavior:'smooth'})">
-          Descoperă colecția
-        </button>
-        <button class="btn-ghost" onclick="document.getElementById('mecanism').scrollIntoView({behavior:'smooth'})">
-          Tehnologii
-        </button>
-      </div>
+      <h1 class="hero-title">
+        TIMPUL ARE FORMĂ
+        <img src="orex-stea8.png" class="hero-stea" alt="">
+        OREX ÎI DĂ UN CHIP
+      </h1>
     </div>
-  </section>
+
+    <div class="hero-buttons">
+      <button class="btn-primary"
+              onclick="document.getElementById('colectii').scrollIntoView({behavior:'smooth'})">
+        Descoperă colecția
+      </button>
+      <button class="btn-ghost"
+              onclick="document.getElementById('mecanism').scrollIntoView({behavior:'smooth'})">
+        Tehnologii
+      </button>
+    </div>
+  </div>
+</section>
 
   <!-- DESPRE -->
   <section id="despre" class="section narrow">
@@ -1783,168 +1782,112 @@
     </div>
   </div>
 
-  <script>
-    // anul din footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  // anul din footer
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lightbox
-    (function(){
-      const overlay  = document.getElementById('orex-lightbox');
-      const imgBox   = document.getElementById('orex-lightbox-img');
-      const btnClose = overlay.querySelector('.orex-close');
-      const btnPrev  = overlay.querySelector('.orex-prev');
-      const btnNext  = overlay.querySelector('.orex-next');
-      const counter  = document.getElementById('orex-counter');
-      const thumbs   = Array.from(document.querySelectorAll('img.js-lightbox'));
-      let current = -1;
+  // LIGHTBOX OREX
+  (function() {
+    const overlay  = document.getElementById('orex-lightbox');
+    const imgBox   = document.getElementById('orex-lightbox-img');
+    const btnClose = overlay.querySelector('.orex-close');
+    const btnPrev  = overlay.querySelector('.orex-prev');
+    const btnNext  = overlay.querySelector('.orex-next');
+    const counter  = document.getElementById('orex-counter');
+    const thumbs   = Array.from(document.querySelectorAll('img.js-lightbox'));
+    let current = -1;
 
-      function show(idx){
-        if (!thumbs.length) return;
-        if (idx < 0) idx = thumbs.length - 1;
-        if (idx >= thumbs.length) idx = 0;
-        current = idx;
-        const el = thumbs[current];
-        imgBox.src = el.currentSrc || el.src;
-        imgBox.alt = el.alt || '';
-        if (counter) counter.textContent = (current + 1) + ' / ' + thumbs.length;
-      }
+    function show(idx) {
+      if (!thumbs.length) return;
+      if (idx < 0) idx = thumbs.length - 1;
+      if (idx >= thumbs.length) idx = 0;
+      current = idx;
 
-      function open(idx){
-        show(idx);
-        overlay.style.display = 'flex';
-        document.documentElement.style.overflow = 'hidden';
-        overlay.setAttribute('aria-hidden','false');
-      }
+      const el = thumbs[current];
+      imgBox.src = el.currentSrc || el.src;
+      imgBox.alt = el.alt || '';
+      if (counter) counter.textContent = (current + 1) + ' / ' + thumbs.length;
+    }
 
-      function close(){
-        overlay.style.display = 'none';
-        imgBox.src = '';
-        imgBox.alt = '';
-        document.documentElement.style.overflow = '';
-        overlay.setAttribute('aria-hidden','true');
-        current = -1;
-      }
+    function open(idx) {
+      show(idx);
+      overlay.style.display = 'flex';
+      document.documentElement.style.overflow = 'hidden';
+      overlay.setAttribute('aria-hidden','false');
+    }
 
-      thumbs.forEach((el,i)=>{
-        el.addEventListener('click', (e)=>{
-          e.preventDefault();
-          open(i);
-        });
+    function close() {
+      overlay.style.display = 'none';
+      imgBox.src = '';
+      imgBox.alt = '';
+      document.documentElement.style.overflow = '';
+      overlay.setAttribute('aria-hidden','true');
+      current = -1;
+    }
+
+    thumbs.forEach((el,i) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        open(i);
       });
+    });
 
-      btnPrev.addEventListener('click', ()=> show(current-1));
-      btnNext.addEventListener('click', ()=> show(current+1));
-      btnClose.addEventListener('click', close);
-      overlay.addEventListener('click', (e)=>{ if (e.target === overlay) close(); });
-      window.addEventListener('keydown', (e)=>{
-        if (overlay.getAttribute('aria-hidden') === 'true') return;
-        if (e.key === 'Escape') close();
-        if (e.key === 'ArrowLeft') show(current-1);
-        if (e.key === 'ArrowRight') show(current+1);
-      });
-      imgBox.addEventListener('click', ()=> show(current+1));
-    })();
-  <script>
+    btnPrev.addEventListener('click', () => show(current - 1));
+    btnNext.addEventListener('click', () => show(current + 1));
+    btnClose.addEventListener('click', close);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) close();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (overlay.getAttribute('aria-hidden') === 'true') return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+
+    imgBox.addEventListener('click', () => show(current + 1));
+  })();
+
+  // BUTOANE „DETALII TEHNICE” -> SECȚIUNEA #detalii-tehnice
   document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
-    const modals = document.querySelectorAll('.spec-modal');
+    const wrapper = document.getElementById('detalii-tehnice');
+    const cards = document.querySelectorAll('.detalii-card');
+    const closeBtn = document.querySelector('.detalii-close-btn');
 
-    function closeModal(modal) {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
+    function showCard(id) {
+      if (!wrapper) return;
+
+      wrapper.classList.add('active');
+      cards.forEach(card => card.classList.remove('active'));
+
+      const card = document.getElementById(id);
+      if (card) {
+        card.classList.add('active');
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
-    buttons.forEach(function (btn) {
+    function hideAll() {
+      if (!wrapper) return;
+      wrapper.classList.remove('active');
+      cards.forEach(card => card.classList.remove('active'));
+    }
+
+    buttons.forEach(btn => {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
-        const id = this.dataset.target;
-        const modal = document.getElementById(id);
-        if (modal) {
-          modal.classList.add('active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
+        const targetId = this.dataset.target;
+        if (targetId) showCard(targetId);
       });
     });
 
-    modals.forEach(function (modal) {
-      const backdrop = modal.querySelector('.spec-modal-backdrop');
-      const closeBtn = modal.querySelector('.spec-close');
-
-      if (backdrop) {
-        backdrop.addEventListener('click', function () {
-          closeModal(modal);
-        });
-      }
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function () {
-          closeModal(modal);
-        });
-      }
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        modals.forEach(function (modal) {
-          closeModal(modal);
-        });
-      }
-    });
-  });
-</script>
-  <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
-  const wrapper = document.getElementById('detalii-tehnice');
-  const cards = document.querySelectorAll('.detalii-card');
-  const closeBtn = document.querySelector('.detalii-close-btn');
-
-  function showCard(id) {
-    if (!wrapper) return;
-
-    // activăm wrapperul
-    wrapper.classList.add('active');
-
-    // resetăm toate cardurile
-    cards.forEach(function (card) {
-      card.classList.remove('active');
-    });
-
-    // activăm doar cardul cerut
-    const card = document.getElementById(id);
-    if (card) {
-      card.classList.add('active');
-      // scroll lin la secțiune
-      wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (closeBtn) {
+      closeBtn.addEventListener('click', hideAll);
     }
-  }
-
-  function hideAll() {
-    if (!wrapper) return;
-    wrapper.classList.remove('active');
-    cards.forEach(function (card) {
-      card.classList.remove('active');
-    });
-  }
-
-  // click pe „Detalii tehnice”
-  buttons.forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.dataset.target;
-      if (targetId) {
-        showCard(targetId);
-      }
-    });
   });
-
-  // click pe butonul „Închide detaliile”
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function () {
-      hideAll();
-    });
-  }
-});
 </script>
 </body>
 </html>
