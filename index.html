@@ -142,6 +142,20 @@
   height: 100px;      /* poți pune 28, 30, 32 după preferință */
   width: auto;
 }
+    /* Corecție pentru HERO pe mobil – elimină lărgirea paginii */
+.hero-line,
+.hero-headline {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Steaua se micșorează automat pe ecrane mici */
+@media (max-width: 480px) {
+  .hero-stea {
+    height: 36px !important;
+  }
+}
    
 /* CEASUL OREX – același nivel vizual cu sloganul */
 .hero-subtitle {
