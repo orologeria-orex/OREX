@@ -1353,6 +1353,47 @@
   max-width: 100%;
   overflow-x: hidden;
 }
+    /* Eliminăm orice lărgire orizontală a paginii */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* HERO – titlul cu steaua să NU mai lărgească ecranul */
+.hero-headline h1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
+}
+
+/* Pe telefoane: micșorăm scrisul și steaua în HERO */
+@media (max-width: 640px) {
+  .hero-subtitle {
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-headline h1 {
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-headline {
+    padding: 0 1rem;
+  }
+
+  .hero-stea {
+    height: 34px;
+    margin: 0 0.25rem;
+    transform: translateY(-1px);
+  }
+}
   </style>
 </head>
   
