@@ -142,21 +142,38 @@
   height: 100px;      /* poți pune 28, 30, 32 după preferință */
   width: auto;
 }
-    /* Corecție pentru HERO pe mobil – elimină lărgirea paginii */
-.hero-line,
-.hero-headline {
+
+    /* === Corecție HERO pentru ecrane mici (mobil) === */
+.hero-headline,
+.hero-line {
   max-width: 100%;
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
-/* Steaua se micșorează automat pe ecrane mici */
-@media (max-width: 480px) {
+/* Pe telefoane: micșorăm textul și steaua în HERO */
+@media (max-width: 640px) {
+  .hero-subtitle {
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-line {
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-headline {
+    padding: 0 1rem;
+  }
+
   .hero-stea {
-    height: 36px !important;
+    height: 36px;
+    transform: translateY(-1px);
+    margin: 0 0.3rem;
   }
 }
-   
+
 /* CEASUL OREX – același nivel vizual cu sloganul */
 .hero-subtitle {
   font-size: 2.1rem;               /* exact cât .hero-line */
