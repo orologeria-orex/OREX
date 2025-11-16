@@ -1296,6 +1296,28 @@
   font-size: 16px;
   line-height: 1.6;
 }
+    /* Link „Sari la conținut” pentru accesibilitate */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  background: #020617;
+  color: #f9fafb;
+  padding: 0.5rem 1rem;
+  z-index: 2000;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  overflow: visible;
+}
   </style>
 </head>
   
@@ -1370,7 +1392,7 @@
 </script>
 
 <body>
-  <a href="#main-content" class="skip-link">Sari la conținut</a>
+  <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
 
 <!-- H1 ascuns SEO, dacă l-ai adăugat -->
   <h1 style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
@@ -1394,7 +1416,9 @@
       </nav>
     </div>
   </header>
-
+  
+ <main id="main-content" role="main">
+   
   <!-- HERO -->
 <section id="hero" class="hero">
   <div class="hero-inner">
@@ -1981,6 +2005,8 @@
 
 </section>
 
+   </main>
+   
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
