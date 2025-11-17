@@ -1663,6 +1663,113 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+    /* === HERO NOU, RESPONSIVE, FĂRĂ TĂIERE PE MOBIL === */
+.hero {
+  padding: 3.5rem 1.5rem 3rem;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(15,23,42,0.6), rgba(15,23,42,1));
+  border-bottom: 1px solid rgba(148,163,184,0.4);
+}
+
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Subtitlu: CEASUL OREX® */
+.hero-subtitle {
+  font-size: clamp(1.3rem, 2vw + 1rem, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 0.7rem 0;
+}
+
+/* Linie metalică */
+.hero-separator {
+  width: 160px;
+  height: 2px;
+  margin: 0.4rem auto 1rem auto;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.5) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  border-radius: 2px;
+}
+
+/* Container text principal */
+.hero-headline {
+  margin-bottom: 1.4rem;
+}
+
+/* Textul „TIMPUL ARE FORMĂ [★] OREX ÎI DĂ CHIP” */
+.hero-title {
+  display: flex;
+  flex-wrap: wrap;           /* important pentru mobil */
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: clamp(1.4rem, 2.4vw + 1rem, 2.2rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Steaua – scalată automat cu ecranul */
+.hero-stea {
+  height: clamp(32px, 4vw, 70px);
+  width: auto;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.35));
+  animation: orexPulse 4s ease-in-out infinite,
+             orexShine 6s linear infinite;
+  transform: translateY(-1px);
+  transition: transform 0.25s ease, filter 0.3s ease;
+}
+
+.hero-stea:hover {
+  transform: translateY(-3px) scale(1.04);
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.55));
+}
+
+/* Butoanele din HERO */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* Ajustări suplimentare pe telefoane mici */
+@media (max-width: 480px) {
+  .hero {
+    padding: 2.5rem 1rem 2.5rem;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 1.25rem;
+    letter-spacing: 0.09em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-stea {
+    height: 32px;
+    margin: 0 0.1rem;
+  }
+}
   </style>
 </head>
   
