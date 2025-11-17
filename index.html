@@ -1394,6 +1394,207 @@ html, body {
     transform: translateY(-1px);
   }
 }
+    /* ACCESORII */
+.acc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.acc-card {
+  background: radial-gradient(circle at top, #111827 0%, #020617 60%);
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.6);
+  padding: 1rem 1.1rem;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.8);
+}
+
+.acc-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.4rem;
+  color: #e5e7eb;
+}
+
+.acc-text {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* ATELIER */
+.atelier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+  margin-top: 1.5rem;
+}
+
+.atelier-step {
+  background: #020617;
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.5);
+  padding: 1rem 1.2rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+}
+
+.atelier-step h3 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.4rem;
+  color: #e5e7eb;
+}
+
+.atelier-step p {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* EVENIMENTE */
+.events-list {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.event-item {
+  background: #020617;
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.5);
+  padding: 1rem 1.2rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+}
+
+.event-meta {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+}
+
+.event-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 0.35rem;
+}
+
+.event-text {
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* TESTIMONIALE */
+.testi-grid {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+}
+
+.testi-card {
+  background: radial-gradient(circle at top, #111827 0%, #020617 60%);
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.6);
+  padding: 1rem 1.2rem;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.8);
+}
+
+.testi-quote {
+  font-size: 0.86rem;
+  color: #e5e7eb;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.testi-author {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* CORPORATE */
+.corp-grid {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem;
+}
+
+.corp-card {
+  background: #020617;
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.5);
+  padding: 1rem 1.2rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+}
+
+.corp-card h3 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.4rem;
+  color: #e5e7eb;
+}
+
+.corp-card p {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* SUPORT CLIENȚI */
+.support-grid {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.4rem;
+}
+
+.support-column h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.6rem;
+  color: #e5e7eb;
+}
+
+.support-link {
+  display: block;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-bottom: 0.35rem;
+}
+
+.support-link:hover {
+  color: #e5e7eb;
+}
+
+.support-text {
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .acc-grid,
+  .atelier-grid,
+  .testi-grid,
+  .corp-grid,
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
   
@@ -1485,10 +1686,15 @@ html, body {
       <nav>
         <a href="#despre">Despre</a>
         <a href="#colectii">Colecții</a>
-        <a href="#istoria-orex">Istoria OREX</a>
+        <a href="#accesorii">Accesorii</a>
+        <a href="#atelier">Atelier</a>
+        <a href="#evenimente">Evenimente</a>
+        <a href="#testimoniale">Testimoniale</a>
+        <a href="#corporate">Corporate</a>
         <a href="#galerie">Galerie</a>
         <a href="#mecanism">Tehnologie</a>
-        <a href="#contact">Contact</a>
+       <a href="#suport-clienti">Suport clienți</a>
+       <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -2049,6 +2255,207 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
   </div>
 </section>
 
+<!-- ACCESORII -->
+<section id="accesorii" class="section">
+  <h2 class="section-title">Accesorii Orex®</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Curele, brățări, cutii de prezentare și alte accesorii dedicate ceasurilor Orex® – gândite să pună în valoare designul și caracterul fiecărui model.
+  </p>
+
+  <div class="acc-grid">
+    <article class="acc-card">
+      <h3 class="acc-title">Curele din piele</h3>
+      <p class="acc-text">
+        Piele naturală, cusături fine, nuanțe clasice și contemporane. Concepute pentru a completa armonios silueta ceasurilor Orex®.
+      </p>
+    </article>
+
+    <article class="acc-card">
+      <h3 class="acc-title">Brățări metalice</h3>
+      <p class="acc-text">
+        Oțel inoxidabil 316L, finisaje periate sau polișate, închidere sigură. Opțiuni de personalizare pentru proiecte private și corporate.
+      </p>
+    </article>
+
+    <article class="acc-card">
+      <h3 class="acc-title">Cutii & etuiuri</h3>
+      <p class="acc-text">
+        Ambalaje de prezentare pentru colecționari, ediții speciale și cadouri corporate. Posibilitate de personalizare grafică.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ATELIER -->
+<section id="atelier" class="section narrow">
+  <h2 class="section-title">Atelier Orex®</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Un ceas mecanic trăiește prin grija pe care i-o acorzi. În această secțiune explicăm pe înțelesul pasionaților cum se face mentenanța corectă a unui ceas Orex®.
+  </p>
+
+  <div class="atelier-grid">
+    <article class="atelier-step">
+      <h3>Revizia periodică</h3>
+      <p>
+        Un ceas mecanic are nevoie de revizie completă la un interval recomandat de 4–6 ani: demontare, curățare, ungere și reglaj fin al mecanismului.
+      </p>
+    </article>
+
+    <article class="atelier-step">
+      <h3>Etanșeitate & garnituri</h3>
+      <p>
+        Garniturile de etanșare îmbătrânesc în timp. Testele de presiune și înlocuirea garniturilor sunt esențiale pentru păstrarea rezistenței la apă declarate.
+      </p>
+    </article>
+
+    <article class="atelier-step">
+      <h3>Curățare & finisaje</h3>
+      <p>
+        Carcasa, brățara și sticla trebuie curățate cu produse blânde, fără substanțe abrazive. Operațiunile de polish se fac doar în atelier specializat.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- EVENIMENTE -->
+<section id="evenimente" class="section">
+  <h2 class="section-title">Evenimente & Media</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Întâlniri cu pasionații, apariții în media, lansări de modele și participări la târguri dedicate orologeriei. 
+  </p>
+
+  <div class="events-list">
+    <article class="event-item">
+      <div class="event-meta">Târguri & expoziții</div>
+      <h3 class="event-title">Prezență la evenimente de specialitate</h3>
+      <p class="event-text">
+        Orex® își propune să participe la evenimente orologere și târguri de profil, alături de branduri consacrate, pentru a prezenta publicului noile colecții.
+      </p>
+    </article>
+
+    <article class="event-item">
+      <div class="event-meta">Comunitate</div>
+      <h3 class="event-title">Întâlniri cu colecționarii</h3>
+      <p class="event-text">
+        Organizăm sesiuni dedicate pasionaților, în care discutăm despre istoria OREX, restaurări de piese vechi și direcția noilor modele.
+      </p>
+    </article>
+
+    <article class="event-item">
+      <div class="event-meta">Media & online</div>
+      <h3 class="event-title">Apariții în presă și recenzii</h3>
+      <p class="event-text">
+        Prezentări în publicații de specialitate, interviuri și recenzii video realizate de pasionați și colecționari de ceasuri.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- TESTIMONIALE -->
+<section id="testimoniale" class="section">
+  <h2 class="section-title">Testimoniale & Fan Club Orex®</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    O secțiune dedicată celor care poartă sau colecționează ceasuri OREX – o comunitate care continuă povestea unui brand românesc.
+  </p>
+
+  <div class="testi-grid">
+    <article class="testi-card">
+      <p class="testi-quote">
+        „Primul meu ceas a fost un OREX mecanic. Faptul că astăzi există o variantă modernă, cu mecanism elvețian, este pentru mine o legătură între generații.”
+      </p>
+      <div class="testi-author">– Andrei, colecționar</div>
+    </article>
+
+    <article class="testi-card">
+      <p class="testi-quote">
+        „Îmi place ideea unui ceas românesc premium, care respectă proporțiile clasice, dar folosește tehnologie actuală. Orex® este o punte între istorie și prezent.”
+      </p>
+      <div class="testi-author">– Ioana, pasionată de design</div>
+    </article>
+
+    <article class="testi-card">
+      <p class="testi-quote">
+        „Pentru mine, OREX rămâne un simbol. Noua gamă Comte des Carpates arată că putem avea un ceas cu identitate locală, dar standarde internaționale.”
+      </p>
+      <div class="testi-author">– Mihai, inginer</div>
+    </article>
+  </div>
+</section>
+
+<!-- CORPORATE -->
+<section id="corporate" class="section">
+  <h2 class="section-title">Cadouri private & Corporate</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Ceasurile Orex® pot fi transformate în cadouri memorabile pentru parteneri, echipe și proiecte speciale – 
+    cu personalizare discretă și prezentare premium.
+  </p>
+
+  <div class="corp-grid">
+    <article class="corp-card">
+      <h3>Cadouri private</h3>
+      <p>
+        Pentru momente personale: aniversări, reușite profesionale, tradiții de familie. Fiecare ceas poate deveni o piesă cu valoare afectivă.
+      </p>
+    </article>
+
+    <article class="corp-card">
+      <h3>Cadouri corporate</h3>
+      <p>
+        Propuneri pentru companii, instituții și organizații care își doresc un obiect de reprezentare cu identitate românească, 
+        realizat la standarde premium.
+      </p>
+    </article>
+
+    <article class="corp-card">
+      <h3>Personalizare</h3>
+      <p>
+        Gravură discretă, card de autenticitate dedicat, ambalaje speciale și serii limitate pentru proiecte private sau corporate.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- SUPORT CLIENȚI -->
+<section id="suport-clienti" class="section narrow">
+  <h2 class="section-title">Suport clienți</h2>
+  <div class="divider"></div>
+  <p class="lead-text">
+    Informații utile pentru deținători ai ceasurilor Orex® – de la întrebări frecvente până la politici, garanții și reglementări.
+  </p>
+
+  <div class="support-grid">
+    <div class="support-column">
+      <h3>Informații generale</h3>
+      <a href="#" class="support-link">Întrebări frecvente (FAQ)</a>
+      <a href="#" class="support-link">Termeni și condiții</a>
+      <a href="#" class="support-link">Politica de confidențialitate & securitate</a>
+      <a href="#" class="support-link">Despre cookie-uri</a>
+    </div>
+
+    <div class="support-column">
+      <h3>Reglementări & autorități</h3>
+      <a href="#" class="support-link">Informații privind DEEE</a>
+      <a href="#" class="support-link">Autorizație ANPC</a>
+      <a href="#" class="support-link">ANPC</a>
+      <a href="#" class="support-link">ANPC – SOL / SAL</a>
+    </div>
+
+    <div class="support-column">
+      <h3>Contact & asistență</h3>
+      <p class="support-text">
+        Pentru întrebări legate de garanție, service sau colaborări corporate, ne poți scrie la:
+        <br>
+        <a href="mailto:orexwatch@yahoo.com">orexwatch@yahoo.com</a>
+      </p>
+    </div>
+  </div>
+</section>
+   
   <!-- MECANISM VIDEO -->
   <section id="mecanism" class="section narrow">
   <h2 class="section-title">Funcționarea mecanismului</h2>
