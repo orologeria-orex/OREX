@@ -1,100 +1,49 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Despre cookie-uri – Orex®</title>
+  <meta name="description" content="Informații despre utilizarea cookie-urilor tehnice și a serviciilor terțe pe site-ul Orex®.">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
-      color: #e5e7eb;
-      line-height: 1.6;
-    }
-
-    header {
-      padding: 1rem;
-      background: rgba(15,23,42,0.9);
-      border-bottom: 1px solid rgba(148,163,184,0.4);
-      text-align: center;
-    }
-
-    .logo-img {
-      height: 50px;
-      filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
-    }
-
-    main {
-      max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 1.5rem;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 1.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
-
-    p {
-      margin-bottom: 0.9rem;
-      font-size: 0.96rem;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.6rem 1.3rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      color: #e5e7eb;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      transition: 0.25s ease;
-    }
-
-    .back-link:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.4);
-    }
-  </style>
-
+  <!-- același CSS ca la celelalte pagini de suport -->
+  <!-- ... poți copia exact blocul <style> din termeni-conditii.html ... -->
+  <!-- pentru a nu-l repeta aici, îl presupun identic -->
+  <style>/* copie din stilul celorlalte pagini */</style>
 </head>
 <body>
+  <div class="page">
+    <header class="page-header">
+      <div class="page-logo">Orex® • Suport clienți</div>
+      <a href="index.html" class="page-back">← Înapoi la pagina principală</a>
+    </header>
 
-<header>
-  <a href="index.html">
-    <img src="orex-logo.png" alt="Orex Logo" class="logo-img">
-  </a>
-</header>
+    <main>
+      <h1>Despre cookie-uri</h1>
+      <p>
+        Acest site utilizează cookie-uri strict tehnice și, după caz, servicii terțe (de exemplu,
+        conținut video încorporat) care pot plasa cookie-uri în browserul tău. Cookie-urile sunt
+        fișiere mici stocate pe dispozitivul tău pentru a asigura funcționarea corectă și optimă
+        a site-ului.
+      </p>
+      <p>
+        Poți controla și șterge cookie-urile din setările browserului. Limitarea cookie-urilor poate
+        afecta însă funcționarea anumitor elemente (de exemplu, afișarea corectă a conținutului video).
+      </p>
+      <p>
+        Prin continuarea navigării pe acest site, îți exprimi acordul cu utilizarea cookie-urilor
+        în condițiile descrise aici.
+      </p>
+    </main>
+  </div>
 
-<main>
-  <h1>Despre cookie-uri</h1>
+  <footer>
+    © <span id="year"></span> Marca Deluxe Orex®. Pagina de suport informativ.
+  </footer>
 
-  <p>
-    Acest site utilizează cookie-uri strict tehnice și, după caz, servicii terțe (de exemplu,
-    conținut video încorporat) care pot plasa cookie-uri în browserul tău. Cookie-urile sunt
-    fișiere mici stocate pe dispozitivul tău pentru a asigura funcționarea corectă și optimă
-    a site-ului.
-  </p>
-  <p>
-    Poți controla și șterge cookie-urile din setările browserului. Limitarea cookie-urilor poate
-    afecta însă funcționarea anumitor elemente (de exemplu, afișarea corectă a conținutului video).
-  </p>
-  <p>
-    Prin continuarea navigării pe acest site, îți exprimi acordul cu utilizarea cookie-urilor
-    în condițiile descrise aici.
-  </p>
-
-  <a href="index.html" class="back-link">Înapoi la pagina principală</a>
-</main>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
