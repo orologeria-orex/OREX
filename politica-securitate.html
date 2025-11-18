@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Politica de securitate și confidențialitate – Orex®</title>
+  <meta name="description" content="Politica de securitate și confidențialitate a site-ului Orex®, modul în care sunt tratate datele și corespondența.">
 
   <style>
     body {
@@ -15,87 +16,99 @@
       line-height: 1.6;
     }
 
-    header {
-      padding: 1rem;
-      background: rgba(15,23,42,0.9);
-      border-bottom: 1px solid rgba(148,163,184,0.4);
-      text-align: center;
-    }
+    a { color: #93c5fd; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    .logo-img {
-      height: 50px;
-      filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
-    }
-
-    main {
+    .page {
       max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 1.5rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0 1.5rem;
+      border-bottom: 1px solid rgba(148,163,184,0.5);
+    }
+
+    .page-logo {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+    }
+
+    .page-back {
+      font-size: 0.8rem;
     }
 
     h1 {
-      text-align: center;
-      font-size: 1.6rem;
-      letter-spacing: 0.12em;
+      font-size: 1.7rem;
+      margin: 1.5rem 0 0.75rem;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      letter-spacing: 0.14em;
     }
 
     p {
-      margin-bottom: 0.9rem;
-      font-size: 0.96rem;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.6rem 1.3rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 0.95rem;
       color: #e5e7eb;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      transition: 0.25s ease;
+      margin: 0 0 0.75rem;
     }
 
-    .back-link:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.4);
+    footer {
+      border-top: 1px solid rgba(148,163,184,0.4);
+      padding: 1rem 1.25rem 1.5rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
-
 </head>
 <body>
+  <div class="page">
+    <header class="page-header">
+      <div class="page-logo">Orex® • Suport clienți</div>
+      <a href="index.html" class="page-back">← Înapoi la pagina principală</a>
+    </header>
 
-<header>
-  <a href="index.html">
-    <img src="orex-logo.png" alt="Orex Logo" class="logo-img">
-  </a>
-</header>
+    <main>
+      <h1>Politica de securitate și confidențialitate</h1>
+      <p>
+        Luăm în serios protejarea datelor și a corespondenței pasionaților mărcii Orex®. Site-ul este
+        găzduit pe infrastructuri securizate, iar accesul se face prin conexiune criptată (HTTPS),
+        acolo unde este disponibilă.
+      </p>
+      <p>
+        Acest site nu colectează în mod activ date personale prin formulare sau conturi de utilizator.
+        Singurele canale de contact sunt adresele de e-mail:
+        <a href="mailto:orexwatch@yahoo.com">orexwatch@yahoo.com</a> și
+        <a href="mailto:office@orexwatch.com">office@orexwatch.com</a>,
+        unde mesajele sunt gestionate confidențial și utilizate strict pentru corespondența cu solicitantul.
+      </p>
+      <p>
+        Nu vindem și nu cedăm către terți datele obținute prin corespondență. Datele pot fi păstrate
+        în scop de arhivă, pentru urmărirea istoricului discuțiilor și îmbunătățirea proiectului Orex®.
+      </p>
+    </main>
+  </div>
 
-<main>
-  <h1>Politica de securitate și confidențialitate</h1>
+  <footer>
+    © <span id="year"></span> Marca Deluxe Orex®. Pagina de suport informativ.
+  </footer>
 
-  <p>
-    Luăm în serios protejarea datelor și a corespondenței pasionaților mărcii Orex®. Site-ul este
-    găzduit pe infrastructuri securizate, iar accesul se face prin conexiune criptată (HTTPS),
-    acolo unde este disponibilă.
-  </p>
-  <p>
-    Acest site nu colectează în mod activ date personale prin formulare sau conturi de utilizator.
-    Singurul canal de contact este adresa de e-mail
-    <a href="mailto:orexwatch@yahoo.com">orexwatch@yahoo.com</a>, unde mesajele sunt gestionate
-    confidențial și utilizate strict pentru corespondența cu solicitantul.
-  </p>
-  <p>
-    Nu vindem și nu cedăm către terți datele obținute prin corespondență. Datele pot fi păstrate
-    în scop de arhivă, pentru urmărirea istoricului discuțiilor și îmbunătățirea proiectului Orex®.
-  </p>
-
-  <a href="index.html" class="back-link">Înapoi la pagina principală</a>
-</main>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
