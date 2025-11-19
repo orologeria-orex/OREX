@@ -3056,6 +3056,25 @@ document.addEventListener("DOMContentLoaded", function () {
   video.style.opacity = "0";
   playCurrent();
 
+  function playCurrent() {
+  const file = playlist[index];
+  source.src = file;
+
+  // ----- FOCUS SPECIAL PENTRU OREX-FUNDAL4 PE MOBIL -----
+  if (file === "orex-fundal4.mp4" && window.innerWidth <= 640) {
+    video.style.objectPosition = "50% 30%";  
+    //       ^^^ x%   ^^^ y%  (ajustezi dacă vrei mai sus/jos)
+  } else {
+    video.style.objectPosition = "50% 50%";  
+    // revenire la centru pentru restul filmelor
+  }
+  // --------------------------------------------------------
+
+  video.load();
+  const p = video.play();
+  if (p && p.catch) p.catch(() => {});
+}
+
   // la finalul fiecărui clip -> trecem la următorul cu fade
   video.addEventListener("ended", goToNext);
 });
