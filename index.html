@@ -1863,6 +1863,45 @@ html, body {
     letter-spacing: 0.15em;
   }
 }
+    /* ===== HERO VIDEO – FUNDAL CINEMATIC OREX ===== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Video întins pe tot ecranul */
+#hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
+/* overlay pentru lizibilitatea textului */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+/* conținutul tău rămâne în față */
+.hero-inner {
+  position: relative;
+  z-index: 5;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
   </style>
 </head>
  
@@ -1895,6 +1934,16 @@ html, body {
    
   <!-- HERO -->
 <section id="hero" class="hero">
+
+  <!-- VIDEO DE FUNDAL -->
+  <video autoplay muted loop playsinline preload="auto" id="hero-video">
+    <source src="orex-fundal.mp4" type="video/mp4">
+  </video>
+
+  <!-- OVERLAY ÎNTUNECAT ELEGANT -->
+  <div class="hero-overlay"></div>
+
+  <!-- CONȚINUTUL TĂU EXISTENT (NU SE SCHIMBĂ!) -->
   <div class="hero-inner">
     <h2 class="hero-subtitle">CEASUL OREX®</h2>
     <div class="hero-separator"></div>
