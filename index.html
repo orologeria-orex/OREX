@@ -1028,13 +1028,23 @@
 
     /* HEADER */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(15,23,42,0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(148,163,184,0.4);
-    }
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(15,23,42,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(148,163,184,0.4);
+
+  /* pentru animația de ascundere/apariție */
+  transform: translateY(0);
+  transition: transform 0.25s ease;
+}
+
+/* când e ascuns la scroll în jos */
+header.header-hidden {
+  transform: translateY(-100%);
+}
+    
     .header-inner {
       max-width: 1120px;
       margin: 0 auto;
@@ -1904,8 +1914,8 @@ html, body {
 }
   </style>
 </head>
- 
-<body>
+ <body>
+  
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
   <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
 
@@ -2947,6 +2957,44 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
       closeBtn.addEventListener('click', hideAll);
     }
   });
+    // HEADER care se ascunde la scroll în jos și reapare la scroll în sus
+  (function () {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      const currentY = window.scrollY;
+
+      // mic prag ca să nu tremure dacă se mișcă 1–2 px
+      const delta = currentY - lastScrollY;
+
+      if (Math.abs(delta) < 4) {
+        ticking = false;
+        return;
+      }
+
+      if (currentY > lastScrollY && currentY > 120) {
+        // scroll în jos, după ce am trecut de ~120px
+        header.classList.add('header-hidden');
+      } else if (currentY < lastScrollY) {
+        // scroll în sus
+        header.classList.remove('header-hidden');
+      }
+
+      lastScrollY = currentY;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    });
+  })();
 </script>
 </body>
   </html>
