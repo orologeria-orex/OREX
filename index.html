@@ -1907,6 +1907,10 @@ html, body {
   z-index: -2;
 }
 
+#hero-video {
+  transition: opacity 0.8s ease;
+}
+    
 /* overlay pentru lizibilitatea textului */
 .hero-overlay {
   position: absolute;
@@ -3006,39 +3010,55 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
     });
   })();
 
-  // HERO VIDEO PLAYLIST – rulează mai multe videoclipuri unul după altul
+  // HERO VIDEO PLAYLIST cu estompare între filme
 document.addEventListener("DOMContentLoaded", function () {
   const video  = document.getElementById("hero-video");
   const source = document.getElementById("hero-video-source");
   if (!video || !source) return;
 
-  // 🔁 LISTA ta de filmulețe – pune aici numele reale
+  // lista de filme
   const playlist = [
-    "orex-fundal1.mp4",
+    "orex-fundal.mp4",
     "orex-fundal2.mp4",
     "orex-fundal3.mp4"
   ];
 
   let index = 0;
+  const FADE_MS = 800; // durata estompării (ms)
 
-  function playCurrent() {
-    source.src = playlist[index]; // schimbăm fișierul sursă
-    video.load();                 // forțăm încărcarea noului clip
-    const p = video.play();       // încercăm să redăm
-    if (p && p.catch) {
-      p.catch(() => {});
-    }
+  // când noul fișier e gata de redare -> facem fade-in
+  function handleCanPlayOnce() {
+    video.removeEventListener("canplay", handleCanPlayOnce);
+    video.style.opacity = "1";
+    const p = video.play();
+    if (p && p.catch) p.catch(() => {});
   }
 
-  // Pornește cu primul clip
+  function playCurrent() {
+    // setăm sursa și așteptăm să se poată reda
+    source.src = playlist[index];
+    video.load();
+    video.addEventListener("canplay", handleCanPlayOnce);
+  }
+
+  function goToNext() {
+    // fade-out
+    video.style.opacity = "0";
+    // după ce se termină fade-out, schimbăm clipul
+    setTimeout(() => {
+      index = (index + 1) % playlist.length;
+      playCurrent();
+    }, FADE_MS);
+  }
+
+  // pornim cu primul clip (cu fade-in de la 0 la 1)
+  video.style.opacity = "0";
   playCurrent();
 
-  // Când se termină un clip -> trece la următorul
-  video.addEventListener("ended", function () {
-    index = (index + 1) % playlist.length; // 0 → 1 → 2 → 0 ...
-    playCurrent();
-  });
+  // la finalul fiecărui clip -> trecem la următorul cu fade
+  video.addEventListener("ended", goToNext);
 });
+
 </script>
 </body>
   </html>
