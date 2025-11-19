@@ -1895,7 +1895,6 @@ html, body {
   justify-content: center;
 }
 
-/* Video întins pe tot ecranul */
 #hero-video {
   position: absolute;
   top: 50%;
@@ -1903,21 +1902,10 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 50%;  /* centru implicit */
   transform: translate(-50%, -50%);
   z-index: -2;
-}
-
-#hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 50%;   /* centru implicit */
-  transform: translate(-50%, -50%);
-  z-index: -2;
-  transition: opacity 0.8s ease;  /* pentru fade */
+  /* transition: opacity 0.8s ease;  ← las-o comentată momentan */
 }
     
 /* overlay pentru lizibilitatea textului */
@@ -3019,70 +3007,57 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
     });
   })();
 
-  // HERO VIDEO PLAYLIST cu fade + poziționare specială pentru orex-fundal4 pe mobil
+ // === HERO VIDEO PLAYLIST – simplu, fără fade, cu poziționare specială pentru orex-fundal4 pe mobil ===
 document.addEventListener("DOMContentLoaded", function () {
   const video  = document.getElementById("hero-video");
   const source = document.getElementById("hero-video-source");
   if (!video || !source) return;
 
-  // lista de fișiere – pune aici ce ai efectiv pe server
+  // 🔁 LISTA de fișiere – asigură-te că toate există în același director ca pagina
   const playlist = [
     "orex-fundal.mp4",
     "orex-fundal4.mp4",
     "orex-fundal.mp4",
-    "orex-fundal4.mp4"
+    "orex-fundal4.mp4"   // ← al patrulea film
   ];
 
   let index = 0;
-  const FADE_MS = 800; // durata estompării
 
-  // aplică poziția diferită doar pentru orex-fundal4 pe mobil
+  // repoziționare DOAR pentru orex-fundal4 pe ecrane mici
   function applyObjectPosition(file) {
     if (file === "orex-fundal4.mp4" && window.innerWidth <= 640) {
-      // focalizezi un pic mai sus – ajustezi procentul după cum îți place
-      video.style.objectPosition = "50% 25%";
+      // mută „camera” un pic mai sus; ajustezi procentajul după cum arată mai bine
+      video.style.objectPosition = "50% 30%";
     } else {
-      // restul rămân centrate
-      video.style.objectPosition = "50% 35%";
+      // restul clipurilor – centrate
+      video.style.objectPosition = "50% 50%";
     }
-  }
-
-  // când noul fișier e gata de redare -> facem fade-in
-  function handleCanPlayOnce() {
-    video.removeEventListener("canplay", handleCanPlayOnce);
-    video.style.opacity = "1";
-    const p = video.play();
-    if (p && p.catch) p.catch(() => {});
   }
 
   function playCurrent() {
     const file = playlist[index];
 
-    // setăm poziția corectă în funcție de fișier + viewport
-    applyObjectPosition(file);
+    applyObjectPosition(file);  // înainte de load, setăm focusul
 
     source.src = file;
     video.load();
-    video.addEventListener("canplay", handleCanPlayOnce);
+
+    const p = video.play();
+    if (p && p.catch) {
+      p.catch(() => {});
+    }
   }
 
-  function goToNext() {
-    // fade-out
-    video.style.opacity = "0";
-
-    setTimeout(() => {
-      index = (index + 1) % playlist.length;
-      playCurrent();
-    }, FADE_MS);
-  }
-
-  // pornire inițială
-  video.style.opacity = "0";
+  // pornește cu primul clip
   playCurrent();
 
-  // când se termină un clip -> trecem la următorul cu fade
-  video.addEventListener("ended", goToNext);
+  // la finalul fiecărui clip -> următorul (0→1→2→3→0...)
+  video.addEventListener("ended", function () {
+    index = (index + 1) % playlist.length;
+    playCurrent();
+  });
 });
+// === END HERO VIDEO PLAYLIST ===
 
 </script>
 </body>
