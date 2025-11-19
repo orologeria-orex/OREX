@@ -1908,7 +1908,16 @@ html, body {
 }
 
 #hero-video {
-  transition: opacity 0.8s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;   /* centru implicit */
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  transition: opacity 0.8s ease;  /* pentru fade */
 }
     
 /* overlay pentru lizibilitatea textului */
@@ -3010,22 +3019,33 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
     });
   })();
 
-  // HERO VIDEO PLAYLIST cu estompare între filme
+  // HERO VIDEO PLAYLIST cu fade + poziționare specială pentru orex-fundal4 pe mobil
 document.addEventListener("DOMContentLoaded", function () {
   const video  = document.getElementById("hero-video");
   const source = document.getElementById("hero-video-source");
   if (!video || !source) return;
 
-  // lista de filme
+  // lista de fișiere – pune aici ce ai efectiv pe server
   const playlist = [
-    "orex-fundal.mp4",
+    "orex-fundal1.mp4",
     "orex-fundal4.mp4",
-    "orex-fundal.mp4",
+    "orex-fundal1.mp4",
     "orex-fundal4.mp4"
   ];
 
   let index = 0;
-  const FADE_MS = 800; // durata estompării (ms)
+  const FADE_MS = 800; // durata estompării
+
+  // aplică poziția diferită doar pentru orex-fundal4 pe mobil
+  function applyObjectPosition(file) {
+    if (file === "orex-fundal4.mp4" && window.innerWidth <= 640) {
+      // focalizezi un pic mai sus – ajustezi procentul după cum îți place
+      video.style.objectPosition = "50% 30%";
+    } else {
+      // restul rămân centrate
+      video.style.objectPosition = "50% 50%";
+    }
+  }
 
   // când noul fișier e gata de redare -> facem fade-in
   function handleCanPlayOnce() {
@@ -3036,8 +3056,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function playCurrent() {
-    // setăm sursa și așteptăm să se poată reda
-    source.src = playlist[index];
+    const file = playlist[index];
+
+    // setăm poziția corectă în funcție de fișier + viewport
+    applyObjectPosition(file);
+
+    source.src = file;
     video.load();
     video.addEventListener("canplay", handleCanPlayOnce);
   }
@@ -3045,18 +3069,18 @@ document.addEventListener("DOMContentLoaded", function () {
   function goToNext() {
     // fade-out
     video.style.opacity = "0";
-    // după ce se termină fade-out, schimbăm clipul
+
     setTimeout(() => {
       index = (index + 1) % playlist.length;
       playCurrent();
     }, FADE_MS);
   }
 
-  // pornim cu primul clip (cu fade-in de la 0 la 1)
+  // pornire inițială
   video.style.opacity = "0";
   playCurrent();
 
-   // la finalul fiecărui clip -> trecem la următorul cu fade
+  // când se termină un clip -> trecem la următorul cu fade
   video.addEventListener("ended", goToNext);
 });
 
