@@ -1027,17 +1027,28 @@
 }
 
     /* HEADER */
-    header {
-  position: sticky;
+    /* înlocuiește întreg blocul header {} cu: */
+header {
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   background: rgba(15,23,42,0.96);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(148,163,184,0.4);
-
-  /* pentru animația de ascundere/apariție */
   transform: translateY(0);
   transition: transform 0.25s ease;
+}
+
+/* clasa există deja, e ok */
+header.header-hidden {
+  transform: translateY(-100%);
+}
+
+/* adaugă undeva după body { ... } (sau completezi body dacă vrei) */
+body {
+  padding-top: 64px;  /* ~înălțimea header-ului, ajustezi dacă vezi că e prea mult / puțin */
 }
 
 /* când e ascuns la scroll în jos */
@@ -2036,8 +2047,8 @@ html, body {
            class="js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="card-">
-        <div class="card-title">Orex® • Deluxe ”C” • Albastru Infinit</div>
+       <div class="card-body">
+    <div class="card-title">Orex® • Deluxe ”C” • Albastru Infinit</div>
         <div class="card-meta">
           cadran albastru • periaj sun-ray • oțel 316L • sticlă safir-cristal antireflex • Sellita SW200-1 • brățară oțel
         </div>
@@ -2054,8 +2065,8 @@ html, body {
            class="js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="card-">
-        <div class="card-title">Orex® • Deluxe ”C” • Sânge Burgund</div>
+      <div class="card-body">
+    <div class="card-title">Orex® • Deluxe ”C” • Sânge Burgund</div>
         <div class="card-meta">
           cadran roșu • oțel 316L • sticlă safir-cristal antireflex • Sellita SW200-1 • brățară oțel
         </div>
@@ -2316,7 +2327,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® 17 rubine ’80</div>
         <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
@@ -2331,7 +2342,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® 17 rubine ’80</div>
         <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
@@ -2346,7 +2357,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® 17 rubine ’80</div>
         <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
@@ -2361,7 +2372,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® 19 rubine ’80</div>
         <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
@@ -2376,7 +2387,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® 21 rubine ’90</div>
         <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism manual • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
@@ -2391,7 +2402,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® automatic 26 rubine ’90</div>
         <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism automatic sovietic tip Slava • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
@@ -2406,7 +2417,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® automatic 26 rubine ’90</div>
         <div class="archive-meta">
           cadran clasic, geam acrilic, mecanism automatic sovietic tip Slava • reinterpretarea unui design de epocă • inscripții „Made in Romania”.
@@ -2427,7 +2438,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® Quartz ’80–’90</div>
         <div class="archive-meta">
           indicatoare subțiri, cadran curat, mecanism quartz • reprezentativ pentru tranziția de la mecanic la quartz în producția românească.
@@ -2442,7 +2453,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® Quartz ’80–’90</div>
         <div class="archive-meta">
           indicatoare subțiri, cadran curat, mecanism quartz • reprezentativ pentru tranziția de la mecanic la quartz în producția românească.
@@ -2457,7 +2468,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
            class="archive-img js-lightbox"
            loading="lazy"
            decoding="async">
-      <div class="archive-">
+      <div class="archive-body">
         <div class="archive-name">OREX® Quartz ’80–’90</div>
         <div class="archive-meta">
           indicatoare subțiri, cadran curat, mecanism quartz • reprezentativ pentru tranziția de la mecanic la quartz în producția românească.
