@@ -1924,6 +1924,27 @@ html, body {
   margin: 0 auto;
   text-align: center;
 }
+    /* strat pentru fade între clipuri */
+.hero-fade-layer {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;  /* video -2, overlay -1, fade 0, text 5 */
+}
+
+/* când are clasa .is-fading, rulează animația */
+.hero-fade-layer.is-fading {
+  animation: heroFadeBetween 1.1s ease-in-out;
+}
+
+/* animația efectivă: se întunecă și revine */
+@keyframes heroFadeBetween {
+  0%   { opacity: 0; }
+  40%  { opacity: 0.35; }
+  100% { opacity: 0; }
+}
   </style>
 </head>
  <body>
@@ -1959,37 +1980,18 @@ html, body {
 
   <!-- VIDEO DE FUNDAL -->
   <video autoplay muted playsinline preload="auto" id="hero-video">
-  <source src="orex-fundal.mp4" type="video/mp4" id="hero-video-source">
-</video>
+    <source src="orex-fundal.mp4" type="video/mp4" id="hero-video-source">
+  </video>
 
   <!-- OVERLAY ÎNTUNECAT ELEGANT -->
   <div class="hero-overlay"></div>
 
-  <!-- CONȚINUTUL TĂU EXISTENT (NU SE SCHIMBĂ!) -->
+  <!-- STRAT PENTRU FADE (ÎNTUNECĂ / DESCHIDE) -->
+  <div class="hero-fade-layer"></div>
+
+  <!-- CONȚINUT -->
   <div class="hero-inner">
-    <h2 class="hero-subtitle">CEASUL OREX®</h2>
-    <div class="hero-separator"></div>
-
-    <div class="hero-headline">
-  <p class="hero-line">TIMPUL ARE FORMĂ</p>
-
-  <div class="hero-star-row">
-    <img src="orex-stea8.png" class="hero-stea" alt="">
-  </div>
-
-  <p class="hero-line">OREX ÎI DĂ CHIP</p>
-</div>
-
-    <div class="hero-buttons">
-      <button class="btn-primary"
-              onclick="document.getElementById('colectii').scrollIntoView({behavior:'smooth'})">
-        Descoperă colecția
-      </button>
-      <button class="btn-ghost"
-              onclick="document.getElementById('mecanism').scrollIntoView({behavior:'smooth'})">
-        Tehnologii
-      </button>
-    </div>
+    ...
   </div>
 </section>
 
@@ -3007,61 +3009,64 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
     });
   })();
 
-// === HERO VIDEO PLAYLIST stabil (niciodată ecran negru) ===
+// === HERO VIDEO PLAYLIST – simplu + fade pe overlay, NU pe video ===
 document.addEventListener("DOMContentLoaded", function () {
-  const video  = document.getElementById("hero-video");
-  const source = document.getElementById("hero-video-source");
+  const video     = document.getElementById("hero-video");
+  const source    = document.getElementById("hero-video-source");
+  const fadeLayer = document.querySelector(".hero-fade-layer");
+
   if (!video || !source) return;
 
+  // lista ta de clipuri – asigură-te că toate există
   const playlist = [
     "orex-fundal.mp4",
-    "orex-fundal2.mp4",
-    "orex-fundal3.mp4",
-    "orex-fundal4.mp4"
+    "orex-fundal5.mp4",
+    "orex-fundal.mp4",
+    "orex-fundal5.mp4"
   ];
 
   let index = 0;
-  const FADE = 800;
+  const FADE_MS = 1100; // trebuie să corespundă cu durata animației din CSS
+
+  function triggerFade() {
+    if (!fadeLayer) return;
+    // retrigger animația: scoatem clasa, o re-adăugăm
+    fadeLayer.classList.remove("is-fading");
+    // forțăm reflow ca să poată re-porni animația
+    void fadeLayer.offsetWidth;
+    fadeLayer.classList.add("is-fading");
+  }
 
   function playCurrent() {
     const file = playlist[index];
 
-    // Fade OUT
-    video.style.opacity = "0";
+    source.src = file;
+    video.load();
 
-    setTimeout(() => {
-      source.src = file;
-      video.load();
-
-      // Încercăm play
-      const p = video.play();
-
-      if (p && p.then) {
-        p.then(() => {
-          // Redarea a pornit → putem face fade-in
-          video.style.opacity = "1";
-        }).catch(() => {
-          // Autoplay blocat → arătăm frame-ul oricum
-          video.style.opacity = "1";
-        });
-      } else {
-        // fallback instant
-        video.style.opacity = "1";
-      }
-    }, FADE);
+    const p = video.play();
+    if (p && p.catch) {
+      p.catch(() => {
+        // dacă autoplay e blocat, măcar avem un frame
+      });
+    }
   }
 
-  // primul clip pornește normal
-  video.style.opacity = "1";
+  // primul clip: îl pornim direct, apoi dăm fade la trecerile următoare
   playCurrent();
 
-  // când se termină → următorul
   video.addEventListener("ended", function () {
+    // următorul index
     index = (index + 1) % playlist.length;
-    playCurrent();
+
+    // declanșăm fade-ul pe overlay
+    triggerFade();
+
+    // pornim următorul clip puțin după ce începe fade-ul
+    setTimeout(playCurrent, FADE_MS * 0.15);
   });
 });
-// === END ===
+// === END HERO PLAYLIST ===
+
 
 </script>
 </body>
