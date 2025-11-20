@@ -1895,6 +1895,7 @@ html, body {
   justify-content: center;
 }
 
+/* VIDEO DE FUNDAL */
 #hero-video {
   position: absolute;
   top: 50%;
@@ -1904,11 +1905,10 @@ html, body {
   object-fit: cover;
   object-position: 50% 50%;
   transform: translate(-50%, -50%);
-  z-index: -2;
-  transition: opacity 0.8s ease;   /* fade fin */
+  z-index: -2;            /* cel mai jos */
 }
-    
-/* overlay pentru lizibilitatea textului */
+
+/* OVERLAY ÎNTUNECAT FIX PESTE VIDEO */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -1916,35 +1916,36 @@ html, body {
   z-index: -1;
 }
 
-/* conținutul tău rămâne în față */
-.hero-inner {
-  position: relative;
-  z-index: 5;
-  max-width: 680px;
-  margin: 0 auto;
-  text-align: center;
-}
-    /* strat pentru fade între clipuri */
+/* STRATUL DE FADE – ÎNTRE OVERLAY ȘI TEXT */
 .hero-fade-layer {
   position: absolute;
   inset: 0;
   background: #000;
   opacity: 0;
   pointer-events: none;
-  z-index: 0;  /* video -2, overlay -1, fade 0, text 5 */
+  z-index: 0;             /* sub text, peste overlay */
 }
 
-/* când are clasa .is-fading, rulează animația */
+/* TEXT + STEA – ÎNTOTDEAUNA DEASUPRA */
+.hero-inner {
+  position: relative;
+  z-index: 10;            /* mai mare decât 0 */
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* animația de fade */
 .hero-fade-layer.is-fading {
   animation: heroFadeBetween 1.1s ease-in-out;
 }
 
-/* animația efectivă: se întunecă și revine */
 @keyframes heroFadeBetween {
   0%   { opacity: 0; }
   40%  { opacity: 0.35; }
   100% { opacity: 0; }
 }
+
   </style>
 </head>
  <body>
