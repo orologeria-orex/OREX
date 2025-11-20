@@ -3007,7 +3007,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
     });
   })();
 
-// === HERO VIDEO PLAYLIST cu fade simplu, stabil ===
+// === HERO VIDEO PLAYLIST stabil (niciodată ecran negru) ===
 document.addEventListener("DOMContentLoaded", function () {
   const video  = document.getElementById("hero-video");
   const source = document.getElementById("hero-video-source");
@@ -3015,41 +3015,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const playlist = [
     "orex-fundal.mp4",
-    "orex-fundal5.mp4",
-    "orex-fundal1.mp4",
-    "orex-fundal5.mp4"
+    "orex-fundal2.mp4",
+    "orex-fundal3.mp4",
+    "orex-fundal4.mp4"
   ];
 
   let index = 0;
-  const FADE_DURATION = 800;  // milisecunde
+  const FADE = 800;
 
   function playCurrent() {
     const file = playlist[index];
 
-    // 1) Fade-out
+    // Fade OUT
     video.style.opacity = "0";
 
-    // 2) După fade-out, schimbăm sursa
     setTimeout(() => {
       source.src = file;
       video.load();
 
-      // 3) Când video se poate reda → fade-in
-      video.addEventListener("canplay", function handleReady() {
-        video.removeEventListener("canplay", handleReady);
-        const p = video.play();
-        if (p && p.catch) p.catch(()=>{});
-        video.style.opacity = "1";
-      });
+      // Încercăm play
+      const p = video.play();
 
-    }, FADE_DURATION);
+      if (p && p.then) {
+        p.then(() => {
+          // Redarea a pornit → putem face fade-in
+          video.style.opacity = "1";
+        }).catch(() => {
+          // Autoplay blocat → arătăm frame-ul oricum
+          video.style.opacity = "1";
+        });
+      } else {
+        // fallback instant
+        video.style.opacity = "1";
+      }
+    }, FADE);
   }
 
-  // pornește primul clip (fără fade-out inițial)
+  // primul clip pornește normal
   video.style.opacity = "1";
   playCurrent();
 
-  // la final → următorul
+  // când se termină → următorul
   video.addEventListener("ended", function () {
     index = (index + 1) % playlist.length;
     playCurrent();
