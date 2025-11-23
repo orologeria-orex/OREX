@@ -3039,85 +3039,17 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
 
 // === HERO VIDEO PLAYLIST – simplu + fade pe overlay, NU pe video ===
 document.addEventListener("DOMContentLoaded", function () {
-  const video     = document.getElementById("hero-video");
-  const source    = document.getElementById("hero-video-source");
-  const fadeLayer = document.querySelector(".hero-fade-layer");
-
-  if (!video || !source) return;
-
-  // lista ta de clipuri – asigură-te că toate există
-  const playlist = [
-    "orex-fundal.mp4",
-    "orex-fundal2.mp4",
-    "orex-fundal.mp4",
-    "orex-fundal2.mp4"
-  ];
-
-  let index = 0;
-  const FADE_MS = 1100; // trebuie să corespundă cu durata animației din CSS
-
-  function triggerFade() {
-    if (!fadeLayer) return;
-    // retrigger animația: scoatem clasa, o re-adăugăm
-    fadeLayer.classList.remove("is-fading");
-    // forțăm reflow ca să poată re-porni animația
-    void fadeLayer.offsetWidth;
-    fadeLayer.classList.add("is-fading");
-  }
-
-  function playCurrent() {
-    const file = playlist[index];
-
-    source.src = file;
-    video.load();
-
-    const p = video.play();
-    if (p && p.catch) {
-      p.catch(() => {
-        // dacă autoplay e blocat, măcar avem un frame
-      });
-    }
-  }
-
-  // primul clip: îl pornim direct, apoi dăm fade la trecerile următoare
-  playCurrent();
-
-  video.addEventListener("ended", function () {
-    // următorul index
-    index = (index + 1) % playlist.length;
-
-    // declanșăm fade-ul pe overlay
-    triggerFade();
-
-    // pornim următorul clip puțin după ce începe fade-ul
-    setTimeout(playCurrent, FADE_MS * 0.15);
-  });
+  ...
 });
 
-  function playCurrent() {
-  const file = playlist[index];
-
-  // === END HERO PLAYLIST ===
-
-    function playCurrent() {
-  const file = playlist[index];
-
-  // === ALINIERE SPECIALĂ DOAR PENTRU AL DOILEA CLIP ===
-  if (file === "orex-fundal2.mp4") {
-    video.classList.add("top-align");
-  } else {
-    video.classList.remove("top-align");
-  }
-  // ====================================================
-
-  source.src = file;
-  video.load();
-
-  const p = video.play();
-  if (p && p.catch) p.catch(()=>{});
+function playCurrent() {
+  ...
 }
 
-</script>
-</body>
-  </html>
+function playCurrent() {
+  ...
+}
+</script> 
+</body> 
+</html>
   
