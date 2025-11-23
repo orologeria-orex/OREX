@@ -1907,6 +1907,11 @@ html, body {
   transform: translate(-50%, -50%);
   z-index: -2;            /* cel mai jos */
 }
+    
+    /* Poziționează video-ul mai sus, ca primul clip */
+#hero-video.top-align {
+  object-position: 50% 10%;
+}
 
 /* OVERLAY ÎNTUNECAT FIX PESTE VIDEO */
 .hero-overlay {
@@ -3088,8 +3093,29 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(playCurrent, FADE_MS * 0.15);
   });
 });
-// === END HERO PLAYLIST ===
 
+  function playCurrent() {
+  const file = playlist[index];
+
+  // === END HERO PLAYLIST ===
+
+    function playCurrent() {
+  const file = playlist[index];
+
+  // === ALINIERE SPECIALĂ DOAR PENTRU AL DOILEA CLIP ===
+  if (file === "orex-fundal2.mp4") {
+    video.classList.add("top-align");
+  } else {
+    video.classList.remove("top-align");
+  }
+  // ====================================================
+
+  source.src = file;
+  video.load();
+
+  const p = video.play();
+  if (p && p.catch) p.catch(()=>{});
+}
 
 </script>
 </body>
