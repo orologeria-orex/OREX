@@ -2877,6 +2877,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
       <div class="orex-counter" id="orex-counter">0 / 0</div>
     </div>
   </div>
+<!-- SCRIPT 1: year, lightbox, detalii, header -->
 <script>
 // anul din footer
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -3014,84 +3015,80 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
+<!-- SCRIPT 2: doar HERO video playlist -->
 <script>
-// === HERO VIDEO PLAYLIST CU CROSSFADE REAL, ÎN BUCLE ===
+// === HERO VIDEO PLAYLIST CU CROSSFADE REAL ===
 document.addEventListener('DOMContentLoaded', function () {
   const videoA = document.getElementById('hero-video-A');
   const videoB = document.getElementById('hero-video-B');
   if (!videoA || !videoB) return;
 
-  // 1️⃣ Playlist-ul HERO
   const playlist = [
     'orex-fundal.mp4',
     'orex-fundal1.mp4'
   ];
 
-  // 2️⃣ Poziții diferite pe verticală (opțional)
   const positions = {
     'orex-fundal.mp4' :  '50% 50%',
     'orex-fundal1.mp4':  '50% 15%'
   };
 
-  // 3️⃣ Durata fade-ului (trebuie să corespundă cu CSS-ul: transition: opacity 3s)
-  const CROSSFADE = 3000; // ms
+  const CROSSFADE = 3.0;
 
   let active   = videoA;
   let inactive = videoB;
   let index = 0;
-  let timerId = null;
+  let isCrossfading = false;
 
-  function setSourceAndPlay(video, src, onReady) {
+  function setSource(video, src) {
     video.src = src;
     video.style.objectPosition = positions[src] || '50% 50%';
     video.load();
-
-    const handler = () => {
-      video.removeEventListener('loadedmetadata', handler);
-      try { video.currentTime = 0; } catch (e) {}
-      video.play().catch(() => {});
-      if (typeof onReady === 'function') onReady(video);
-    };
-
-    // dacă metadata există deja (replay), handler-ul se va chema imediat
-    video.addEventListener('loadedmetadata', handler);
   }
 
-  function scheduleNextCrossfade() {
-    if (!active.duration || isNaN(active.duration)) {
-      // dacă nu știm durata, mai încercăm puțin mai târziu
-      timerId = setTimeout(scheduleNextCrossfade, 500);
-      return;
-    }
+  function onTimeUpdate() {
+    if (!active.duration || isNaN(active.duration)) return;
+    const remaining = active.duration - active.currentTime;
 
-    const delay = Math.max(active.duration * 1000 - CROSSFADE, 0);
-    clearTimeout(timerId);
-    timerId = setTimeout(crossfadeToNext, delay);
+    if (!isCrossfading && remaining <= CROSSFADE) {
+      isCrossfading = true;
+      active.removeEventListener('timeupdate', onTimeUpdate);
+      crossfadeToNext();
+    }
+  }
+
+  function scheduleWatcher() {
+    active.addEventListener('timeupdate', onTimeUpdate);
   }
 
   function crossfadeToNext() {
     index = (index + 1) % playlist.length;
     const nextSrc = playlist[index];
 
-    setSourceAndPlay(inactive, nextSrc, function () {
-      // începe overlap-ul: al doilea se vede, primul se estompează
+    setSource(inactive, nextSrc);
+
+    inactive.addEventListener('canplay', function handler() {
+      inactive.removeEventListener('canplay', handler);
+
+      try { inactive.currentTime = 0; } catch(e) {}
+      inactive.play().catch(() => {});
+      active.play().catch(() => {});
+
       inactive.style.opacity = 1;  // fade-in
       active.style.opacity   = 0;  // fade-out
 
-      // după terminarea fade-ului schimbăm rolurile și programăm următorul crossfade
       setTimeout(() => {
         const tmp = active;
         active   = inactive;
         inactive = tmp;
-        scheduleNextCrossfade();
-      }, CROSSFADE);
+        isCrossfading = false;
+        scheduleWatcher();
+      }, CROSSFADE * 1000 + 200);
     });
   }
 
   function onEnded(e) {
-    // fallback: dacă nu a rulat timer-ul (de ex. rounding)
-    if (e.target === active) {
-      clearTimeout(timerId);
+    if (e.target === active && !isCrossfading) {
       crossfadeToNext();
     }
   }
@@ -3099,10 +3096,12 @@ document.addEventListener('DOMContentLoaded', function () {
   videoA.addEventListener('ended', onEnded);
   videoB.addEventListener('ended', onEnded);
 
-  // 4️⃣ Pornim primul clip
-  setSourceAndPlay(active, playlist[index], function () {
-    active.style.opacity = 1; // fade-in inițial
-    scheduleNextCrossfade();
+  setSource(active, playlist[index]);
+  active.addEventListener('canplay', function initHandler() {
+    active.removeEventListener('canplay', initHandler);
+    active.play().catch(() => {});
+    active.style.opacity = 1;
+    scheduleWatcher();
   });
 });
 </script>
