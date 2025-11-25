@@ -1906,9 +1906,20 @@ html, body {
   height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
-  z-index: -3;          /* sub overlay, sub text */
+  z-index: -3;          
   opacity: 0;
-  transition: opacity 2.8s ease;  /* durata fade-ului (poți pune 2–4s) */
+  /* fade mai lung, mai „cinematic” */
+  transition: opacity 3.5s ease;
+}
+
+/* Video 1: „normal” centrat */
+#hero-video-A {
+  object-position: 50% 50%;
+}
+
+/* Video 2: un pic mai sus */
+#hero-video-B {
+  object-position: 50% 15%;
 }
 
 /* Overlay-ul existent rămâne OK */
@@ -1918,7 +1929,6 @@ html, body {
   background: rgba(0, 0, 0, 0.55);
   z-index: -2;
 }
-
 </style>
 </head>
  <body>
@@ -2872,7 +2882,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
 // anul din footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// LIGHTBOX OREX (poți lăsa exact cum îl aveai)
+// LIGHTBOX OREX
 (function() {
   const overlay  = document.getElementById('orex-lightbox');
   const imgBox   = document.getElementById('orex-lightbox-img');
@@ -3004,81 +3014,96 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 
-<script>
 // === HERO VIDEO PLAYLIST CU CROSSFADE REAL ===
 document.addEventListener('DOMContentLoaded', function () {
   const videoA = document.getElementById('hero-video-A');
   const videoB = document.getElementById('hero-video-B');
   if (!videoA || !videoB) return;
 
-  // Lista de clipuri din HERO
+  // cele două fișiere video din HERO
   const playlist = [
     'orex-fundal.mp4',
     'orex-fundal1.mp4'
   ];
 
-  // Poziționare diferită dacă vrei (de ex. sus pentru unul)
-  const positions = {
-    'orex-fundal.mp4' :  '50% 50%',
-    'orex-fundal1.mp4':  '50% 15%'   // un pic mai sus, ca requestul tău
-  };
-
   let currentIndex = 0;
   let activeVideo   = videoA;
   let inactiveVideo = videoB;
 
+  // suprapunere (în secunde) – cât timp se calca unul peste altul
+  const OVERLAP_SECONDS = 3.5;
+  // cât durează efectiv fade-ul (trebuie să „bată” cu CSS: 3.5s)
+  const FADE_MS = 3500;
+
+  let isFading = false;
+
   function setSource(video, src) {
     video.src = src;
-    video.style.objectPosition = positions[src] || '50% 50%';
     video.load();
   }
 
-  // Pornește primul clip
-  setSource(activeVideo, playlist[currentIndex]);
-  activeVideo.addEventListener('canplay', function startOnce() {
-    activeVideo.removeEventListener('canplay', startOnce);
-    activeVideo.play().catch(() => {});
-    activeVideo.style.opacity = 1;   // fade-in de la început
-  });
+  function startVideo(video) {
+    video.play().catch(() => {});
+  }
 
   function crossfadeToNext() {
+    if (isFading) return;
+    isFading = true;
+
     currentIndex = (currentIndex + 1) % playlist.length;
     const nextSrc = playlist[currentIndex];
 
     setSource(inactiveVideo, nextSrc);
 
-    // așteptăm să fie gata buffer-ul, apoi facem crossfade
     inactiveVideo.addEventListener('canplay', function handler() {
       inactiveVideo.removeEventListener('canplay', handler);
 
-      // rulăm ambele, dar doar unul e vizibil
-      inactiveVideo.play().catch(() => {});
-      activeVideo.play().catch(() => {});
+      inactiveVideo.currentTime = 0;
+      startVideo(inactiveVideo);
+      startVideo(activeVideo);   // lăsăm și vechiul să meargă în timpul fade-ului
 
-      // crossfade: viitorul fade-in, curentul fade-out
-      requestAnimationFrame(() => {
-        inactiveVideo.style.opacity = 1;  // fade-in
-        activeVideo.style.opacity   = 0;  // fade-out
+      // suprapunerea propriu-zisă
+      requestAnimationFrame(function () {
+        inactiveVideo.style.opacity = 1;  // apare
+        activeVideo.style.opacity   = 0;  // dispare
       });
 
-      // schimbăm „rolurile”
+      // schimbăm rolurile
       const tmp = activeVideo;
       activeVideo   = inactiveVideo;
       inactiveVideo = tmp;
-    });
+
+      // după ce s-a terminat tranziția, mai permitem un fade
+      setTimeout(function () {
+        isFading = false;
+      }, FADE_MS);
+    }, { once: true });
   }
 
-  function onEnded(e) {
-    if (e.target !== activeVideo) return;
-    crossfadeToNext();
+  function checkForFade() {
+    if (!activeVideo.duration || isNaN(activeVideo.duration)) return;
+    if (isFading) return;
+
+    const remaining = activeVideo.duration - activeVideo.currentTime;
+    if (remaining <= OVERLAP_SECONDS) {
+      crossfadeToNext();
+    }
   }
 
-  videoA.addEventListener('ended', onEnded);
-  videoB.addEventListener('ended', onEnded);
+  // verificăm în apropiere de finalul fiecărui clip
+  videoA.addEventListener('timeupdate', checkForFade);
+  videoB.addEventListener('timeupdate', checkForFade);
+
+  // pornim primul clip cu fade-in
+  setSource(activeVideo, playlist[currentIndex]);
+  activeVideo.addEventListener('canplay', function startOnce() {
+    activeVideo.removeEventListener('canplay', startOnce);
+    activeVideo.style.opacity = 1;    // declanșează fade-in din CSS
+    startVideo(activeVideo);
+  });
 });
 // === END HERO VIDEO PLAYLIST ===
-</script>
-   
+</script> 
 </body> 
 </html>
   
