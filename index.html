@@ -1908,11 +1908,6 @@ html, body {
   z-index: -2;            /* cel mai jos */
 }
     
-/* Poziționare specială mai sus pentru al 2-lea clip */
-#hero-video.top-align {
-  object-position: 50% 35%; /* ajustezi 35% după cum arată mai bine */
-}
-
 /* OVERLAY ÎNTUNECAT FIX PESTE VIDEO */
 .hero-overlay {
   position: absolute;
@@ -2897,213 +2892,185 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
     </div>
   </div>
 <script>
-  // anul din footer
-  document.getElementById('year').textContent = new Date().getFullYear();
+// anul din footer
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  // LIGHTBOX OREX
-  (function() {
-    const overlay  = document.getElementById('orex-lightbox');
-    const imgBox   = document.getElementById('orex-lightbox-img');
-    const btnClose = overlay.querySelector('.orex-close');
-    const btnPrev  = overlay.querySelector('.orex-prev');
-    const btnNext  = overlay.querySelector('.orex-next');
-    const counter  = document.getElementById('orex-counter');
-    const thumbs   = Array.from(document.querySelectorAll('img.js-lightbox'));
-    let current = -1;
+// LIGHTBOX OREX (poți lăsa exact cum îl aveai)
+(function() {
+  const overlay  = document.getElementById('orex-lightbox');
+  const imgBox   = document.getElementById('orex-lightbox-img');
+  const btnClose = overlay.querySelector('.orex-close');
+  const btnPrev  = overlay.querySelector('.orex-prev');
+  const btnNext  = overlay.querySelector('.orex-next');
+  const counter  = document.getElementById('orex-counter');
+  const thumbs   = Array.from(document.querySelectorAll('img.js-lightbox'));
+  let current = -1;
 
-    function show(idx) {
-      if (!thumbs.length) return;
-      if (idx < 0) idx = thumbs.length - 1;
-      if (idx >= thumbs.length) idx = 0;
-      current = idx;
+  function show(idx) {
+    if (!thumbs.length) return;
+    if (idx < 0) idx = thumbs.length - 1;
+    if (idx >= thumbs.length) idx = 0;
+    current = idx;
 
-      const el = thumbs[current];
-      imgBox.src = el.currentSrc || el.src;
-      imgBox.alt = el.alt || '';
-      if (counter) counter.textContent = (current + 1) + ' / ' + thumbs.length;
-    }
+    const el = thumbs[current];
+    imgBox.src = el.currentSrc || el.src;
+    imgBox.alt = el.alt || '';
+    if (counter) counter.textContent = (current + 1) + ' / ' + thumbs.length;
+  }
 
-    function open(idx) {
-      show(idx);
-      overlay.style.display = 'flex';
-      document.documentElement.style.overflow = 'hidden';
-      overlay.setAttribute('aria-hidden','false');
-    }
+  function open(idx) {
+    show(idx);
+    overlay.style.display = 'flex';
+    document.documentElement.style.overflow = 'hidden';
+    overlay.setAttribute('aria-hidden','false');
+  }
 
-    function close() {
-      overlay.style.display = 'none';
-      imgBox.src = '';
-      imgBox.alt = '';
-      document.documentElement.style.overflow = '';
-      overlay.setAttribute('aria-hidden','true');
-      current = -1;
-    }
+  function close() {
+    overlay.style.display = 'none';
+    imgBox.src = '';
+    imgBox.alt = '';
+    document.documentElement.style.overflow = '';
+    overlay.setAttribute('aria-hidden','true');
+    current = -1;
+  }
 
-    thumbs.forEach((el,i) => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        open(i);
-      });
+  thumbs.forEach((el,i) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(i);
     });
+  });
 
-    btnPrev.addEventListener('click', () => show(current - 1));
-    btnNext.addEventListener('click', () => show(current + 1));
-    btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', () => show(current - 1));
+  btnNext.addEventListener('click', () => show(current + 1));
+  btnClose.addEventListener('click', close);
 
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) close();
-    });
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close();
+  });
 
-    window.addEventListener('keydown', (e) => {
-      if (overlay.getAttribute('aria-hidden') === 'true') return;
-      if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft') show(current - 1);
-      if (e.key === 'ArrowRight') show(current + 1);
-    });
+  window.addEventListener('keydown', (e) => {
+    if (overlay.getAttribute('aria-hidden') === 'true') return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
 
-    imgBox.addEventListener('click', () => show(current + 1));
-  })();
+  imgBox.addEventListener('click', () => show(current + 1));
+})();
 
-  // BUTOANE „DETALII TEHNICE” -> SECȚIUNEA #detalii-tehnice
-  document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
-    const wrapper = document.getElementById('detalii-tehnice');
-    const cards = document.querySelectorAll('.detalii-card');
-    const closeBtn = document.querySelector('.detalii-close-btn');
+// BUTOANE „DETALII TEHNICE”
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
+  const wrapper = document.getElementById('detalii-tehnice');
+  const cards = document.querySelectorAll('.detalii-card');
+  const closeBtn = document.querySelector('.detalii-close-btn');
 
-    function showCard(id) {
-      if (!wrapper) return;
-
-      wrapper.classList.add('active');
-      cards.forEach(card => card.classList.remove('active'));
-
-      const card = document.getElementById(id);
-      if (card) {
-        card.classList.add('active');
-        wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+  function showCard(id) {
+    if (!wrapper) return;
+    wrapper.classList.add('active');
+    cards.forEach(card => card.classList.remove('active'));
+    const card = document.getElementById(id);
+    if (card) {
+      card.classList.add('active');
+      wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
 
-    function hideAll() {
-      if (!wrapper) return;
-      wrapper.classList.remove('active');
-      cards.forEach(card => card.classList.remove('active'));
-    }
+  function hideAll() {
+    if (!wrapper) return;
+    wrapper.classList.remove('active');
+    cards.forEach(card => card.classList.remove('active'));
+  }
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.dataset.target;
-        if (targetId) showCard(targetId);
-      });
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.dataset.target;
+      if (targetId) showCard(targetId);
     });
+  });
 
-    if (closeBtn) {
-      closeBtn.addEventListener('click', hideAll);
+  if (closeBtn) {
+    closeBtn.addEventListener('click', hideAll);
+  }
+});
+
+// HEADER scroll hide/show
+(function () {
+  const header = document.querySelector('header');
+  if (!header) return;
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function onScroll() {
+    const currentY = window.scrollY;
+    const delta = currentY - lastScrollY;
+    if (Math.abs(delta) < 4) {
+      ticking = false;
+      return;
+    }
+    if (currentY > lastScrollY && currentY > 120) {
+      header.classList.add('header-hidden');
+    } else if (currentY < lastScrollY) {
+      header.classList.remove('header-hidden');
+    }
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
     }
   });
-    // HEADER care se ascunde la scroll în jos și reapare la scroll în sus
-  (function () {
-    const header = document.querySelector('header');
-    if (!header) return;
+})();
 
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    function onScroll() {
-      const currentY = window.scrollY;
-
-      // mic prag ca să nu tremure dacă se mișcă 1–2 px
-      const delta = currentY - lastScrollY;
-
-      if (Math.abs(delta) < 4) {
-        ticking = false;
-        return;
-      }
-
-      if (currentY > lastScrollY && currentY > 120) {
-        // scroll în jos, după ce am trecut de ~120px
-        header.classList.add('header-hidden');
-      } else if (currentY < lastScrollY) {
-        // scroll în sus
-        header.classList.remove('header-hidden');
-      }
-
-      lastScrollY = currentY;
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        window.requestAnimationFrame(onScroll);
-        ticking = true;
-      }
-    });
-  })();
-</script>
-  
-<script>
-// === HERO VIDEO PLAYLIST – simplu + fade pe overlay, cu al doilea clip aliniat sus ===
-document.addEventListener("DOMContentLoaded", function () {
+// === HERO VIDEO PLAYLIST – alinieri per clip prin object-position ===
+(function () {
   const video     = document.getElementById("hero-video");
   const source    = document.getElementById("hero-video-source");
   const fadeLayer = document.querySelector(".hero-fade-layer");
 
   if (!video || !source) return;
 
-  // lista de clipuri – asigură-te că fișierele există cu EXACT aceste nume
+  // ajustezi aici pozițiile până ceasul cade în aceeași zonă
   const playlist = [
-    "orex-fundal.mp4",
-    "orex-fundal1.mp4",
-    "orex-fundal.mp4",
-    "orex-fundal1.mp4"
+    { src: "orex-fundal.mp4",  pos: "50% 50%" }, // primul clip – centru
+    { src: "orex-fundal1.mp4", pos: "50% 35%" }  // al doilea – un pic mai sus (tunează 30–40%)
   ];
 
   let index = 0;
-  const FADE_MS = 1100; // trebuie să bată cu durata animației CSS
+  const FADE_MS = 1100;
 
   function triggerFade() {
     if (!fadeLayer) return;
     fadeLayer.classList.remove("is-fading");
-    void fadeLayer.offsetWidth; // reflow pentru a retrigera animația
+    void fadeLayer.offsetWidth;     // reflow
     fadeLayer.classList.add("is-fading");
   }
 
   function playCurrent() {
-    const file = playlist[index];
-
-    // aliniere specială doar pentru orex-fundal2.mp4
-    if (file === "orex-fundal1.mp4") {
-      video.classList.add("top-align");
-    } else {
-      video.classList.remove("top-align");
-    }
-
-    source.src = file;
+    const item = playlist[index];
+    source.src = item.src;
+    video.style.objectPosition = item.pos;
     video.load();
-
     const p = video.play();
     if (p && p.catch) {
-      p.catch(() => {
-        // dacă autoplay e blocat, măcar avem un frame
-      });
+      p.catch(() => {});
     }
   }
 
-  // primul clip: îl pornim direct
-  playCurrent();
-
-  // la finalul fiecărui clip trecem la următorul + fade pe overlay
   video.addEventListener("ended", function () {
     index = (index + 1) % playlist.length;
-
     triggerFade();
-
-    // pornim următorul clip puțin după ce începe fade-ul
     setTimeout(playCurrent, FADE_MS * 0.15);
   });
-});
-// === END HERO PLAYLIST ===
+
+  // start
+  playCurrent();
+})();
 </script>
    
 </body> 
