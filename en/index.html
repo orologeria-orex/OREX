@@ -1911,13 +1911,10 @@ html, body {
   opacity: 0.6;
 }
 
-/* pe mobile, să nu „rupă” header-ul */
 @media (max-width: 720px) {
   .header-inner {
-    gap: 0.5rem;
-  }
-  .lang-switch {
-    margin-left: auto;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -1970,24 +1967,24 @@ html, body {
  <body>
   
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
-  <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
+  <a href="/#main-content" class="skip-link">Sari la conținutul principal</a>
 
    <!-- HEADER -->
    <header>
   <div class="header-inner">
     <div class="logo-wrap">
-      <img src="orex-logo.png" alt="Orex – official logo" class="logo-img">
+      <img src="/orex-logo.png" alt="Orex – official logo" class="logo-img">
       <div class="logo-text">Orex® Watchmaking</div>
     </div>
 
     <nav aria-label="Main navigation">
-      <a href="#despre">About</a>
-      <a href="#colectii">Collections</a>
-      <a href="#istoria-orex">History</a>
-      <a href="#galerie">Gallery</a>
-      <a href="#mecanism">Technology</a>
-      <a href="#suport-clienti">Customer support</a>
-      <a href="#contact">Contact</a>
+      <a href="/#despre">About</a>
+      <a href="/#colectii">Collections</a>
+      <a href="/#istoria-orex">History</a>
+      <a href="/#galerie">Gallery</a>
+      <a href="/#mecanism">Technology</a>
+      <a href="/#suport-clienti">Customer support</a>
+      <a href="/#contact">Contact</a>
     </nav>
 
     <!-- COMUTATOR LIMBĂ – EN ACTIV -->
@@ -2033,7 +2030,7 @@ html, body {
       <p class="hero-line">TIME HAS A SHAPE</p>
 
       <div class="hero-star-row">
-        <img src="orex-stea8.png" class="hero-stea" alt="">
+        <img src="/orex-stea8.png" class="hero-stea" alt="">
       </div>
 
       <p class="hero-line">OREX GIVES IT A FACE</p>
@@ -2084,7 +2081,7 @@ html, body {
   <div class="collections-grid">
     <!-- Card 1 – black -->
     <article class="card-premium">
-      <img src="Orex-noublack.jpg"
+      <img src="/Orex-noublack.jpg"
            alt="Orex® Comte des Carpates Deluxe ”C” - Midnight"
            class="js-lightbox"
            loading="lazy"
@@ -2101,7 +2098,7 @@ html, body {
 
     <!-- Card 2 – blue -->
     <article class="card-premium">
-      <img src="Orex-noublue.jpg"
+      <img src="/Orex-noublue.jpg"
            alt="Orex® Comte des Carpates Deluxe ”C” – Eternal Blue"
            class="js-lightbox"
            loading="lazy"
@@ -2119,7 +2116,7 @@ html, body {
 
     <!-- Card 3 – red -->
     <article class="card-premium">
-      <img src="Orex-nourosu.jpg"
+      <img src="/Orex-nourosu.jpg"
            alt="Orex® Comte des Carpates Deluxe ”C” – Burgund Blood"
            class="js-lightbox"
            loading="lazy"
@@ -2147,7 +2144,7 @@ html, body {
     <!-- MODEL 1 – Deluxe „C” • Midnight -->
     <article id="detalii-deluxe-c" class="spec-card detalii-card">
       <div class="spec-header">
-        <img src="Orex-noublack.jpg"
+        <img src="/Orex-noublack.jpg"
              alt="Orex® Comte des Carpates Deluxe ”C” - Midnight"
              class="spec-img"
              loading="lazy"
@@ -2155,7 +2152,7 @@ html, body {
         <div class="spec-header-text">
           <h3 class="spec-title">Orex® • Deluxe „C” • Midnight</h3>
           <p class="spec-tagline">Deep black dial, an expression of nocturnal elegance and mysticism.</p>
-          <a href="fisa-deluxe-c.pdf" class="spec-download" download>
+          <a href="/fisa-deluxe-c.pdf" class="spec-download" download>
             Download technical sheet (PDF)
           </a>
         </div>
@@ -2180,7 +2177,7 @@ html, body {
     <!-- MODEL 2 – Deluxe „C” • Albastru Infinit -->
     <article id="detalii-deluxe-ocean" class="spec-card detalii-card">
       <div class="spec-header">
-        <img src="Orex-noublue.jpg"
+        <img src="/Orex-noublue.jpg"
              alt="Orex® Comte des Carpates Deluxe ”C” – Eternal Blue"
              class="spec-img"
              loading="lazy"
@@ -2188,7 +2185,7 @@ html, body {
         <div class="spec-header-text">
           <h3 class="spec-title">Orex® • Deluxe „C” • Eternal Blue</h3>
           <p class="spec-tagline">Blue reflex dial, expression of adventure, inspired by the depth of the sky and sea.</p>
-          <a href="fisa-deluxe-ocean.pdf" class="spec-download" download>
+          <a href="/fisa-deluxe-ocean.pdf" class="spec-download" download>
             Download technical sheet (PDF)
           </a>
         </div>
@@ -2213,7 +2210,7 @@ html, body {
     <!-- MODEL 3 – Deluxe „C” • Sânge Burgund -->
     <article id="detalii-deluxe-vampir" class="spec-card detalii-card">
       <div class="spec-header">
-        <img src="Orex-nourosu.jpg"
+        <img src="/Orex-nourosu.jpg"
              alt="Orex® Comte des Carpates Deluxe ”C” – Burgund Blood"
              class="spec-img"
              loading="lazy"
@@ -2223,7 +2220,7 @@ html, body {
           <p class="spec-tagline">Red dial - bloody like noble wine, almost ritualistic, evoking strength, timeless elegance and 
             the mystery of Transylvanian legends.
           </p>
-          <a href="fisa-deluxe-vampir.pdf" class="spec-download" download>
+          <a href="/fisa-deluxe-vampir.pdf" class="spec-download" download>
             Download technical sheet (PDF)
           </a>
         </div>
@@ -2382,7 +2379,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
     <article class="archive-card">
       <div class="archive-era">Anii ’80</div>
-      <img src="OREX-17rubisred.jpg"
+      <img src="/OREX-17rubisred.jpg"
            alt="OREX® 17 red rubies – model from the socialist period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2397,7 +2394,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
     <article class="archive-card">
       <div class="archive-era">Years ’80</div>
-      <img src="OREX-17rubisblack.jpg"
+      <img src="/OREX-17rubisblack.jpg"
            alt="OREX® 17 red rubies – model from the socialist period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2412,7 +2409,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
 <article class="archive-card">
       <div class="archive-era">Years ’80</div>
-      <img src="OREX-17rubis3.jpg"
+      <img src="/OREX-17rubis3.jpg"
            alt="OREX® 17 red rubies – golden model from the socialist period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2427,7 +2424,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
    
     <article class="archive-card">
       <div class="archive-era">Years ’80</div>
-      <img src="OREX-19rubis.jpg"
+      <img src="/OREX-19rubis.jpg"
            alt="OREX® 19 rubis – model from the socialist period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2442,7 +2439,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
     <article class="archive-card">
       <div class="archive-era">Years ’90</div>
-      <img src="OREX-21rubis.JPG"
+      <img src="/OREX-21rubis.JPG"
            alt="OREX® 21 rubis – model from the socialist period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2457,7 +2454,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
     <article class="archive-card">
       <div class="archive-era">Anii ’90</div>
-      <img src="OREX-26rubis.jpg"
+      <img src="/OREX-26rubis.jpg"
            alt="OREX® automatic 26 rubis – model from the socialist period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2472,7 +2469,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
 <article class="archive-card">
       <div class="archive-era">Years ’90</div>
-      <img src="OREX-26rubis2.jpg"
+      <img src="/OREX-26rubis2.jpg"
            alt="OREX® automatic 26 rubis – model from the socialist period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2493,7 +2490,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
     <article class="archive-card">
       <div class="archive-era">Years ’80–’90</div>
-      <img src="OREX-17rubisquartz.jpg"
+      <img src="/OREX-17rubisquartz.jpg"
            alt="OREX® Quartz – 17 rubis model of the late period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2508,7 +2505,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
     <article class="archive-card">
       <div class="archive-era">Anii ’80–’90</div>
-      <img src="OREX-17rubisquartz1.jpg"
+      <img src="/OREX-17rubisquartz1.jpg"
            alt="OREX® Quartz – 17 rubis model of the late period"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2523,7 +2520,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
 
 <article class="archive-card">
       <div class="archive-era">Years ’80–’90</div>
-      <img src="OREX-17rubisquartz2.jpg"
+      <img src="/OREX-17rubisquartz2.jpg"
            alt="OREX® Quartz – model 17 rubine din perioada târzie"
            class="archive-img js-lightbox"
            loading="lazy"
@@ -2556,7 +2553,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
     <div class="gal-grid">
 
       <figure class="gal-card">
-        <img src="orex-front.jpg"
+        <img src="/orex-front.jpg"
              alt="New Orex® dial"
              class="gal-img js-lightbox"
              loading="lazy"
@@ -2571,7 +2568,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
       </figure>
 
       <figure class="gal-card">
-        <img src="orex-lateral.jpg"
+        <img src="/orex-lateral.jpg"
              alt="Orex® housing profile"
              class="gal-img js-lightbox"
              loading="lazy"
@@ -2586,7 +2583,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
       </figure>
 
       <figure class="gal-card">
-        <img src="orex-mecanism.jpg"
+        <img src="/orex-mecanism.jpg"
              alt="Back cover with transparent glass and Sellita SW200-1 mechanism"
              class="gal-img js-lightbox"
              loading="lazy"
@@ -2601,7 +2598,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
       </figure>
 
 <figure class="gal-card">
-        <img src="orex-stealogo.JPG"
+        <img src="/orex-stealogo.JPG"
              alt="Branding elements of the new Orex®"
              class="gal-img js-lightbox"
              loading="lazy"
@@ -2795,17 +2792,17 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
   <div class="support-grid">
     <div class="support-column">
       <h3>General information</h3>
-      <a href="faq.html" class="support-link">FAQ</a>
-      <a href="termeni-conditii.html" class="support-link">Terms and Conditions</a>
-      <a href="politica-securitate.html" class="support-link">Privacy & Security Policy</a>
-      <a href="cookie-uri.html" class="support-link">About cookies</a>
+      <a href="/faq.html" class="support-link">FAQ</a>
+      <a href="/termeni-conditii.html" class="support-link">Terms and Conditions</a>
+      <a href="/politica-securitate.html" class="support-link">Privacy & Security Policy</a>
+      <a href="/cookie-uri.html" class="support-link">About cookies</a>
     </div>
 
     <div class="support-column">
       <h3>Reglementări & autorități</h3>
-      <a href="deee.html" class="support-link">Information on DEEE</a>
-      <a href="anpc.html" class="support-link">Consumer protection – ANPC</a>
-      <a href="anpc-sal.html" class="support-link">Dispute resolution – SAL / SOL</a>
+      <a href="/deee.html" class="support-link">Information on DEEE</a>
+      <a href="/anpc.html" class="support-link">Consumer protection – ANPC</a>
+      <a href="/anpc-sal.html" class="support-link">Dispute resolution – SAL / SOL</a>
     </div>
 
     <div class="support-column">
@@ -2813,7 +2810,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
       <p class="support-text">
         For questions related to warranty, service or corporate collaborations, you can write to us at:
         <br>
-        <a href="mailto:orexwatch@yahoo.com">orexwatch@yahoo.com</a><br>
+        <a href="/mailto:orexwatch@yahoo.com">orexwatch@yahoo.com</a><br>
         <a href="mailto:office@orexwatch.com">office@orexwatch.com</a>
       </p>
     </div>
@@ -2883,7 +2880,7 @@ having 26 Rubies (Type: 2628 SLAVA/26 Rubies)
         border:none; border-radius:1.1rem;
         object-fit:cover;
       ">
-        <source src="teaser-orexreal24s.mp4" type="video/mp4">
+        <source src="/teaser-orexreal24s.mp4" type="video/mp4">
         Browserul nu poate reda acest videoclip.
       </video>
     </div>
