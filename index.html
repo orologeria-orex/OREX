@@ -1884,6 +1884,44 @@ html, body {
     letter-spacing: 0.15em;
   }
 }
+    .lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.lang-switch .lang {
+  color: #e5e7eb;
+  text-decoration: none;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switch .lang:hover {
+  opacity: 0.9;
+}
+
+.lang-switch .lang.active {
+  opacity: 1;
+}
+
+.lang-separator {
+  opacity: 0.6;
+}
+
+/* pe mobile, să nu „rupă” header-ul */
+@media (max-width: 720px) {
+  .header-inner {
+    gap: 0.5rem;
+  }
+  .lang-switch {
+    margin-left: auto;
+  }
+}
+
     /* ===== HERO VIDEO – FUNDAL CINEMATIC OREX ===== */
 
 .hero {
@@ -1936,25 +1974,32 @@ html, body {
   <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
 
    <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <div class="logo-wrap">
-        <img src="orex-logo.png" alt="Orex – logo oficial" class="logo-img">
-        <div class="logo-text">Orologeria Orex®</div>
-      </div>
-     <nav aria-label="Navigare principală">
-  <a href="#despre">Despre</a>
-  <a href="#colectii">Colecții</a>
-  <a href="#istoria-orex">Istoria</a>
-  <a href="#galerie">Galerie</a>
-  <a href="#mecanism">Tehnologie</a>
-  <a href="#suport-clienti">Suport clienți</a>
-  <a href="#contact">Contact</a>
-</nav>
-
+    <header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <img src="orex-logo.png" alt="Orex – logo oficial" class="logo-img">
+      <div class="logo-text">Orologeria Orex®</div>
     </div>
-  </header>
 
+    <nav aria-label="Navigare principală">
+      <a href="#despre">Despre</a>
+      <a href="#colectii">Colecții</a>
+      <a href="#istoria-orex">Istoria</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#mecanism">Tehnologie</a>
+      <a href="#suport-clienti">Suport clienți</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- 👇 AICI COMUTATOR LIMBĂ -->
+    <div class="lang-switch" aria-label="Language switcher">
+      <a href="/" class="lang active">RO</a>
+      <span class="lang-separator">/</span>
+      <a href="/en/" class="lang">EN</a>
+    </div>
+  </div>
+</header>
+   
   <!-- MARCAJ PUNCT DE REPER PENTRU GOOGLE & SCREEN READERS -->
  <main id="main-content" role="main">
    
@@ -2290,8 +2335,8 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
       <h3 class="timeline-title">Tranziția și dispariția treptată</h3>
       <p class="timeline-text">
         După schimbările economice, piața se deschide către branduri internaționale.
-        Fără investiții, OREX iese, treptat, din producție. Ceasurile rămase devin, încet, piese
-        de familie și moșteniri tehnice uitate, mărturii ale unei glorii apuse.
+        Fără investiții, OREX iese, treptat, din producție. Ceasurile rămase devin, în timp, piese
+        de familie și moșteniri tehnice uitate, mărturii ale unei glorii din vremuri apuse.
       </p>
     </article>
 
@@ -2311,8 +2356,8 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
       <div class="timeline-year">Astăzi</div>
       <h3 class="timeline-title">Renașterea OREX • Marcă Premium Deluxe</h3>
       <p class="timeline-text">
-        <strong>Marca Deluxe Orex®</strong> renaște, Dr. ing. Iulian Offenberg propune o reinterpretare contemporană
-        acestui nume istoric. Cadrane noi, carcase moderne, mecanisme elvețiene și o atenție extremă la detalii – 
+        <strong>Marca Deluxe Orex®</strong> renaște; Dr. ing. Iulian Offenberg propune o reinterpretare contemporană
+        pentru acest nume emblematic. Cadrane noi, carcase moderne, mecanisme elvețiene și o atenție extremă la detalii – 
         totul gândit ca un omagiu adus celebrului brand românesc și unei generații care a crescut cu el.
       </p>
       <p class="timeline-text">
