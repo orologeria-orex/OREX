@@ -1040,67 +1040,119 @@ header {
   transition: transform 0.25s ease;
 }
 
-/* clasa există deja, e ok */
 header.header-hidden {
   transform: translateY(-100%);
 }
 
-/* adaugă undeva după body { ... } (sau completezi body dacă vrei) */
-body {
-  padding-top: 64px;  /* ~înălțimea header-ului, ajustezi dacă vezi că e prea mult / puțin */
+.header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* ✅ pentru mobil */
 }
 
-/* când e ascuns la scroll în jos */
-header.header-hidden {
-  transform: translateY(-100%);
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
-    
-    .header-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0.5rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .logo-wrap { display: flex; align-items: center; gap: 0.75rem; }
-    .logo-img { height: 40px; filter: drop-shadow(0 0 6px rgba(255,255,255,0.25)); }
-    .logo-text {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--fg-muted);
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.4rem;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-    nav a {
-      position: relative;
-      color: #d1d5db;
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.25rem;
-      width: 0;
-      height: 1px;
-      background: linear-gradient(90deg, #4b5563, #e5e7eb, #4b5563);
-      transition: width 0.25s ease;
-    }
-    nav a:hover { color: #fff; }
-    nav a:hover::after { width: 100%; }
 
-    @media (max-width: 720px) {
-      .header-inner { flex-direction: column; align-items: flex-start; }
-      nav { gap: 0.9rem; }
-    }
+.logo-img {
+  height: 40px;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
+}
+
+.logo-text {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--fg-muted);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* linkuri nav – rămân cum le aveai */
+nav a {
+  position: relative;
+  color: #d1d5db;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #4b5563, #e5e7eb, #4b5563);
+  transition: width 0.25s ease;
+}
+nav a:hover { color: #fff; }
+nav a:hover::after { width: 100%; }
+
+/* 🔀 COMUTATOR LIMBĂ */
+.lang-switch {
+  margin-left: auto;              /* ✅ împinge în dreapta pe rând */
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.lang-link {
+  text-decoration: none;
+  color: #9ca3af;
+  padding-bottom: 1px;
+  border-bottom: 1px solid transparent;
+}
+
+.lang-link:hover {
+  color: #e5e7eb;
+}
+
+.lang-active {
+  color: #f9fafb;
+  border-bottom-color: #e5e7eb;
+}
+
+.lang-sep {
+  color: #4b5563;
+}
+
+/* 📱 COMPORTAMENT PE MOBIL */
+@media (max-width: 720px) {
+  .header-inner {
+    align-items: center;
+  }
+
+  .logo-wrap {
+    order: 1;
+  }
+
+  .lang-switch {
+    order: 2;
+    margin-left: auto;   /* ✅ rămâne în dreapta */
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    margin-top: 0.35rem;
+    gap: 0.9rem;
+    font-size: 0.75rem;
+  }
+}
 
     /* HERO (fără video, doar cu fundal elegant) */
     .hero {
@@ -1970,7 +2022,7 @@ html, body {
   <a href="/#main-content" class="skip-link">Sari la conținutul principal</a>
 
    <!-- HEADER -->
-   <header>
+  <header>
   <div class="header-inner">
     <div class="logo-wrap">
       <img src="/orex-logo.png" alt="Orex – official logo" class="logo-img">
@@ -1978,23 +2030,24 @@ html, body {
     </div>
 
     <nav aria-label="Main navigation">
-      <a href="/#despre">About</a>
-      <a href="/#colectii">Collections</a>
-      <a href="/#istoria-orex">History</a>
-      <a href="/#galerie">Gallery</a>
-      <a href="/#mecanism">Technology</a>
-      <a href="/#suport-clienti">Customer support</a>
-      <a href="/#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#collections">Collections</a>
+      <a href="#orex-history">History</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#movement">Technology</a>
+      <a href="#support">Customer support</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <!-- COMUTATOR LIMBĂ – EN ACTIV -->
-    <div class="lang-switch" aria-label="Language switcher">
-      <a href="/"    class="lang">RO</a>
-      <span class="lang-separator">/</span>
-      <a href="/en/" class="lang active">EN</a>
+    <!-- 🔀 Language switch -->
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="/"    class="lang-link">RO</a>
+      <span class="lang-sep">/</span>
+      <a href="/en/" class="lang-link lang-active">EN</a>
     </div>
   </div>
 </header>
+
    
   <!-- MARCAJ PUNCT DE REPER PENTRU GOOGLE & SCREEN READERS -->
  <main id="main-content" role="main">
