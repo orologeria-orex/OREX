@@ -3058,23 +3058,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- SCRIPT 2: doar HERO video playlist -->
 <script>
-// === HERO VIDEO PLAYLIST CU CROSSFADE REAL ===
+// === HERO VIDEO PLAYLIST CU CROSSFADE REAL (funcționează și din /en/) ===
 document.addEventListener('DOMContentLoaded', function () {
   const videoA = document.getElementById('hero-video-A');
   const videoB = document.getElementById('hero-video-B');
   if (!videoA || !videoB) return;
 
+  // ✅ CĂI ABSOLUTE DIN RĂDĂCINĂ — MERG ȘI DIN /, ȘI DIN /en/
   const playlist = [
-    'orex-fundal.mp4',
-    'orex-fundal1.mp4'
+    '/orex-fundal.mp4',
+    '/orex-fundal1.mp4'
   ];
 
   const positions = {
-    'orex-fundal.mp4' :  '50% 50%',
-    'orex-fundal1.mp4':  '50% 15%'
+    '/orex-fundal.mp4' :  '50% 50%',
+    '/orex-fundal1.mp4':  '50% 15%'
   };
 
-  const CROSSFADE = 3.0;
+  const CROSSFADE = 3.0; // secunde de suprapunere
 
   let active   = videoA;
   let inactive = videoB;
@@ -3115,6 +3116,7 @@ document.addEventListener('DOMContentLoaded', function () {
       inactive.play().catch(() => {});
       active.play().catch(() => {});
 
+      // crossfade propriu-zis — CSS se ocupă de tranziție
       inactive.style.opacity = 1;  // fade-in
       active.style.opacity   = 0;  // fade-out
 
@@ -3137,14 +3139,16 @@ document.addEventListener('DOMContentLoaded', function () {
   videoA.addEventListener('ended', onEnded);
   videoB.addEventListener('ended', onEnded);
 
+  // Start: primul clip
   setSource(active, playlist[index]);
   active.addEventListener('canplay', function initHandler() {
     active.removeEventListener('canplay', initHandler);
     active.play().catch(() => {});
-    active.style.opacity = 1;
+    active.style.opacity = 1; // fade-in inițial
     scheduleWatcher();
   });
 });
+// === END HERO VIDEO PLAYLIST ===
 </script>
 
 </body> 
