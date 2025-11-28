@@ -1535,6 +1535,9 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+    body {
+  padding-top: 64px;
+}
 
 /* HERO – titlul cu steaua să NU mai lărgească ecranul */
 .hero-headline h1 {
@@ -1983,7 +1986,7 @@ html, body {
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - 64px);  /* în loc de 100vh */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -2028,7 +2031,7 @@ html, body {
  <body>
   
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
-  <a href="/#main-content" class="skip-link">Sari la conținutul principal</a>
+  <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
 
    <!-- HEADER -->
   <header>
@@ -2039,12 +2042,12 @@ html, body {
     </div>
 
     <nav aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#collections">Collections</a>
-      <a href="#orex-history">History</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#movement">Technology</a>
-      <a href="#support">Customer support</a>
+      <a href="#about">Despre</a>
+      <a href="#collections">Colectii</a>
+      <a href="#orex-history">Istoria OREX</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#movement">Tehnologie</a>
+      <a href="#support">Suport clienti</a>
       <a href="#contact">Contact</a>
     </nav>
 
