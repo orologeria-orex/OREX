@@ -1538,93 +1538,90 @@ footer {
   }
 }
 </style>
+
+  <title>OREX® — Official English Page</title>
 </head>
+  
  <body>
   
-  <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
-  <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
+  <!-- LINK SKIP -->
+<a href="#main-content" class="skip-link">Skip to content</a>
 
    <!-- HEADER -->
   <header>
   <div class="header-inner">
+
     <div class="logo-wrap">
-      <img src="/orex-logo.png" alt="Orex – official logo" class="logo-img">
-      <div class="logo-text">Orex® Watchmaking</div>
+      <img class="logo-img" src="/img/orex-logo.png" alt="OREX Logo">
+      <span class="logo-text">Official Archive</span>
     </div>
 
     <nav aria-label="Main navigation">
-      <a href="#despre">Despre</a>
-      <a href="#colectii">Colectii</a>
-      <a href="#istoria-orex">Istoria OREX</a>
-      <a href="#galerie">Galerie</a>
-      <a href="#mecanism">Tehnologie</a>
-      <a href="#suport">Suport clienti</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <a href="#about">About</a>
+  <a href="#collections">Collections</a>
+  <a href="#orex-history">History</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#movement">Technology</a>
+  <a href="#customer-support">Customer Support</a>
+  <a href="#contact">Contact</a>
+</nav>
 
     <!-- 🔀 Language switch -->
    <div class="lang-switch" aria-label="Select language">
-  <a href="/" class="lang-item">
-    <img src="../flag-ro.png" alt="Romanian">
-  </a>
-  <a href="/en/" class="lang-item active">
-    <img src="../flag-en.png" alt="English">
-  </a>
-</div>
+      <a href="/" class="lang-item">
+        <img src="/img/flag-ro.png" alt="Romanian">
+      </a>
+      <a href="/en/" class="lang-item active">
+        <img src="/img/flag-en.png" alt="English">
+      </a>
+    </div>
 
+  </div>
 </header>
 
-   
   <!-- MARCAJ PUNCT DE REPER PENTRU GOOGLE & SCREEN READERS -->
  <main id="main-content" role="main">
    
-  <!-- HERO -->
-<section id="hero" class="hero">
+  <!-- ===== HERO ===== -->
+<section class="hero" id="main-content">
 
-  <!-- VIDEO 1 (activ/la început) -->
-  <video id="hero-video-A"
-         autoplay
-         muted
-         playsinline
-         preload="auto"></video>
+  <!-- video A + B pentru crossfade -->
+  <video id="hero-video-A" autoplay muted loop playsinline>
+    <source src="/video/hero1.mp4" type="video/mp4">
+  </video>
 
-  <!-- VIDEO 2 (pentru următorul clip / crossfade) -->
-  <video id="hero-video-B"
-         autoplay
-         muted
-         playsinline
-         preload="auto"></video>
+  <video id="hero-video-B" autoplay muted loop playsinline>
+    <source src="/video/hero2.mp4" type="video/mp4">
+  </video>
 
-  <!-- OVERLAY ÎNTUNECAT PESTE VIDEO (păstrat) -->
   <div class="hero-overlay"></div>
 
-  <!-- FĂRĂ hero-fade-layer, NU mai avem nevoie de el -->
-
-  <!-- CONȚINUT TEXT -->
   <div class="hero-inner">
-    <h2 class="hero-subtitle">THE OREX® WATCH</h2>
+
+    <h2 class="hero-subtitle">OREX® Watch</h2>
     <div class="hero-separator"></div>
 
     <div class="hero-headline">
-      <p class="hero-line">TIME HAS A SHAPE</p>
+      <div class="hero-line">Romanian Watchmaking</div>
+      <div class="hero-line">Precision & Heritage</div>
 
       <div class="hero-star-row">
-        <img src="/orex-stea8.png" class="hero-stea" alt="">
+        <img src="/img/star.png" class="hero-stea" alt="Star emblem">
       </div>
-
-      <p class="hero-line">OREX GIVES IT A FACE</p>
     </div>
 
     <div class="hero-buttons">
       <button class="btn-primary"
-              onclick="document.getElementById('colectii').scrollIntoView({behavior:'smooth'})">
-        Discover the collection
+        onclick="document.getElementById('collections').scrollIntoView({behavior:'smooth'})">
+        Discover the Collection
       </button>
+
       <button class="btn-ghost"
-              onclick="document.getElementById('mecanism').scrollIntoView({behavior:'smooth'})">
-        Technologies
+        onclick="document.getElementById('movement').scrollIntoView({behavior:'smooth'})">
+        Technology
       </button>
     </div>
+
   </div>
 </section>
 
