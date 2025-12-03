@@ -1289,14 +1289,40 @@ nav a:hover::after {
   line-height: 1.6;
 }
 
-/* ===== FOTO PROCES DE FABRICATIE ===== */
-/* Tehnologie – două imagini pe rând */
+/* ===== FOTO PROCES DE FABRICATIE – ca GALERIA ===== */
+
 .tech-photos {
-  max-width: 960px;
-  margin: 1.8rem auto 0;
+  max-width: 1000px;
+  margin: 2rem auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* exact 2 pe rând */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+}
+
+/* cardul – stil apropiat de gal-card */
+.tech-photo {
+  background: #020617;
+  border-radius: 1rem;
+  border: 1px solid rgba(148,163,184,0.6);
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.8);
+}
+
+/* imaginea – identică cu .gal-img ca dimensiune */
+.tech-photo img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* caption – ca în galerie, dar adaptat textului tehnic */
+.tech-photo-caption {
+  padding: 0.85rem 1rem 1rem;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: #cbd5e1;
 }
 
 /* Pe mobil → 1 pe rând */
@@ -1304,13 +1330,6 @@ nav a:hover::after {
   .tech-photos {
     grid-template-columns: 1fr;
   }
-}
-
-.tech-photo-caption {
-  font-size: 0.8rem;
-  color: #cbd5e1;
-  margin-top: 0.4rem;
-  line-height: 1.5;
 }
 
 /* ===== FAQ (pentru faq.html) ===== */
