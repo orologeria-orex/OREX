@@ -2425,8 +2425,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
     un scurt clip de prezentare a Seriei ”Prototip” a noului ceas premium Deluxe Orex®, aspecte de prezentare etc.
   </p>
 
-  <!-- CONTAINERELE VIDEO, FĂRĂ CSS EXTERN, DOAR INLINE -->
-
+  <!-- CONTAINERELE VIDEO -->
   <div style="
     max-width: 960px;
     margin: 1.5rem auto 0;
@@ -2436,19 +2435,10 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
   ">
 
     <!-- VIDEO 1 – MECANISM (YouTube) -->
-    <div style="
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 1.25rem;
-      background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
-      border: 2px solid #555;
-      box-shadow:
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1.25rem; background: linear-gradient(145deg, #2c2c2c, #3a3a3a); border: 2px solid #555; box-shadow:
         inset 0 1px 4px rgba(255,255,255,0.25),
         inset 0 -1px 6px rgba(0,0,0,0.5),
-        0 10px 30px rgba(0,0,0,0.7);
-    ">
+        0 10px 30px rgba(0,0,0,0.7);">
       <iframe
         src="https://www.youtube-nocookie.com/embed/9_QsCLYs2mY?rel=0&modestbranding=1&controls=1&showinfo=0"
         title="Tehnologii"
@@ -2459,7 +2449,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
       </iframe>
     </div>
 
-    <!-- VIDEO 2 – CEAS OREX (fișierul tău local) -->
+    <!-- VIDEO 2 – CEAS OREX (fișier local) -->
     <div style="
       position: relative;
       padding-bottom: 56.25%;
@@ -2471,8 +2461,7 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
       box-shadow:
         inset 0 1px 4px rgba(255,255,255,0.25),
         inset 0 -1px 6px rgba(0,0,0,0.5),
-        0 10px 30px rgba(0,0,0,0.7);
-    ">
+        0 10px 30px rgba(0,0,0,0.7);">
       <video controls style="
         position:absolute; top:0; left:0;
         width:100%; height:100%;
@@ -2483,8 +2472,10 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
         Browserul nu poate reda acest videoclip.
       </video>
     </div>
-      
-    <!-- FOTO PROCES DE FABRICATIE -->
+
+  </div> <!-- ✅ AICI se închide grid-ul pentru video -->
+
+  <!-- FOTO PROCES DE FABRICATIE – ACUM E SUB VIDEOS, NU ÎN GRID CU ELE -->
   <div class="tech-photos">
     <figure class="tech-photo">
       <img src="/orex-productie2.jpg"
@@ -2529,7 +2520,8 @@ având 26 rubine (Tip: 2628 SLAVA/26 Rubine)
         Quality control and visual inspection of each piece before watch assembly.
       </figcaption>
     </figure>
-   </div>
+  </div>
+
 </section>
 
   <!-- CONTACT -->
