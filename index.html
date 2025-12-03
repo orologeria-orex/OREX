@@ -1289,21 +1289,21 @@ nav a:hover::after {
   line-height: 1.6;
 }
 
-/* ===== MECANISM – FOTO PROCES ===== */
+/* ===== FOTO PROCES DE FABRICATIE ===== */
+/* Tehnologie – două imagini pe rând */
 .tech-photos {
   max-width: 960px;
   margin: 1.8rem auto 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.3rem;
+  grid-template-columns: repeat(2, 1fr); /* exact 2 pe rând */
+  gap: 1.5rem;
 }
 
-.tech-photo img {
-  width: 100%;
-  border-radius: 0.9rem;
-  display: block;
-  cursor: zoom-in;
-  object-fit: cover;
+/* Pe mobil → 1 pe rând */
+@media (max-width: 640px) {
+  .tech-photos {
+    grid-template-columns: 1fr;
+  }
 }
 
 .tech-photo-caption {
