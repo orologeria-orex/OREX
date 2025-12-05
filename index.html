@@ -1425,9 +1425,12 @@ footer {
 
 #orex-lightbox-img {
   display: block;
-  max-width: 92vw;
-  max-height: 88vh;
+  width: 75vw;       /* lățime ~75% din viewport */
+  max-width: 75vw;
+  max-height: 75vh;  /* să nu depășească înălțimea */
+  height: auto;
   background: #000;
+  margin: 0 auto;
 }
 
 .orex-close {
