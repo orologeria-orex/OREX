@@ -1588,16 +1588,17 @@ footer {
   border-radius: 0.75rem !important;
 }
 
-    /* Colecții – dacă ai un singur card, să nu se întindă pe tot ecranul */
+    /* Colecții – centrare card unic pe desktop */
 @media (min-width: 900px){
   #colectii .collections-grid{
+    display: grid;
     grid-template-columns: repeat(3, minmax(260px, 1fr));
+    justify-items: center; /* 👈 asta lipsea */
   }
 
-  /* cardul lui Vlad nu depășește o lățime premium și rămâne centrat */
   #colectii .card-premium{
     max-width: 360px;
-    margin: 0 auto;
+    width: 100%;
   }
 }
 
