@@ -1601,17 +1601,18 @@ footer {
   border-radius: 0.75rem !important;
 }
    
- /* Colecții – centrare card unic pe desktop */
-@media (min-width: 900px){
-  #colectii .collections-grid{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(260px, 1fr));
-    justify-items: center; /* 👈 asta lipsea */
-  }
+/* === FIX: centrează cardurile în #colectii pe desktop === */
+#colectii .collections-grid{
+  justify-content: center;   /* centrează coloanele în grid */
+  justify-items: center;     /* centrează cardurile în coloane */
+}
 
+/* dacă ai carduri care se întind prea mult pe desktop */
+@media (min-width: 900px){
   #colectii .card-premium{
     max-width: 360px;
     width: 100%;
+    justify-self: center;    /* redundanță utilă */
   }
 }
  
