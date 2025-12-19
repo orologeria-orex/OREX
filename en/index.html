@@ -1587,7 +1587,20 @@ footer {
   display: block !important;
   border-radius: 0.75rem !important;
 }
-    
+
+    /* Colecții – dacă ai un singur card, să nu se întindă pe tot ecranul */
+@media (min-width: 900px){
+  #colectii .collections-grid{
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+  }
+
+  /* cardul lui Vlad nu depășește o lățime premium și rămâne centrat */
+  #colectii .card-premium{
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}
+
 </style>
 
   <title>OREX® — Official English Page</title>
