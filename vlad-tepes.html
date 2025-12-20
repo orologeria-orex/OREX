@@ -194,6 +194,45 @@
       font-size:.75rem;
     }
     .footer-inner{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between}
+
+    /* === CARD IMAGINI ISTORICE === */
+.image-card {
+  background: radial-gradient(circle at top, #111827 0%, #020617 60%);
+  border: 1px solid rgba(148,163,184,0.55);
+  border-radius: 1rem;
+  padding: 0.75rem;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* container fix pentru imagine */
+.image-card-img {
+  width: 100%;
+  height: 200px;               /* control ferm al înălțimii */
+  overflow: hidden;
+  border-radius: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+/* imaginea propriu-zisă */
+.image-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* NU se deformează */
+  object-position: center;     /* CENTRAT */
+  display: block;
+}
+
+/* text descriere */
+.image-card-caption {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
   </style>
 </head>
 
@@ -380,28 +419,53 @@
       </div>
     </section>
 
-<!-- IMAGINI -->
+<!-- IMAGINI – CARDURI -->
 <section class="section">
   <div class="section-title">Reprezentări istorice</div>
   <div class="divider"></div>
 
   <div class="grid-3">
-    <figure>
-      <img src="/ordinul-dragonului.PNG" alt="Stemă - Ordinul Dragonului">
-      <figcaption>Ordinul dragonului - Societate cavalerească antiotomană</figcaption>
-    </figure>
-    <figure>
-      <img src="/images/vlad/cetatea-poenari.jpg" alt="Cetatea Poenari">
-      <figcaption>Cetatea Poenari – reședință strategică</figcaption>
-    </figure>
-    <figure>
-      <img src="/images/vlad/targoviste.jpg" alt="Curtea domnească Târgoviște">
-      <figcaption>Târgoviște – capitala domnească</figcaption>
-    </figure>
-    <figure>
-      <img src="/images/vlad/impalare-gravura.jpg" alt="Gravură medievală">
-      <figcaption>Gravură medievală – justiție exemplară</figcaption>
-    </figure>
+
+    <div class="image-card">
+      <div class="image-card-img">
+        <img src="/ordinul-dragonului.PNG"
+             alt="Stema Ordinului Dragonului">
+      </div>
+      <div class="image-card-caption">
+        Ordinul Dragonului – societate cavalerească antiotomană, simbol al disciplinei și jurământului.
+      </div>
+    </div>
+
+    <div class="image-card">
+      <div class="image-card-img">
+        <img src="/images/vlad/cetatea-poenari.jpg"
+             alt="Cetatea Poenari">
+      </div>
+      <div class="image-card-caption">
+        Cetatea Poenari – reședință strategică a lui Vlad Țepeș, amplasată defensiv în Munții Făgăraș.
+      </div>
+    </div>
+
+    <div class="image-card">
+      <div class="image-card-img">
+        <img src="/images/vlad/targoviste.jpg"
+             alt="Curtea domnească Târgoviște">
+      </div>
+      <div class="image-card-caption">
+        Târgoviște – capitala domnească a Țării Românești în secolul al XV-lea.
+      </div>
+    </div>
+
+    <div class="image-card">
+      <div class="image-card-img">
+        <img src="/images/vlad/impalare-gravura.jpg"
+             alt="Gravură medievală – Vlad Țepeș">
+      </div>
+      <div class="image-card-caption">
+        Gravură medievală occidentală – reprezentare simbolică a justiției exemplare.
+      </div>
+    </div>
+
   </div>
 </section>
 
