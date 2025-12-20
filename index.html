@@ -160,15 +160,21 @@ body {
   max-width: 100%;
   overflow-x: hidden;
 }
-
-   :root{ --header-h: 72px; }      /* fallback */
    
-body {
+:root{
+  --bg-main: #020617;
+  --fg-main: #e5e7eb;
+  --fg-muted: #9ca3af;
+  --accent: #8ea0ff;
+  --header-h: 72px; /* fallback */
+}
+
+body{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
   color: var(--fg-main);
   line-height: 1.5;
-  body{ padding-top: var(--header-h); }
+  padding-top: var(--header-h);
 }
 
 /* ===== LINK „SARI LA CONȚINUT” ===== */
@@ -1617,29 +1623,27 @@ footer {
     justify-self: center;    /* redundanță utilă */
   }
 }
-   
-  <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s" />
-  
-  <script>
-(function(){
-  const header = document.querySelector('header');
-  if(!header) return;
+</style>
 
+<meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
+
+<script>
+(function(){
   function setHeaderH(){
+    const header = document.querySelector('header');
+    if(!header) return;
     document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
   }
 
-  setHeaderH();
-  window.addEventListener('resize', setHeaderH);
-
-  // dacă ai meniuri care se „rearanjează” după încărcarea fonturilor
+  // rulează după ce există <header> în DOM
   window.addEventListener('load', setHeaderH);
+  window.addEventListener('resize', setHeaderH);
 })();
 </script>
-</style>
+
 </head>
-  
-  <body>
+<body>
+
   
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
   <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
@@ -1787,7 +1791,7 @@ footer {
     <div class="spec-header-text">
       <h3 class="spec-title">Voievodul Vlad Țepeș • Comte des Carpates</h3>
       <p class="spec-tagline">Chipul istoric al colecției.</p>
-      <a href="/main/vlad-tepes.html" class="spec-download">
+      <a href="/vlad-tepes.html" class="spec-download">
         Deschide pagina (HTML)
       </a>
     </div>
@@ -2828,31 +2832,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   imgBox.addEventListener('click', () => show(current + 1));
 })();
 
-// BUTOANE „DETALII”
-document.addEventListener('DOMContentLoaded', function () {
-  const buttons = document.querySelectorAll('.btn-detalii-elegant');
-  const wrapper = document.getElementById('detalii-tehnice');
-  const cards = document.querySelectorAll('.detalii-card');
-  const closeBtn = document.querySelector('.detalii-close-btn');
-
-  function showCard(id) {
-    if (!wrapper) return;
-    wrapper.classList.add('active');
-    cards.forEach(card => card.classList.remove('active'));
-    const card = document.getElementById(id);
-    if (card) {
-      card.classList.add('active');
-      wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  function hideAll() {
-    if (!wrapper) return;
-    wrapper.classList.remove('active');
-    cards.forEach(card => card.classList.remove('active'));
-  }
-
-  <script>
+ // BUTOANE „DETALII”
 document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
   const wrapper = document.getElementById('detalii-tehnice');
@@ -2885,7 +2865,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if(closeBtn) closeBtn.addEventListener('click', hideAll);
 });
-</script>
 
 // HEADER scroll hide/show
 (function () {
