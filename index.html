@@ -166,7 +166,8 @@ body {
   background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
   color: var(--fg-main);
   line-height: 1.5;
-  padding-top: 64px; /* compensare header fix */
+  :root{ --header-h: 72px; }      /* fallback */
+  body{ padding-top: var(--header-h); }
 }
 
 /* ===== LINK „SARI LA CONȚINUT” ===== */
@@ -1621,6 +1622,23 @@ footer {
   
   <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s" />
   
+  <script>
+(function(){
+  const header = document.querySelector('header');
+  if(!header) return;
+
+  function setHeaderH(){
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  }
+
+  setHeaderH();
+  window.addEventListener('resize', setHeaderH);
+
+  // dacă ai meniuri care se „rearanjează” după încărcarea fonturilor
+  window.addEventListener('load', setHeaderH);
+})();
+</script>
+
  <body>
   
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
