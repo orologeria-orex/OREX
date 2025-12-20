@@ -1756,7 +1756,7 @@ footer {
           Vlad Țepes (Drăculea) s-a născut în Transilvania și a fost Domnitor al Valahiei.
         </div>
       </div>
-     <a href="#" class="btn-detalii-elegant" data-target="Despre Vlad Țepeș">
+     <a href="/main/vlad-tepes.html" class="btn-detalii-elegant">
   <span>Detalii</span>
 </a>
     </article>
@@ -2794,7 +2794,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 // BUTOANE „DETALII”
 document.addEventListener('DOMContentLoaded', function () {
-  const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
+  const buttons = document.querySelectorAll('.btn-detalii-elegant');
   const wrapper = document.getElementById('detalii-tehnice');
   const cards = document.querySelectorAll('.detalii-card');
   const closeBtn = document.querySelector('.detalii-close-btn');
