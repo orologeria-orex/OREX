@@ -196,42 +196,45 @@
     .footer-inner{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between}
 
     /* === CARD IMAGINI ISTORICE === */
-.image-card {
-  background: radial-gradient(circle at top, #111827 0%, #020617 60%);
-  border: 1px solid rgba(148,163,184,0.55);
+/* card ca în galerie */
+.image-card{
+  background: #020617;
   border-radius: 1rem;
-  padding: 0.75rem;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.8);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* container fix pentru imagine */
-.image-card-img {
-  width: 100%;
-  height: 200px;               /* control ferm al înălțimii */
   overflow: hidden;
-  border-radius: 0.75rem;
-  margin-bottom: 0.6rem;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.85);
+  border: 1px solid rgba(148,163,184,0.55);
 }
 
-/* imaginea propriu-zisă */
-.image-card-img img {
+/* imagine ca .gal-img */
+.image-card img{
   width: 100%;
-  height: 100%;
-  object-fit: cover;           /* NU se deformează */
-  object-position: center;     /* CENTRAT */
+  height: 180px;          /* exact ca galeria */
   display: block;
+  object-position: center;
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-/* text descriere */
-.image-card-caption {
-  font-size: 0.85rem;
-  color: #cbd5e1;
-  line-height: 1.6;
+/* hover ca la galerie */
+.image-card:hover img{
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.05);
 }
+
+/* caption ca la galerie */
+.image-card-caption{
+  padding: 0.85rem 1rem 1rem;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.center-title{
+  text-align:center !important;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+}
+    
 @media (min-width: 1000px) {
   .image-card-img {
     height: 220px;
@@ -426,50 +429,38 @@
 
 <!-- IMAGINI – CARDURI -->
 <section class="section">
-  <div class="section-title">Reprezentări istorice</div>
+  <h2 class="section-title center-title">Reprezentări istorice</h2>
   <div class="divider"></div>
 
   <div class="grid-3">
 
-    <div class="image-card">
-      <div class="image-card-img">
-        <img src="/ordinul-dragonului.PNG"
-             alt="Stema Ordinului Dragonului">
-      </div>
-      <div class="image-card-caption">
-        Ordinul Dragonului – societate cavalerească antiotomană, simbol al disciplinei și jurământului.
-      </div>
-    </div>
+    <figure class="image-card">
+      <img src="/ordinul-dragonului.PNG" alt="Stemă - Ordinul Dragonului" style="object-fit:cover;">
+      <figcaption class="image-card-caption">
+        Ordinul Dragonului – societate cavalerească antiotomană.
+      </figcaption>
+    </figure>
 
-    <div class="image-card">
-      <div class="image-card-img">
-        <img src="/images/vlad/cetatea-poenari.jpg"
-             alt="Cetatea Poenari">
-      </div>
-      <div class="image-card-caption">
-        Cetatea Poenari – reședință strategică a lui Vlad Țepeș, amplasată defensiv în Munții Făgăraș.
-      </div>
-    </div>
+    <figure class="image-card">
+      <img src="/images/vlad/cetatea-poenari.jpg" alt="Cetatea Poenari" style="object-fit:cover;">
+      <figcaption class="image-card-caption">
+        Cetatea Poenari – reședință strategică.
+      </figcaption>
+    </figure>
 
-    <div class="image-card">
-      <div class="image-card-img">
-        <img src="/images/vlad/targoviste.jpg"
-             alt="Curtea domnească Târgoviște">
-      </div>
-      <div class="image-card-caption">
-        Târgoviște – capitala domnească a Țării Românești în secolul al XV-lea.
-      </div>
-    </div>
+    <figure class="image-card">
+      <img src="/images/vlad/targoviste.jpg" alt="Curtea domnească Târgoviște" style="object-fit:cover;">
+      <figcaption class="image-card-caption">
+        Târgoviște – capitala domnească.
+      </figcaption>
+    </figure>
 
-    <div class="image-card">
-      <div class="image-card-img">
-        <img src="/images/vlad/impalare-gravura.jpg"
-             alt="Gravură medievală – Vlad Țepeș">
-      </div>
-      <div class="image-card-caption">
-        Gravură medievală occidentală – reprezentare simbolică a justiției exemplare.
-      </div>
-    </div>
+    <figure class="image-card">
+      <img src="/images/vlad/impalare-gravura.jpg" alt="Gravură medievală" class="fit-contain">
+      <figcaption class="image-card-caption">
+        Gravură medievală – reprezentare simbolică.
+      </figcaption>
+    </figure>
 
   </div>
 </section>
