@@ -1598,16 +1598,16 @@ footer {
   margin: auto;
   display: block;
 }
-   
-/* Vlad portrait – forțat ca în Galerie/Colectii */
-.card-premium .vlad-portrait{
-  width: 100% !important;
-  height: 180px !important;          /* ca la galerie */
+
+   /* Vlad portrait – identic cu imaginile standard din carduri */
+#chipul-colectiei .card-premium img.vlad-portrait{
+  height: 150px !important;      /* ca celelalte (max-height 150px) */
+  max-height: 150px !important;
   object-fit: cover !important;
-  object-position: center !important; /* centrat pe mijloc */
+  object-position: center !important;
+  width: 100% !important;
   display: block !important;
-  margin: 0 auto !important;
-  border-radius: 0.75rem !important;
+  border-radius: 0.7rem !important;
 }
    
 /* === FIX: centrează cardurile în #colectii pe desktop === */
