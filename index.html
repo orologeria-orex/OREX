@@ -145,22 +145,7 @@
   <link rel="stylesheet" href="/assets/css/core.css">
 
     <!-- STILURI -->
- <style>
-
-   /* ===== VARIABILE & RESETRI ===== */
-:root {
-  --bg-main: #020617;
-  --fg-main: #e5e7eb;
-  --fg-muted: #9ca3af;
-  --accent: #8ea0ff;
-}
-   
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-   
+<style>
 :root{
   --bg-main: #020617;
   --fg-main: #e5e7eb;
@@ -169,13 +154,16 @@ body {
   --er-h: 72px; /* fallback */
 }
 
+/* override de temă + offset pentru bara <er> */
 body{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
   color: var(--fg-main);
-  line-height: 1.5;
   padding-top: var(--er-h);
+  overflow-x: hidden;
 }
+
+/* opțional: text mai deschis pe fundal dark */
+p{ color: #cbd5e1; }
 
 /* ===== LINK „SARI LA CONȚINUT” ===== */
 .skip-link {
