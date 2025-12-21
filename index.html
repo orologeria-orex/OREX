@@ -154,17 +154,20 @@
   --er-h: 72px; /* fallback */
 }
 
-/* override de temă + offset pentru bara <er> */
+/* doar override de temă + offset pentru bara <er> */
 body{
   background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
   color: var(--fg-main);
   padding-top: var(--er-h);
-  overflow-x: hidden;
 }
 
-/* opțional: text mai deschis pe fundal dark */
+/* text pe dark (opțional) */
 p{ color: #cbd5e1; }
 
+/* dacă chiar ai overflow pe orizontală din ceva element */
+body{ overflow-x: hidden; }
+</style>
+  
 /* ===== LINK „SARI LA CONȚINUT” ===== */
 .skip-link {
   position: absolute;
