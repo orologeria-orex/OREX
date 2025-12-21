@@ -1,1 +1,148 @@
+/* ===========================
+   OREX CORE CSS (global)
+   =========================== */
+
+:root{
+  --container: 1120px;
+  --pad-x: clamp(16px, 4vw, 28px);
+
+  --fs-base: clamp(16px, 1.1vw, 18px);
+  --fs-small: clamp(13px, 0.95vw, 15px);
+  --fs-h1: clamp(30px, 4.2vw, 46px);
+  --fs-h2: clamp(22px, 2.6vw, 34px);
+  --fs-h3: clamp(18px, 2.0vw, 24px);
+
+  --lh: 1.65;
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(0,0,0,.10);
+
+  --text: #111;
+  --muted: rgba(0,0,0,.68);
+  --line: rgba(0,0,0,.12);
+
+  --btn-bg: rgba(0,0,0,.04);
+  --btn-bg-hover: rgba(0,0,0,.07);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body{
+  margin: 0;
+  font-size: var(--fs-base);
+  line-height: var(--lh);
+  color: var(--text);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+img, video{ max-width: 100%; height: auto; display: block; }
+a{ color: inherit; text-decoration: none; }
+
+h1,h2,h3{ margin: 0 0 .75rem; line-height: 1.15; }
+h1{ font-size: var(--fs-h1); }
+h2{ font-size: var(--fs-h2); }
+h3{ font-size: var(--fs-h3); }
+p{ margin: 0 0 1rem; color: var(--muted); }
+small{ font-size: var(--fs-small); color: var(--muted); }
+
+.container{
+  width: min(var(--container), calc(100% - (2 * var(--pad-x))));
+  margin-inline: auto;
+}
+
+section{ padding: clamp(48px, 8vw, 96px) 0; }
+
+.section-title{ text-align: center; letter-spacing: .2px; }
+.divider{
+  width: min(90px, 30vw);
+  height: 3px;
+  background: var(--line);
+  margin: 14px auto 22px;
+  border-radius: 999px;
+}
+.lead{
+  max-width: 75ch;
+  margin: 0 auto 22px;
+  text-align: center;
+}
+
+/* Navbar */
+header, .site-header{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav{
+  width: min(var(--container), calc(100% - (2 * var(--pad-x))));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 12px 0;
+}
+nav a{
+  font-size: var(--fs-small);
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+nav a:hover{ border-color: var(--line); }
+
+/* Buttons/links that should look like buttons */
+.btn, button,
+a[href$=".pdf"], a[href*="Descarcă"], a[href*="Download"]{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--btn-bg);
+  font-size: var(--fs-small);
+  line-height: 1;
+}
+.btn:hover, button:hover,
+a[href$=".pdf"]:hover, a[href*="Descarcă"]:hover, a[href*="Download"]:hover{
+  background: var(--btn-bg-hover);
+}
+
+/* Grids */
+.grid, .gal-grid, .collection-grid{
+  display: grid;
+  gap: clamp(14px, 2vw, 22px);
+  width: min(var(--container), calc(100% - (2 * var(--pad-x))));
+  margin-inline: auto;
+}
+@media (min-width: 980px){
+  .grid-3, .collection-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 979px){
+  .grid-3, .collection-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 640px){
+  .grid-3, .collection-grid, .gal-grid{ grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.card, .collection-card, .gal-card, .watch-card{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+/* Prevent "desktop huge image" */
+figure, .figure, .hero-media, .section-media{
+  width: min(860px, 100%);
+  margin-inline: auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
 
