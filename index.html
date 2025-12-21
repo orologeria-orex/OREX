@@ -137,14 +137,17 @@
           base-uri 'self';
         ">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
 <!-- 🔹 CSS GLOBAL (OBLIGATORIU, COMUN) -->
   <link rel="stylesheet" href="/assets/css/core.css">
 
     <!-- STILURI -->
  <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
-/* ===== VARIABILE & RESETRI ===== */
+   /* ===== VARIABILE & RESETRI ===== */
 :root {
   --bg-main: #020617;
   --fg-main: #e5e7eb;
@@ -169,7 +172,7 @@ body {
   --fg-main: #e5e7eb;
   --fg-muted: #9ca3af;
   --accent: #8ea0ff;
-  --header-h: 72px; /* fallback */
+  --er-h: 72px; /* fallback */
 }
 
 body{
@@ -177,7 +180,7 @@ body{
   background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
   color: var(--fg-main);
   line-height: 1.5;
-  padding-top: var(--header-h);
+  padding-top: var(--er-h);
 }
 
 /* ===== LINK „SARI LA CONȚINUT” ===== */
@@ -199,8 +202,8 @@ body{
   top: 1rem;
 }
 
-/* ===== HEADER + NAV + LIMBI ===== */
-header {
+/* ===== ER + NAV + LIMBI ===== */
+er {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 1000;
@@ -211,11 +214,11 @@ header {
   transition: transform 0.25s ease;
 }
 
-header.header-hidden {
+er.er-hidden {
   transform: translateY(-100%);
 }
 
-.header-inner {
+.er-inner {
   max-width: 1120px;
   margin: 0 auto;
   padding: 0.5rem 1.25rem;
@@ -319,7 +322,7 @@ nav a:hover::after {
 }
 
 @media (max-width: 720px) {
-  .header-inner {
+  .er-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
@@ -397,8 +400,8 @@ nav a:hover::after {
   border-radius: 2px;
 }
 
-/* container headline */
-.hero-headline {
+/* container line */
+.hero-line {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -724,8 +727,8 @@ nav a:hover::after {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
 }
 
-/* header fișă: poză + text */
-.spec-header {
+/* er fișă: poză + text */
+.spec-er {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.9rem;
@@ -741,7 +744,7 @@ nav a:hover::after {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
-.spec-header-text {
+.spec-er-text {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -860,7 +863,7 @@ nav a:hover::after {
 
 /* mobile tehnic */
 @media (max-width: 520px) {
-  .spec-header {
+  .spec-er {
     grid-template-columns: 1fr;
   }
 
@@ -1676,15 +1679,15 @@ footer {
 
 <script>
 (function(){
-  function setHeaderH(){
-    const header = document.querySelector('header');
-    if(!header) return;
-    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  function seterH(){
+    const er = document.querySelector('er');
+    if(!er) return;
+    document.documentElement.style.setProperty('--er-h', er.offsetHeight + 'px');
   }
 
-  // rulează după ce există <header> în DOM
-  window.addEventListener('load', setHeaderH);
-  window.addEventListener('resize', setHeaderH);
+  // rulează după ce există <er> în DOM
+  window.addEventListener('load', seterH);
+  window.addEventListener('resize', seterH);
 })();
 </script>
   
