@@ -1,5 +1,6 @@
 /* ===========================
-   OREX CORE CSS (global)
+   OREX CORE CSS (scoped)
+   Se aplică DOAR pe paginile care au: <body class="core">
    =========================== */
 
 :root{
@@ -24,9 +25,13 @@
   --btn-bg-hover: rgba(0,0,0,.07);
 }
 
+/* globale sigure */
 *, *::before, *::after{ box-sizing: border-box; }
 html{ -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-body{
+img, video{ max-width: 100%; height: auto; display: block; }
+
+/* ===== totul de mai jos se aplică DOAR pe paginile cu body.core ===== */
+body.core{
   margin: 0;
   font-size: var(--fs-base);
   line-height: var(--lh);
@@ -35,39 +40,40 @@ body{
   text-rendering: optimizeLegibility;
 }
 
-img, video{ max-width: 100%; height: auto; display: block; }
-a{ color: inherit; text-decoration: none; }
+body.core a{ color: inherit; text-decoration: none; }
 
-h1,h2,h3{ margin: 0 0 .75rem; line-height: 1.15; }
-h1{ font-size: var(--fs-h1); }
-h2{ font-size: var(--fs-h2); }
-h3{ font-size: var(--fs-h3); }
-p{ margin: 0 0 1rem; color: var(--muted); }
-small{ font-size: var(--fs-small); color: var(--muted); }
+body.core h1, body.core h2, body.core h3{ margin: 0 0 .75rem; line-height: 1.15; }
+body.core h1{ font-size: var(--fs-h1); }
+body.core h2{ font-size: var(--fs-h2); }
+body.core h3{ font-size: var(--fs-h3); }
 
-.container{
+body.core p{ margin: 0 0 1rem; color: var(--muted); }
+body.core small{ font-size: var(--fs-small); color: var(--muted); }
+
+body.core .container{
   width: min(var(--container), calc(100% - (2 * var(--pad-x))));
   margin-inline: auto;
 }
 
-section{ padding: clamp(48px, 8vw, 96px) 0; }
+body.core section{ padding: clamp(48px, 8vw, 96px) 0; }
 
-.section-title{ text-align: center; letter-spacing: .2px; }
-.divider{
+body.core .section-title{ text-align: center; letter-spacing: .2px; }
+body.core .divider{
   width: min(90px, 30vw);
   height: 3px;
   background: var(--line);
   margin: 14px auto 22px;
   border-radius: 999px;
 }
-.lead{
+body.core .lead{
   max-width: 75ch;
   margin: 0 auto 22px;
   text-align: center;
 }
 
 /* Navbar */
-header, .site-header{
+body.core header,
+body.core .site-header{
   position: sticky;
   top: 0;
   z-index: 999;
@@ -75,7 +81,7 @@ header, .site-header{
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
-nav{
+body.core nav{
   width: min(var(--container), calc(100% - (2 * var(--pad-x))));
   margin-inline: auto;
   display: flex;
@@ -85,17 +91,20 @@ nav{
   gap: 10px 14px;
   padding: 12px 0;
 }
-nav a{
+body.core nav a{
   font-size: var(--fs-small);
   padding: 10px 12px;
   border-radius: 999px;
   border: 1px solid transparent;
 }
-nav a:hover{ border-color: var(--line); }
+body.core nav a:hover{ border-color: var(--line); }
 
-/* Buttons/links that should look like buttons */
-.btn, button,
-a[href$=".pdf"], a[href*="Descarcă"], a[href*="Download"]{
+/* Buttons */
+body.core .btn,
+body.core button,
+body.core a[href$=".pdf"],
+body.core a[href*="Descarcă"],
+body.core a[href*="Download"]{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -107,30 +116,33 @@ a[href$=".pdf"], a[href*="Descarcă"], a[href*="Download"]{
   font-size: var(--fs-small);
   line-height: 1;
 }
-.btn:hover, button:hover,
-a[href$=".pdf"]:hover, a[href*="Descarcă"]:hover, a[href*="Download"]:hover{
+body.core .btn:hover,
+body.core button:hover,
+body.core a[href$=".pdf"]:hover,
+body.core a[href*="Descarcă"]:hover,
+body.core a[href*="Download"]:hover{
   background: var(--btn-bg-hover);
 }
 
 /* Grids */
-.grid, .gal-grid, .collection-grid{
+body.core .grid, body.core .gal-grid, body.core .collection-grid{
   display: grid;
   gap: clamp(14px, 2vw, 22px);
   width: min(var(--container), calc(100% - (2 * var(--pad-x))));
   margin-inline: auto;
 }
 @media (min-width: 980px){
-  .grid-3, .collection-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+  body.core .grid-3, body.core .collection-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
 }
 @media (max-width: 979px){
-  .grid-3, .collection-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  body.core .grid-3, body.core .collection-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 @media (max-width: 640px){
-  .grid-3, .collection-grid, .gal-grid{ grid-template-columns: 1fr; }
+  body.core .grid-3, body.core .collection-grid, body.core .gal-grid{ grid-template-columns: 1fr; }
 }
 
 /* Cards */
-.card, .collection-card, .gal-card, .watch-card{
+body.core .card, body.core .collection-card, body.core .gal-card, body.core .watch-card{
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
@@ -138,11 +150,10 @@ a[href$=".pdf"]:hover, a[href*="Descarcă"]:hover, a[href*="Download"]:hover{
   background: #fff;
 }
 
-/* Prevent "desktop huge image" */
-figure, .figure, .hero-media, .section-media{
+/* Media */
+body.core figure, body.core .figure, body.core .hero-media, body.core .section-media{
   width: min(860px, 100%);
   margin-inline: auto;
   border-radius: var(--radius);
   overflow: hidden;
 }
-
