@@ -1624,16 +1624,23 @@ footer {
     justify-self: center;    /* redundanță utilă */
   }
 
- /* === FORCE Vlad portrait (RO) – ultimul CSS din <style> === */
+ /* === FIX DEFINITIV: Vlad card size (RO) === */
+#chipul-colectiei .card-premium{
+  max-width: 360px !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: unset !important;
+  aspect-ratio: unset !important;
+  align-self: start !important;
+}
 #chipul-colectiei .card-premium > img.vlad-portrait{
   height: 150px !important;
   max-height: 150px !important;
   width: 100% !important;
   object-fit: cover !important;
   object-position: center !important;
-  display: block !important;
-  border-radius: 0.7rem !important;
-  } 
+}
+
 </style>
 
 <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
