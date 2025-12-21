@@ -1,1 +1,2 @@
 Checkpoint stable
+STABLE – site funcțional RO/EN, core.css scoped, all pages OK
