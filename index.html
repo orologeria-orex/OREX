@@ -1640,6 +1640,19 @@ footer {
   object-fit: cover !important;
   object-position: center !important;
 }
+/* === CENTRARE: Chipul colecției (RO) === */
+#chipul-colectiei .collections-grid{
+  display: grid !important;
+  grid-template-columns: minmax(0, 360px) !important; /* o singură coloană, fix în centru */
+  justify-content: center !important;                /* centrează coloana în pagină */
+  justify-items: center !important;                  /* centrează cardul în coloană */
+}
+
+/* Cardul să nu se lipească de stânga */
+#chipul-colectiei .card-premium{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 </style>
 
@@ -1661,7 +1674,6 @@ footer {
 
 </head>
 <body>
-
   
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
   <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
