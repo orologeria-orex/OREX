@@ -136,35 +136,47 @@
           object-src 'none';
           base-uri 'self';
         ">
+  
+  <!-- STILURI -->
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+/* ===== VARIABILE & RESETRI ===== */
+:root {
+  --bg-main: #020617;
+  --fg-main: #e5e7eb;
+  --fg-muted: #9ca3af;
+  --accent: #8ea0ff;
+}
 
-<!-- 🔹 CSS GLOBAL (OBLIGATORIU, COMUN) -->
-  <!-- <link rel="stylesheet" href="/assets/css/core.css"> -->
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    <!-- STILURI -->
-<style>
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+   
 :root{
   --bg-main: #020617;
   --fg-main: #e5e7eb;
   --fg-muted: #9ca3af;
   --accent: #8ea0ff;
-  --er-h: 72px; /* fallback */
+  --header-h: 72px; /* fallback */
 }
 
-/* override de temă + offset pentru bara <er> */
 body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
   color: var(--fg-main);
-  padding-top: var(--er-h);
-  overflow-x: hidden;
+  line-height: 1.5;
+  padding-top: var(--header-h);
 }
 
-/* opțional: text mai deschis pe fundal dark */
-p{ color: #cbd5e1; }
-  
 /* ===== LINK „SARI LA CONȚINUT” ===== */
 .skip-link {
   position: absolute;
@@ -184,8 +196,8 @@ p{ color: #cbd5e1; }
   top: 1rem;
 }
 
-/* ===== ER + NAV + LIMBI ===== */
-er {
+/* ===== HEADER + NAV + LIMBI ===== */
+header {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 1000;
@@ -196,11 +208,11 @@ er {
   transition: transform 0.25s ease;
 }
 
-er.er-hidden {
+header.header-hidden {
   transform: translateY(-100%);
 }
 
-.er-inner {
+.header-inner {
   max-width: 1120px;
   margin: 0 auto;
   padding: 0.5rem 1.25rem;
@@ -304,7 +316,7 @@ nav a:hover::after {
 }
 
 @media (max-width: 720px) {
-  .er-inner {
+  .header-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
@@ -382,8 +394,8 @@ nav a:hover::after {
   border-radius: 2px;
 }
 
-/* container line */
-.hero-line {
+/* container headline */
+.hero-headline {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -709,8 +721,8 @@ nav a:hover::after {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
 }
 
-/* er fișă: poză + text */
-.spec-er {
+/* header fișă: poză + text */
+.spec-header {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.9rem;
@@ -726,7 +738,7 @@ nav a:hover::after {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
-.spec-er-text {
+.spec-header-text {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -845,7 +857,7 @@ nav a:hover::after {
 
 /* mobile tehnic */
 @media (max-width: 520px) {
-  .spec-er {
+  .spec-header {
     grid-template-columns: 1fr;
   }
 
@@ -1611,7 +1623,7 @@ footer {
     width: 100%;
     justify-self: center;    /* redundanță utilă */
   }
-}
+
  /* === FIX DEFINITIV: Vlad card size (RO) === */
 #chipul-colectiei .card-premium{
   max-width: 360px !important;
@@ -1655,127 +1667,24 @@ footer {
   max-width: 640px;
 }
 
-/* siguranță layout pentru <er> */
-er *{ box-sizing: border-box; }
-er{ padding: 0; }
-
-/* =========================
-   RO HEADER: centrare + container stabil
-   ========================= */
-
-er{
-  display: block;
-  width: 100%;
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 1000;
-}
-
-er .er-inner,
-er .topbar,
-er > .er-inner,
-er > .topbar,
-er > div{
-  width: min(1120px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 0.6rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-er nav{
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-}
-
-er .lang-switch{
-  margin-left: auto;
-  display: flex;
-  gap: 0.45rem;
-}
-
-@media (max-width: 720px){
-  er .er-inner,
-  er .topbar,
-  er > div{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  er nav{
-    width: 100%;
-  }
-
-  er .lang-switch{
-    width: 100%;
-    justify-content: flex-end;
-  }
-}
 </style>
 
-<style id="orex-header-emergency">
-/* EMERGENCY: nu atinge restul CSS-ului */
-er{ display:block !important; width:100% !important; padding:0 !important; margin:0 !important; }
-er{ position:fixed !important; inset:0 0 auto 0 !important; z-index:9999 !important; }
-
-er .er-inner,
-er > div{
-  width:min(1120px, calc(100% - 40px)) !important;
-  margin:0 auto !important;
-  padding:12px 20px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  gap:16px !important;
-}
-
-er nav{
-  flex:1 1 auto !important;
-  display:flex !important;
-  flex-wrap:wrap !important;
-  gap:16px !important;
-  margin:0 !important;
-  padding:0 !important;
-}
-
-er .lang-switch{
-  margin-left:auto !important;
-  display:flex !important;
-  gap:8px !important;
-  justify-content:flex-end !important;
-}
-
-@media (max-width:720px){
-  er .er-inner, er > div{
-    flex-direction:column !important;
-    align-items:flex-start !important;
-  }
-  er nav{ width:100% !important; }
-  er .lang-switch{ width:100% !important; }
-}
-</style>
-  
 <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
 
 <script>
 (function(){
-  function seterH(){
-    const er = document.querySelector('er');
-    if(!er) return;
-    document.documentElement.style.setProperty('--er-h', er.offsetHeight + 'px');
+  function setHeaderH(){
+    const header = document.querySelector('header');
+    if(!header) return;
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
   }
 
-  // rulează după ce există <er> în DOM
-  window.addEventListener('load', seterH);
-  window.addEventListener('resize', seterH);
+  // rulează după ce există <header> în DOM
+  window.addEventListener('load', setHeaderH);
+  window.addEventListener('resize', setHeaderH);
 })();
 </script>
-  
+
 </head>
 <body>
   
