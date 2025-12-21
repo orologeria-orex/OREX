@@ -1655,6 +1655,80 @@ footer {
   max-width: 640px;
 }
 
+/* =========================
+   RO HEADER: centrare + container stabil
+   (pune ULTIMUL în <style>)
+   ========================= */
+
+/* element custom -> comportament predictibil */
+er{
+  display: block;
+  width: 100%;
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+}
+
+/* container: prinde aproape orice structură */
+er .er-inner,
+er .topbar,
+er > .er-inner,
+er > .topbar,
+er > div{
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* logo bloc: nu se micșorează urât */
+er .logo-wrap{ flex: 0 0 auto; }
+
+/* nav: ocupă spațiul “elastic” */
+er nav{
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* switch limbă: întotdeauna la dreapta */
+er .lang-switch{
+  flex: 0 0 auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  justify-content: flex-end;
+}
+
+/* mobil: aranjare pe două rânduri, dar “curat” */
+@media (max-width: 720px){
+  er .er-inner,
+  er .topbar,
+  er > div{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  er nav{
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.9rem;
+  }
+
+  er .lang-switch{
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
 </style>
 
 <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
