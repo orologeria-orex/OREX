@@ -41,6 +41,35 @@
       gap:1rem;
       margin-bottom: 1.2rem;
     }
+
+.lang-switch-mini{
+      display:flex;
+      gap:0.5rem;
+    }
+
+    .lang-mini{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0.35rem 0.65rem;
+      border:1px solid rgba(148,163,184,0.6);
+      border-radius:999px;
+      text-decoration:none;
+      font-size:0.78rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:#e5e7eb;
+      opacity:0.7;
+    }
+
+    .lang-mini:hover{ opacity:1; }
+
+    .lang-mini.active{
+      opacity:1;
+      border-color: rgba(191,219,254,0.95);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    }
+    
     .back{
       display:inline-flex;
       align-items:center;
@@ -122,10 +151,11 @@
       margin-top: .8rem;
     }
 
-    @media (max-width: 640px){
-      .chapter{ flex-direction:column; }
-      .year{ min-width: unset; }
-      .card{ padding: 1.15rem 1.1rem; }
+    @media (max-width:520px){
+      .topbar{
+        flex-direction:column;
+        align-items:center;
+      }
     }
   </style>
 </head>
@@ -133,9 +163,16 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <a class="back" href="/#istoria-orex">← Înapoi la site</a>
-      <a class="back" href="/en/orex-history.html">EN</a>
-    </div>
+  <a class="back" href="/#istoria-orex">← Înapoi la site</a>
+
+  <div class="lang-switch-mini" aria-label="Language switch">
+    <a href="/istoria-orex.html"
+       class="lang-mini active"
+       aria-current="page">RO</a>
+    <a href="/en/orex-history.html"
+       class="lang-mini">EN</a>
+  </div>
+</div>
 
     <h1 class="title">Istoria OREX®</h1>
     <div class="divider"></div>
