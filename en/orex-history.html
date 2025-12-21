@@ -8,56 +8,169 @@
   <meta name="description" content="OREX® history – timeline, production context, movements, collectors, and the modern revival." />
   <link rel="canonical" href="https://orexwatch.ro/en/orex-history.html" />
   <meta name="theme-color" content="#020617" />
+
   <style>
-    /* same CSS as RO (copy from istoria-orex.html) */
+    :root{
+      --bg:#020617;
+      --fg:#e5e7eb;
+      --muted:#9ca3af;
+      --card:#0b1220;
+      --border: rgba(148,163,184,.45);
+      --accent:#8ea0ff;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
+      color: var(--fg);
+      line-height: 1.65;
+      padding: 2.4rem 1.2rem 3rem;
+    }
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+    }
     .topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  margin-bottom:1.25rem;
-}
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      margin-bottom: 1.2rem;
+    }
 
-.lang-switch-mini{
-  display:flex;
-  gap:0.5rem;
-}
+    .lang-switch-mini{
+      display:flex;
+      gap:0.5rem;
+    }
 
-.lang-mini{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:0.35rem 0.65rem;
-  border:1px solid rgba(148,163,184,0.6);
-  border-radius:999px;
-  text-decoration:none;
-  font-size:0.78rem;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:#e5e7eb;
-  opacity:0.7;
-}
+    .lang-mini{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0.35rem 0.65rem;
+      border:1px solid rgba(148,163,184,0.6);
+      border-radius:999px;
+      text-decoration:none;
+      font-size:0.78rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:#e5e7eb;
+      opacity:0.7;
+    }
+    .lang-mini:hover{ opacity:1; }
+    .lang-mini.active{
+      opacity:1;
+      border-color: rgba(191,219,254,0.95);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    }
 
-.lang-mini:hover{ opacity:1; }
+    .back{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.55rem 1rem;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--fg);
+      opacity: .92;
+    }
+    .back:hover{ background: rgba(255,255,255,.08); opacity: 1; text-decoration:none; }
 
-.lang-mini.active{
-  opacity:1;
-  border-color: rgba(191,219,254,0.95);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
-}
+    .title{
+      text-align:center;
+      margin: 1.2rem 0 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-weight: 650;
+      font-size: clamp(1.2rem, 1vw + 1.1rem, 1.8rem);
+    }
+    .subtitle{
+      text-align:center;
+      color: var(--muted);
+      max-width: 820px;
+      margin: 0 auto 1.6rem;
+      font-size: .95rem;
+    }
+    .divider{
+      width: 90px;
+      height: 2px;
+      margin: 0.8rem auto 1.6rem;
+      background: linear-gradient(90deg, #4b5563, #9ca3af, #4b5563);
+      border-radius: 2px;
+    }
+
+    .card{
+      background: radial-gradient(circle at top, #111827 0%, #020617 65%);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.4rem 1.4rem;
+      box-shadow: 0 16px 45px rgba(0,0,0,.65);
+      margin-bottom: 1.2rem;
+    }
+
+    .chapter{
+      display:flex;
+      gap: .9rem;
+      align-items:flex-start;
+    }
+    .year{
+      min-width: 110px;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: #bfdbfe;
+      padding-top: .1rem;
+    }
+    .h3{
+      font-size: 1.05rem;
+      margin-bottom: .35rem;
+      color: #f9fafb;
+      font-weight: 650;
+    }
+    .p{
+      color: #cbd5e1;
+      font-size: .94rem;
+      margin-bottom: .55rem;
+    }
+    .list{
+      margin: .4rem 0 0;
+      padding-left: 1.2rem;
+      color: #cbd5e1;
+      font-size: .93rem;
+    }
+    .list li{ margin-bottom: .45rem; }
+
+    .note{
+      color: var(--muted);
+      font-size: .88rem;
+      margin-top: .8rem;
+      text-align:center;
+    }
+
+    @media (max-width:520px){
+      .topbar{
+        flex-direction:column;
+        align-items:center;
+      }
+      .year{ min-width: 86px; }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="topbar">
-  <a class="back" href="/en/#orex-history">← Back to website</a>
+      <a class="back" href="/en/#orex-history">← Back to website</a>
 
-  <div class="lang-switch-mini" aria-label="Language switch">
-    <a href="/istoria-orex.html" class="lang-mini">RO</a>
-    <a href="/en/orex-history.html" class="lang-mini active" aria-current="page">EN</a>
-  </div>
-</div>
+      <div class="lang-switch-mini" aria-label="Language switch">
+        <a href="/istoria-orex.html" class="lang-mini">RO</a>
+        <a href="/en/orex-history.html" class="lang-mini active" aria-current="page">EN</a>
+      </div>
+    </div>
 
     <h1 class="title">OREX® History</h1>
     <div class="divider"></div>
@@ -66,13 +179,78 @@
       collectors’ rediscovery, and the contemporary revival.
     </p>
 
-    <!-- chapters (translate the RO chapters 1:1) -->
+    <!-- CHAPTER 1 -->
+    <section class="card">
+      <div class="chapter">
+        <div class="year">1985</div>
+        <div>
+          <div class="h3">The roots of a Romanian watch brand</div>
+          <p class="p">
+            (Translate your RO text here. Keep paragraphs short for readability.)
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <p class="note" style="text-align:center;">
+    <!-- CHAPTER 2 -->
+    <section class="card">
+      <div class="chapter">
+        <div class="year">1988–1990</div>
+        <div>
+          <div class="h3">OREX in everyday Romanian life</div>
+          <p class="p">
+            (Translate your RO text here.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3 -->
+    <section class="card">
+      <div class="chapter">
+        <div class="year">After 1990</div>
+        <div>
+          <div class="h3">Transition and gradual disappearance</div>
+          <p class="p">
+            (Translate your RO text here.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4 -->
+    <section class="card">
+      <div class="chapter">
+        <div class="year">2000–2020</div>
+        <div>
+          <div class="h3">Collectors’ rediscovery</div>
+          <p class="p">
+            (Translate your RO text here.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5 -->
+    <section class="card">
+      <div class="chapter">
+        <div class="year">Today</div>
+        <div>
+          <div class="h3">OREX Revival • Premium Deluxe range</div>
+          <p class="p">
+            (Translate your RO text here.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <p class="note">
       © <span id="y"></span> Orex® — historical overview page.
     </p>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
