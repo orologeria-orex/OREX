@@ -1633,23 +1633,16 @@ body{ padding-top: var(--header-h); }
   padding-top: calc(var(--header-h) + 2rem);
   min-height: calc(100vh - var(--header-h));
 }
-
-/* pe mobil, antetul e mai înalt (nav pe 2 rânduri) */
-@media (max-width: 720px){
-  :root{ --er-h: 88px; } /* doar fallback */
-}
- <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s" />
 </style>
 
+  <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s" />
+  
 <script>
 (function(){
   function setHeaderH(){
     const header = document.querySelector('header');
     if(!header) return;
-    document.documentElement.style.setProperty(
-      '--er-h',
-      header.offsetHeight + 'px'
-    );
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
   }
 
   window.addEventListener('load', () => requestAnimationFrame(setHeaderH));
