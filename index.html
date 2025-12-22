@@ -1667,9 +1667,16 @@ footer {
   max-width: 640px;
 }
 
-</style>
+  :root{ --header-h: 72px; } /* fallback */
 
+body{ padding-top: var(--header-h); }
+
+.hero{
+  padding-top: calc(var(--header-h) + 2rem);
+  min-height: calc(100vh - var(--header-h));
+}
 <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
+</style>
 
 <script>
 (function(){
@@ -1680,6 +1687,19 @@ footer {
   }
 
   // rulează după ce există <header> în DOM
+  window.addEventListener('load', setHeaderH);
+  window.addEventListener('resize', setHeaderH);
+})();
+</script>
+
+  <script>
+(function(){
+  function setHeaderH(){
+    const header = document.querySelector('header');
+    if(!header) return;
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  }
+
   window.addEventListener('load', setHeaderH);
   window.addEventListener('resize', setHeaderH);
 })();
