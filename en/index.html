@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <title>OREX® — Official English Page</title>
   <title>Orex® – Romanian premium automatic watches | New Comte des Carpates collection</title>
   <meta name="description" content="Orex® – the Romanian watch brand brought back to life. Premium automatic watches, 316L steel, sapphire crystal, Swiss Sellita SW200-1 movement. Comte des Carpates collection.">
   <meta name="robots" content="index, follow">
@@ -1625,15 +1625,51 @@ footer {
   max-width: 640px;
 }
 
+    /* ===== FIX EN MOBILE: hero să nu fie acoperit de antet (<er>) ===== */
+:root{
+  --er-h: 72px; /* fallback până calculează JS */
+}
+
+/* dacă <er> este fixed, trebuie spațiu sus în pagină */
+body{
+  padding-top: var(--er-h);
+}
+
+/* împinge conținutul din hero sub antet */
+.hero{
+  padding-top: calc(var(--er-h) + 2rem) !important;
+  min-height: calc(100vh - var(--er-h)) !important;
+}
+
+/* pe mobil, antetul e mai înalt (nav pe 2 rânduri) */
+@media (max-width: 720px){
+  :root{ --er-h: 104px; } /* doar fallback */
+}
+ <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s" />
 </style>
 
-  <title>OREX® — Official English Page</title>
-</head>
+<script>
+(function(){
+  function setHeaderH(){
+    const header = document.querySelector('header');
+    if(!header) return;
+    document.documentElement.style.setProperty(
+      '--er-h',
+      header.offsetHeight + 'px'
+    );
+  }
 
- <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s" />
+  window.addEventListener('load', () => requestAnimationFrame(setHeaderH));
+  window.addEventListener('resize', setHeaderH);
+})();
+</script>
+  
+<meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s" />
+  
+</head>
   
 <body class="core">
-  
+
   <!-- LINK SKIP -->
 <a href="#main-content" class="skip-link">Skip to content</a>
 
