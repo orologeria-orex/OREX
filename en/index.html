@@ -1624,21 +1624,14 @@ footer {
   text-transform: uppercase;
   max-width: 640px;
 }
+    
+:root{ --header-h: 72px; } /* fallback */
 
-    /* ===== FIX EN MOBILE: hero să nu fie acoperit de antet (<er>) ===== */
-:root{
-  --er-h: 72px; /* fallback până calculează JS */
-}
+body{ padding-top: var(--header-h); }
 
-/* dacă <er> este fixed, trebuie spațiu sus în pagină */
-body{
-  padding-top: var(--er-h);
-}
-
-/* împinge conținutul din hero sub antet */
 .hero{
-  padding-top: calc(var(--er-h) + 1.25rem) !important;
-  min-height: calc(100vh - var(--er-h)) !important;
+  padding-top: calc(var(--header-h) + 2rem);
+  min-height: calc(100vh - var(--header-h));
 }
 
 /* pe mobil, antetul e mai înalt (nav pe 2 rânduri) */
@@ -1665,7 +1658,20 @@ body{
 </script>
   
 <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s" />
-  
+ 
+  <script>
+(function(){
+  function setHeaderH(){
+    const header = document.querySelector('header');
+    if(!header) return;
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  }
+
+  window.addEventListener('load', setHeaderH);
+  window.addEventListener('resize', setHeaderH);
+})();
+</script>
+
 </head>
   
 <body class="core">
@@ -2430,7 +2436,7 @@ body{
       <p class="testi-quote">
         „For me, OREX remains a symbol. The new Comte des Carpates range shows that we can have a watch with local identity, but international standards.”
       </p>
-      <div class="testi-author">– Mihai, inginer</div>
+      <div class="testi-author">– Mihai, engineer</div>
     </article>
   </div>
 </section>
