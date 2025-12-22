@@ -1675,9 +1675,10 @@ body{ padding-top: var(--header-h); }
   padding-top: calc(var(--header-h) + 2rem);
   min-height: calc(100vh - var(--header-h));
 }
-<meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
 </style>
 
+<meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
+  
 <script>
 (function(){
   function setHeaderH(){
@@ -1686,8 +1687,7 @@ body{ padding-top: var(--header-h); }
     document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
   }
 
-  // rulează după ce există <header> în DOM
-  window.addEventListener('load', setHeaderH);
+  window.addEventListener('load', () => requestAnimationFrame(setHeaderH));
   window.addEventListener('resize', setHeaderH);
 })();
 </script>
