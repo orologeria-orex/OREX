@@ -158,7 +158,6 @@ body {
   background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
   color: var(--fg-main);
   line-height: 1.5;
-  padding-top: 64px; /* compensare header fix */
 }
 
 /* ===== LINK „SARI LA CONȚINUT” ===== */
@@ -1632,6 +1631,22 @@ body{ padding-top: var(--header-h); }
 .hero{
   padding-top: calc(var(--header-h) + 2rem);
   min-height: calc(100vh - var(--header-h));
+}
+
+    /* === FIX HERO MOBILE (EN = RO) === */
+@media (max-width: 480px){
+  .hero{
+    min-height: auto !important;
+    padding-top: calc(var(--header-h) + 2.2rem) !important;
+    padding-bottom: 2.2rem !important;
+  }
+}
+    
+/* === Vlad: card width identic (RO/EN) === */
+#colectii .card-premium{
+  max-width: 360px;
+  width: 100%;
+  justify-self: center;
 }
 </style>
 
