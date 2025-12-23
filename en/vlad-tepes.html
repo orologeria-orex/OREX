@@ -1,275 +1,585 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Vlad Țepeș – Comte des Carpates | OREX®</title>
-  <meta name="description" content="Historical profile: Vlad Țepeș – Comte des Carpates. Order of the Dragon, Transylvania – Suisse des Carpates, fortresses, wars against the Ottomans, betrayals and fate." />
+  <title>Voievode Vlad Țepeș (Drăculea) – Comte des Carpates | Orex®</title>
+  <meta name="description" content="Voievode Vlad Țepeș (Drăculea) – Chipul istoric al colecției Orex® Comte des Carpates. Context istoric, 
+              identitate, simboluri și direcție de design." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.orexwatch.ro/vlad-tepes.html" />
+  <meta name="theme-color" content="#020617" />
 
-  <!-- 🔹 GLOBAL CSS (COMMON) -->
+  <!-- OG -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ro_RO" />
+  <meta property="og:title" content="Voievodul Vlad Țepeș (Drăculea) – Comte des Carpates | Orex®" />
+  <meta property="og:description" content="Chipul istoric al colecției Orex® Comte des Carpates: Vlad Țepeș (1431–1476)." />
+  <meta property="og:url" content="https://www.orexwatch.ro/vlad-tepes.html" />
+  <meta property="og:image" content="https://www.orexwatch.ro/orex-front.jpg" />
+
+<!-- 🔹 CSS GLOBAL (OBLIGATORIU, COMUN) -->
   <link rel="stylesheet" href="/assets/css/core.css">
-
+  
   <style>
-    /* Details page – clean, premium, site-compatible */
-    :root { color-scheme: light; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.65;
+    :root{
+      --bg:#020617;
+      --panel:#0b1220;
+      --panel2:#111827;
+      --fg:#e5e7eb;
+      --muted:#9ca3af;
+      --line:rgba(148,163,184,.35);
+      --accent:#8ea0ff;
     }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2.5rem 1rem 3rem;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{max-width:100%;overflow-x:hidden}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
+      color:var(--fg);
+      line-height:1.55;
+      padding-top:70px;
     }
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
+    a{color:inherit}
+    header{
+      position:fixed; inset:0 0 auto 0; z-index:1000;
+      background:rgba(15,23,42,.96);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);
     }
-    .crumbs {
-      font-size: 0.95rem;
-      opacity: 0.85;
+    .header-inner{
+      max-width:1120px; margin:0 auto;
+      padding:.6rem 1.2rem;
+      display:flex; align-items:center; justify-content:space-between; gap:1rem;
     }
-    .back {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .65rem .9rem;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,.16);
-      text-decoration: none;
-      color: inherit;
-      font-weight: 600;
-      background: rgba(255,255,255,.7);
+    .logo-wrap{display:flex; align-items:center; gap:.75rem}
+    .logo-img{height:40px;width:auto;filter:drop-shadow(0 0 6px rgba(255,255,255,.25))}
+    nav{display:flex; flex-wrap:wrap; gap:1.1rem; font-size:.8rem; text-transform:uppercase; letter-spacing:.14em}
+    nav a{text-decoration:none;color:#d1d5db}
+    nav a:hover{color:#fff}
+    .wrap{max-width:1120px;margin:0 auto;padding:2.2rem 1.2rem}
+    .hero{
+      border-bottom:1px solid var(--line);
+      background: radial-gradient(circle at top, rgba(15,23,42,.7), rgba(2,6,23,1));
+      padding:2.4rem 0 1.8rem;
     }
-    .back:hover { background: rgba(255,255,255,.95); }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:1.6rem;
+      align-items:center;
+    }
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+    .kicker{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--muted);
+      margin-bottom:.6rem;
+    }
+    h1{
+      font-size:clamp(1.4rem, 2vw + 1rem, 2.2rem);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      line-height:1.2;
+      margin-bottom:.75rem;
+    }
+    .sub{
+      color:#cbd5e1;
+      max-width:70ch;
+      font-size:1rem;
+      margin-bottom:1.15rem;
+    }
+    .pill-row{display:flex; flex-wrap:wrap; gap:.55rem; margin:.6rem 0 1.2rem}
+    .pill{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.25rem .7rem;
+      border:1px solid rgba(148,163,184,.55);
+      border-radius:999px;
+      background:rgba(15,23,42,.55);
+      font-size:.78rem;
+      color:#e5e7eb;
+    }
+    .cta-row{display:flex; flex-wrap:wrap; gap:.7rem}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:.6rem 1.1rem;
+      border-radius:999px;
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      text-decoration:none;
+      border:1px solid rgba(229,231,235,.75);
+      background:transparent;
+      transition:.2s ease;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.55)}
+    .btn-primary{
+      background:linear-gradient(135deg, rgba(148,163,184,.45), rgba(255,255,255,.22));
+      color:#0f172a;
+    }
+    .btn-ghost{color:#e5e7eb; border-color:rgba(148,163,184,.75)}
+    .portrait{
+      border-radius:1rem;
+      border:1px solid rgba(148,163,184,.55);
+      background: radial-gradient(circle at top, #111827 0%, #020617 60%);
+      padding:.8rem;
+      box-shadow:0 16px 44px rgba(0,0,0,.75);
+    }
+    .portrait img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      object-position:center;
+      border-radius:.85rem;
+      display:block;
+    }
+    @media (max-width:900px){
+      .portrait img{height:260px}
+    }
+    .caption{color:var(--muted); font-size:.82rem; margin-top:.65rem; line-height:1.6}
+    .section{
+      padding:2.2rem 0;
+      border-bottom:1px solid rgba(148,163,184,.18);
+    }
+    .section-title{
+  font-size:.95rem;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:#d1d5db;
+  margin-bottom:.55rem;
+  text-align:center;     /* CENTRARE GLOBALĂ */
+  width:100%;
+   }
+    .divider{
+  width:90px;
+  height:2px;
+  background:linear-gradient(90deg,#4b5563,#9ca3af,#4b5563);
+  border-radius:2px;
+  margin: 0 auto 1.2rem; /* CENTRAT */
+   }
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem}
+    @media (max-width:900px){.grid2{grid-template-columns:1fr}}
+    .card{
+      background: radial-gradient(circle at top, #111827 0%, #020617 60%);
+      border:1px solid rgba(148,163,184,.55);
+      border-radius:1rem;
+      padding:1.1rem 1.1rem;
+      box-shadow:0 14px 35px rgba(0,0,0,.75);
+    }
+    .card h3{
+      font-size:.95rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin-bottom:.45rem;
+    }
+    .card p{color:#cbd5e1; font-size:.92rem; line-height:1.7}
+    dl{display:grid; gap:.55rem; margin-top:.6rem}
+    .row{
+      display:grid;
+      grid-template-columns: minmax(0, 34%) minmax(0, 66%);
+      gap:.7rem;
+      padding:.55rem .65rem;
+      border:1px solid rgba(148,163,184,.25);
+      border-radius:.8rem;
+      background:rgba(15,23,42,.35);
+    }
+    dt{
+      font-size:.74rem;
+      text-transform:uppercase;
+      letter-spacing:.10em;
+      color:var(--muted);
+    }
+    dd{margin:0; color:#e5e7eb; font-size:.9rem}
+    footer{
+      padding:1.2rem 1.2rem 1.6rem;
+      color:var(--muted);
+      font-size:.75rem;
+    }
+    .footer-inner{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between}
 
-    header.hero {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 1.4rem;
-      align-items: center;
-      margin: 1rem 0 1.6rem;
-    }
-    .kicker {
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-size: .85rem;
-      opacity: .8;
-      margin: 0 0 .55rem 0;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 2.7vw, 2.8rem);
-      line-height: 1.15;
-    }
-    .subtitle {
-      margin: .7rem 0 0 0;
-      font-size: 1.05rem;
-      opacity: .88;
-    }
+    /* === CARD IMAGINI ISTORICE === */
+/* GRID IMAGINI – ca la galerie */
+.grid-3{
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
 
-    figure.emblem {
-      margin: 0;
-      padding: 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(0,0,0,.12);
-      background: rgba(255,255,255,.65);
-      text-align: center;
-    }
-    figure.emblem img {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      display: block;
-      margin: 0 auto .8rem;
-      border-radius: 14px;
-    }
-    figure.emblem figcaption {
-      font-size: .95rem;
-      opacity: .85;
-    }
+/* CONTAIN (integral, fără crop) */
+.fit-contain{
+  object-fit: contain !important;
+  background: #000; /* benzi elegante */
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 1.2rem;
-    }
-    .card {
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 18px;
-      padding: 1.15rem 1.15rem;
-      background: rgba(255,255,255,.55);
-    }
-    .card h2 {
-      margin: 0 0 .65rem 0;
-      font-size: 1.1rem;
-      letter-spacing: .01em;
-    }
-    .card p { margin: .6rem 0 0 0; }
+/* DEFAULT pentru carduri: cover (premium) */
+.image-card img{
+  object-fit: cover; /* lipsește la tine */
+}
 
-    .facts ul {
-      margin: .6rem 0 0 1rem;
-      padding: 0;
-      line-height: 1.75;
-    }
-    .facts li { margin: .25rem 0; }
+/* FIX: media query corect pe imagine, nu pe .image-card-img */
+@media (min-width: 1000px){
+  .image-card img{
+    height: 220px;
+  }
+}
+    
+    /* card ca în galerie */
+.image-card{
+  background: #020617;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.85);
+  border: 1px solid rgba(148,163,184,0.55);
+}
 
-    .note {
-      border-left: 3px solid rgba(0,0,0,.2);
-      padding-left: .85rem;
-      margin-top: .8rem;
-      opacity: .95;
-    }
+/* imagine ca .gal-img */
+.image-card img{
+  width: 100%;
+  height: 180px;          /* exact ca galeria */
+  display: block;
+  object-position: center;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
 
-    .full { grid-column: 1 / -1; }
+/* hover ca la galerie */
+.image-card:hover img{
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.05);
+}
 
-    .sources {
-      font-size: .95rem;
-      opacity: .9;
-    }
-    .sources a { color: inherit; }
+/* caption ca la galerie */
+.image-card-caption{
+  padding: 0.85rem 1rem 1rem;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
 
-    footer.pagefoot {
-      margin-top: 1.5rem;
-      opacity: .8;
-      font-size: .92rem;
-    }
+.center-title{
+  text-align:center !important;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+}
+/* === FIX Bibliografie – card elegant, centrat === */
+.section .card ul{
+  padding-left: 1.2rem;      /* distanță față de margine */
+  padding-right: 1.2rem;
+  margin-top: 0.5rem;
+}
 
-    @media (max-width: 900px) {
-      header.hero { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: 1fr; }
-    }
+.section .card li{
+  margin-bottom: 0.65rem;    /* aer între rânduri */
+  line-height: 1.6;
+}
+
+/* limitează și centrează cardul Bibliografie */
+.section .card{
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.4rem 1.6rem;    /* padding real de card */
+}
+
+/* linkuri mai aerisite */
+.section .card a{
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.section .card a:hover{
+  text-decoration: underline;
+}
   </style>
 </head>
 
 <body>
-  <main class="wrap">
-
-    <div class="topbar">
-      <div class="crumbs">OREX® / Collections / <strong>Vlad Țepeș – Comte des Carpates</strong></div>
-
-      <!-- change href to your EN collections section -->
-      <a class="back" href="/en/#collections" aria-label="Back to collections">← Back</a>
-    </div>
-
-    <header class="hero">
-      <div>
-        <p class="kicker">OREX® · Comte des Carpates</p>
-        <h1>Voivode Vlad Țepeș</h1>
-        <p class="subtitle">Prince of Wallachia · Knight of the Order of the Dragon</p>
+  <header>
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <img src="/orex-logo.png" alt="Orex – logo oficial" class="logo-img" />
+        <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted)">Orologeria Orex®</div>
       </div>
 
-      <figure class="emblem">
-        <!-- set your real image path here -->
-        <img src="/images/dragon-emblem.webp" alt="Emblem of the Order of the Dragon (coiled dragon with cross)" loading="lazy">
-        <figcaption>The Order of the Dragon (1408) · a symbol of oath and the defense of Christendom</figcaption>
-      </figure>
-    </header>
+      <nav aria-label="Navigare principală">
+        <a href="/#colectii">Înapoi la pagină</a>
+        </nav>
+    </div>
+  </header>
 
-    <section class="grid" aria-label="Details sheet">
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker">Chipul istoric al colecției</div>
+          <h1>Voievodul Vlad Țepeș (Drăculea)<br/>Comte des Carpates</h1>
+          <p class="sub">
+            Această pagină este dedicată identității <strong>Voievodului Vlad Țepeș</strong>, personalitatea care inspiră conceptul <strong>Comte des Carpates</strong>,
+            un <strong>Chip</strong> emblematic, simbol istoric important ce a modelat ireversibil o perioadă de <strong>Timp</strong> din viața creștinătății.
+          </p>
 
-      <article class="card">
-        <h2>The Order of the Dragon — the founding oath</h2>
-        <p>
-          Founded in 1408 by King Sigismund of Luxembourg, the Order of the Dragon was a chivalric fraternity
-          dedicated to defending Christendom against Ottoman expansion. Vlad II Dracul, Vlad Țepeș’s father,
-          was admitted into the Order, and the dragon emblem became both a family legacy and a political mission.
-        </p>
-        <p>
-          For Vlad III, the dragon is not ornament: it is an oath — discipline, loyalty, and the punishment of betrayal
-          in an age of instability.
-        </p>
-      </article>
+          <div class="pill-row">
+            <span class="pill">📎 Identitate: Vlad Țepeș (1431–1476)</span>
+            <span class="pill">🏷 Colecție: Comte des Carpates</span>
+            <span class="pill">🕰 Concept: “Timpul are Chip”</span>
+          </div>
 
-      <aside class="card facts" aria-label="Quick facts">
-        <h2>Quick facts</h2>
-        <ul>
-          <li><strong>Born:</strong> 1431, Sighișoara (Transylvania)</li>
-          <li><strong>Era:</strong> 15th century</li>
-          <li><strong>Role:</strong> Ruler (Voivode) of Wallachia</li>
-          <li><strong>Context:</strong> Ottoman pressure, internal rivalries</li>
-          <li><strong>Symbol:</strong> The Order of the Dragon (1408)</li>
-        </ul>
-        <p class="note">
-          Recommended tone: historical, sober, premium — no gothic/fantasy framing.
-        </p>
-      </aside>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/#colectii">Înapoi la pagină</a>
+            </div>
+        </div>
 
-      <article class="card">
-        <h2>Transylvania — “Suisse des Carpates”</h2>
-        <p>
-          Medieval Transylvania, evoked today as <em>“Suisse des Carpates”</em>, was a land of fortresses,
-          local autonomy, and rigorous organization. Within this Carpathian space Vlad Țepeș is shaped:
-          a culture of order and endurance, at the frontier between worlds.
-        </p>
-        <p class="note">
-          In the OREX® universe, the idea of <em>Suisse des Carpates</em> reinforces the identity of <strong>Comte des Carpates</strong>:
-          rigor, precision, and European continuity.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>Reign and the fortresses of power</h2>
-        <p>
-          Vlad Țepeș’s authority relied on strategic centers and fortifications: the Princely Court of Târgoviște,
-          Poenari Fortress (a Carpathian bastion), and traditions associated with Snagov. For him, power was functional:
-          order, control, stability.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>Wars against the Ottomans</h2>
-        <p>
-          The confrontation with the Ottoman Empire involved asymmetric tactics, psychological warfare, and strict military discipline.
-          The <strong>Night Attack at Târgoviște (1462)</strong> remains one of the boldest medieval actions in this region.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>Betrayals, captivity, and fate</h2>
-        <p>
-          Internal rivalries, boyar betrayals, and great-power politics led to Vlad’s isolation.
-          Captured and imprisoned for a period, he later returned to the arena, but his death (1476) closed a destiny
-          that would, over time, be transformed into legend.
-        </p>
-      </article>
-
-      <article class="card full">
-        <h2>Beyond the myth</h2>
-        <p>
-          Vlad Țepeș has been reinterpreted through propaganda and fiction. Beyond “Dracula”, there remains the reality
-          of a ruler who sought to impose <strong>order in a world of chaos</strong>.
-        </p>
-        <p class="note">
-          For OREX®, Vlad Țepeș is a symbol of Carpathian rigor — and of time as a judge.
-        </p>
-      </article>
-
-      <article class="card full sources">
-        <h2>Bibliography (recommended reading)</h2>
-        <p>
-          For broader documentation, you can reference:
-          <a href="https://historia.ro/sectiune/portret/vlad-tepes-legenda-si-istorie-573032.html" target="_blank" rel="noopener">
-            Historia.ro — “Vlad Țepeș: legend and history”
-          </a>
-        </p>
-        <p class="note">
-          If you want, I can also add an “Extended bibliography” section (3–7 sources) + short quote snippets for credibility.
-        </p>
-      </article>
-
+        <aside class="portrait">
+          <!-- IMPORTANT: recomandat denumiri fără diacritice -->
+          <img src="/tepes.PNG" alt="Vlad Țepeș – portret (imagine ilustrativă)" />
+          <div class="caption">
+            Vlad Țepeș (1431–1476)
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <footer class="pagefoot">
-      © OREX® – Comte des Carpates · “May its time be good!”
-    </footer>
+    <section id="detalii" class="wrap section">
+      <div class="section-title">Descriere</div>
+      <div class="divider"></div>
 
+      <div class="grid2">
+        <div class="card">
+          <h3>Ideea de “Chip”</h3>
+          <p>
+            În conceptul Orex®, “chipul” înseamnă identitate personală remarcabilă care a pus o <strong>amprentă</strong> puternică pe <strong>universalitate</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Legătura cu designul</h3>
+          <p>
+            <strong>Comte des Carpates</strong> îmbină însemne esențiale asociate chipului personalității evocate cu perioada sa de timp istoric, prin elemente discrete și simboluri reprezentative, de:
+            imaterialitate (legendă/realitate), materialitate (metal/sticlă), contrast (lumină controlată) și simetrie (detalii “tăiate” curat).
+          </p>
+        </div>
+
+       <div class="card">
+          <h3>Transilvania – “Suisse des Carpates”</h3>
+          <p>
+          Transilvania medievală, adesea evocată astăzi ca <em>“Suisse des Carpates”</em>, este un loc mistic din munții Carpați, un teritoriu al peisajelor frumoase, 
+          al orașelor-cetăți, al autonomiei locale și al organizării riguroase, o cultură a ordinii și a rezistenței la granița dintre lumi, lumea creștină și lumea păgână.
+          </p>
+        </div>
+
+      <div class="card">
+          <h3>Copilăria lui Vlad</h3>
+          <p>
+          Vlad s-a născut în anul 1431 în Sighişoara din Transilvania, unde a petrecut și primii ani ai copilăriei. La vârsta de 11 ani a fost dus ostatic la otomani
+          împreună cu fratele său Radu, după ce Vlad Dracul, pus pe tron de Sigismund de Luxemburg, s-a supus sultanului. Cei șase ani ca ostatic l-au marcat profund, deoarece Vlad aparținea spațiului central-european, tot un teritoriu multicultural
+          dar cu orânduire foarte diferită de cea otomană.
+          </p>
+        </div>
+
+    <div class="card">
+          <h3>Arbore genealogic</h3>
+          <p>
+         Tatăl său a fost Vlad denumit Dracul, deoarece era membru în Ordinul Dragonului. Membru al Dinastiei Drăculeștilor, Vlad este și nepot al marelui Voievod Mircea cel Bătrân.
+         Pentru o mai bună înțelegere a genealogiei lui Vlad trebuie menționat faptul că Prințul Charles al Marii Britanii a declarat că se înrudește cu domnitorul român.
+         Conform genealogiei, bunica reginei Elizabeta II se trage din ramura Drăculeștilor, mai precis din Vlad III Călugărul, fratele vitreg al lui Vlad Țepeș.
+          </p>
+        </div>
+        
+     <div class="card">
+          <h3>Educația tânărului Vlad</h3>
+          <p>
+          Ca membru al Dinastiei regale a Drăculeștilor, tânărul Vlad a primit o educaţie aleasă de la învățați români și greci (la Constantinopol).
+          Astfel, a dobândit atât abilităţi militare cât și cunoștințe de geografie, științe exacte, artă precum şi abilități lingvistice deosebite, 
+          vorbind cursiv, pe lângă limba sa natală  - română, mai multe limbi străine: vechea slavă, germană, turcă şi latină.
+          </p>
+        </div>
+
+    <div class="card">
+          <h3>Căsătoriile și urmașii lui Vlad</h3>
+          <p>
+          Vlad a fost căsătorit de trei ori: prima dată cu o nobilă transilvăneancă - Cneajna Bathory, apoi cu Jusztina Szilagyi și ultima dată cu Ilona Nelipic, 
+          verișoară a Regelui Matei Corvin. Din cele trei căsătorii a avut cinci copii, patru băieți și o fată: Radu și Vlad din prima căsătorie, Mihail și Mihnea 
+          cel Rău din a doua respectiv Zaleska din a treia căsătorie.
+          </p>
+        </div>
+
+    <div class="card">
+          <h3>Ordinul Dragonului</h3>
+          <p>
+          <strong>Ordinul Dragonului</strong>, similar cu <strong>Ordinul Cavalerilor de Malta</strong> sau cu cel al <strong>Cavalerilor Teutoni</strong>, era o societate militaro-religioasă selectă, 
+          fondată în anul 1387 de Sigismund de Luxemburg, rege al Ungariei (mai târziu împărat al <strong>Sfântului Imperiu Roman</strong>) și de cea de-a doua soție a sa, 
+          Barbara Cillei. Simbolul Ordinului era un dragon încolăcit și o cruce, iar scopul era apărarea creștinismului împotriva extinderii puternicului <strong>Imperiu Otoman</strong>.
+          </p>
+        </div>
+
+    <div class="card">
+          <h3>Lupta pentru tronul Valahiei</h3>
+          <p>
+          În anul 1447, Vlad Dracul, tatăl lui Vlad Drăculea și domn al Țării Românești, a fost asasinat împreună cu fiul său Mircea, întrerupând domnia Drăculeștilor.
+          Vladislav al II-lea a urcat pe tron în decembrie 1447, cu sprijinul lui Iancu de Hunedoara. 
+          Fiul  lui Vlad Dracul, Vlad Drăculea a încercat să preia tronul în 1448, cu sprijinul turcilor, în timp ce Vladislav al II-lea participa la bătălia de la Kossovopolje 
+          alături de Iancu de Hunedoara. A fost o încercare efemeră fiind alungat imediat de Vladislav care era susținut de Iancu.
+          După căderea Constantinopolului, din 1453, relațiile dintre Iancu de Hunedoara și Vladislav al II-lea s-au deteriorat și balanța puterii s-a schimbat.
+          </p>
+        </div>    
+
+   <div class="card">
+          <h3> A doua înscăunare ca Domnitor a lui Vlad Drăculea</h3>
+          <p>
+          În primăvara lui 1456, Vladislav al II-lea a pătruns în Transilvania și a devastat toate satele săsești din sudul Făgărașului.
+          Cu sprijinul lui Iancu de Hunedoara, tânărul Vlad din neamul Drăculeștilor a inițiat o campanie militară în vara lui 1456 și, din dorința de răzbunare și de putere, l-a ucis pe Vladislav al II-lea.
+          Vlad Drăculea a urcat pe tronul Valahiei în 1456, o perioadă dificilă a istoriei românilor în care corupția era omniprezentă pe tot teritoriul țării, afectând economia și 
+          stabilitatea politică internă. Tot atunci, Imperiul Otoman era în plină expansiune amenințând rutele comerciale și stabilitatea Europei, dinspre sud-est.
+          </p>
+        </div>    
+
+<div class="card">
+          <h3>Vlad Drăculea - voievod remarcabil și aprig apărător al creștinismului</h3>
+          <p>
+          Odată ajuns domnitor, Vlad Drăculea a refuzat să se supună imperiului otoman, dorind să mențină independența țării sale. Acest lucru a schimbat radical atitudinea sultanului Mehmed II, 
+          care în 1462 a trimis o armată uriașă cu scopul cuceririi teritoriului condus de Vlad. Domnitorul român a nimicit armata otomană, bătălia cunoscută sub numele de „Atacul de Noapte„ 
+          fiind cea mai importantă victorie militară a Voievodului Vlad Drăculea. Istoricul grec Chalcondyles relata că Vlad a învins "cea mai mare forță turcească adunată de la cucerirea Constantinopolului încoace".
+          </p>
+        </div>
+
+<div class="card">
+          <h3>Tranziția de la Vlad Drăculea la Vlad Țepeș</h3>
+          <p>
+          Până la preluarea domniei, Vlad Drăculea a trăit mai mult în afara ţării ceea ce poate explica politica sa internă ulterioară. Vlad Ţepeş a optat pentru o domnie autoritară, în care poziţia domnului 
+          să primeze în faţa boierimii. Nu a pregetat să îi pedepsească pe trădători, inclusiv pe cei din familia domnească, pentru a elimina pericolul formării unui nucleu partizan în jurul unui pretendent. 
+          Orice bănuială de trădare conducea rapid la acuzarea celui bănuit şi pedepsirea sa, de obicei cu tragerea în ţeapă şi confiscarea averii.
+          </p>
+        </div>
+
+<div class="card">
+          <h3>Ultima domnie a lui Vlad Țepeș</h3>
+          <p>
+          Acuzat de trădare, voievodul nostru a fost arestat şi închis aproape 12 ani la Vişegrad, de regele maghiar Mathias Corvin. 
+          După eliberarea sa, în 1474, Vlad Ţepeş a condus câteva campanii militare maghiare în Bosnia împotriva otomanilor.
+          În 1476, în contextul războaielor cu turcii conduse de Ştefan cel Mare, devenit între timp şi el vasal al regelui maghiar Mathias Corvin, 
+          Vlad Ţepeş a ajuns din nou domnitor, doar pentru scurt timp. 
+          Nu s-a bucurat de sprijinul boierimii, care nu uitase domnia sa autoritară şi, după cum ne spun cronicarii străini, a fost răpus chiar de fii săi.
+          </p>
+        </div>
+
+<div class="card">
+          <h3>Dracula Contele din Carpați</h3>
+          <p>
+          Vlad Ţepeş a intrat în legendă încă din timpul vieţii sale. Există mai multe povestiri germane şi slave, precum şi legende româneşti, 
+          unele cu subiecte comune strigoilor. Povestirile germane au pus accentul pe cruzimea domnitorului. Istoricii susţin că aceste povestiri 
+          au fost răspândite intenţionat de saşi şi de Mathias Corvin pentru a justifica, în fața Papei, arestarea lui Vlad şi stoparea cruciadei antiotomane.
+          Numele lui era cunoscut din răsărit până la apus, fiind subiect al povestirilor de groază încă din timpul vieţii sale. 
+          Popularitatea lui a fost universalizată, însă, la sfârşitul sec. XIX de romanul lui Bram Stoker - Dracula și ulterior de cinematografie.
+          </p>
+        </div>
+        
+      </div>
+    </section>
+
+<!-- IMAGINI – CARDURI -->
+<section class="section">
+  <h2 class="section-title center-title">Reprezentări istorice</h2>
+  <div class="divider"></div>
+
+  <div class="grid-3">
+
+    <figure class="image-card">
+      <img src="/ordinul-dragonului.PNG" alt="Stemă - Ordinul Dragonului" style="object-fit:cover;">
+      <figcaption class="image-card-caption">
+        Ordinul Dragonului – societate cavalerească antiotomană.
+      </figcaption>
+    </figure>
+
+    <figure class="image-card">
+      <img src="/images/vlad/cetatea-poenari.jpg" alt="Cetatea Poenari" style="object-fit:cover;">
+      <figcaption class="image-card-caption">
+        Cetatea Poenari – reședință strategică.
+      </figcaption>
+    </figure>
+
+    <figure class="image-card">
+      <img src="/images/vlad/targoviste.jpg" alt="Curtea domnească Târgoviște" style="object-fit:cover;">
+      <figcaption class="image-card-caption">
+        Târgoviște – capitala domnească.
+      </figcaption>
+    </figure>
+
+    <figure class="image-card">
+      <img src="/images/vlad/impalare-gravura.jpg" alt="Gravură medievală" class="fit-contain">
+      <figcaption class="image-card-caption">
+        Gravură medievală – reprezentare simbolică.
+      </figcaption>
+    </figure>
+
+  </div>
+</section>
+
+    <section class="wrap section">
+      <div class="section-title">Fișă de identitate</div>
+      <div class="divider"></div>
+
+      <div class="card">
+        <dl>
+          <div class="row">
+            <dt>📎 Nume colecție</dt>
+            <dd>“Comte des Carpates”</dd>
+          </div>
+          <div class="row">
+            <dt>🗓 Apariție</dt>
+            <dd>2025-2026</dd>
+          </div>
+          <div class="row">
+            <dt>🏷 Simbolistică</dt>
+            <dd>Chip istoric / inspirație simbolică. Pentru Orex®, Drăculea nu întruchipează doar un mit sau o legendă ci <strong>o semnătură de caracter</strong>: 
+              ordine, rigoare, claritate și responsabilitate; iar în limbaj orologer: proporții curate, materiale nobile, detalii discrete și timp tratat ca disciplină</dd>
+          </div>
+          <div class="row">
+            <dt>🕰 Semne distinctive</dt>
+            <dd>Însemnul ordinului Dragonului încolăcit, al zborului și timpului, steaua Echilibrului solar cu cele opt colțuri 
+                texturate aurii, rubinul Puterii, fraternității și curajului cavaleresc în roșu intens 
+                ca detalii heraldice medievale, linii simetrice inspirate de cele 7 turnuri ale cetății Sighișoara și turlele 
+                bisericilor creștine, culori ale cadranelor în tonurile profunde ale marelui voievod</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+<!-- BIBLIOGRAFIE -->
+<section class="section">
+  <div class="section-title">Bibliografie & surse</div>
+  <div class="divider"></div>
+
+  <div class="card">
+    <ul>
+      <li>
+        <a href="https://historia.ro/sectiune/portret/vlad-tepes-legenda-si-istorie-573032.html" target="_blank">
+          Historia.ro – Vlad Țepeș: legendă și istorie
+        </a>
+      </li>
+      <li>Radu Florescu, Raymond McNally – <em>Dracula: Prince of Many Faces</em></li>
+      <li>Constantin Rezachevici – Studii privind domnia lui Vlad Țepeș</li>
+      <li>Academia Română – Documente medievale românești</li>
+    </ul>
+  </div>
+</section>
+    
   </main>
+
+  <footer>
+    <div class="footer-inner">
+      <small>© <span id="year"></span> Orex® – Comte des Carpates</small>
+      <small><a href="/#colectii" style="text-decoration:none;color:var(--muted)">Înapoi la orexwatch.ro</a></small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
