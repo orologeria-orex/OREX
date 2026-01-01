@@ -588,13 +588,17 @@ nav a:hover::after {
   text-align: center;
 }
 
+/* imagine în card – ceas complet, fără crop, dimensiune controlată */
 .card-premium img {
   width: 100%;
-  max-height: 150px;
-  object-fit: cover;
+  height: 210px;           /* controlează mărimea vizuală în card */
+  object-fit: contain;     /* NU taie ceasul */
   object-position: center;
-  border-radius: 0.7rem;
   display: block;
+  margin: 0 auto 0.4rem;
+  border-radius: 0.7rem;
+  background: rgba(255,255,255,0.03); /* discret, ajută pe PNG transparente */
+  padding: 0.35rem;        /* spațiu ca să nu atingă marginile */
   cursor: zoom-in;
 }
 
@@ -623,9 +627,10 @@ nav a:hover::after {
   color: var(--fg-muted);
 }
 
+/* mobil */
 @media (max-width: 520px) {
   .card-premium img {
-    height: 200px;
+    height: 180px;
   }
 }
 
