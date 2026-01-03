@@ -185,3 +185,30 @@ body.core figure, body.core .figure, body.core .hero-media, body.core .section-m
   border-radius: var(--radius);
   overflow: hidden;
 }
+
+/* === FIX tech cards equal height (RO+EN) === */
+.tech-photos{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 1.5rem !important;
+  align-items: stretch !important;
+}
+
+.tech-photos > .tech-photo{
+  margin: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.tech-photos > .tech-photo > img{
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 0.7rem !important;
+}
+
+.tech-photos > .tech-photo > .tech-photo-caption{
+  margin-top: 0.75rem !important;
+}
