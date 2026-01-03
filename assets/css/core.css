@@ -141,6 +141,34 @@ body.core .grid, body.core .gal-grid, body.core .collection-grid{
   body.core .grid-3, body.core .collection-grid, body.core .gal-grid{ grid-template-columns: 1fr; }
 }
 
+/* GRID egal în ambele limbi */
+.tech-photos{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Card egal ca înălțime */
+.tech-photo{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagine cu înălțime fixă */
+.tech-photo img{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.7rem;
+}
+
+/* Caption rămâne jos, dar nu rupe layout-ul */
+.tech-photo-caption{
+  margin-top: 0.75rem;
+}
+
 /* Cards */
 body.core .card, body.core .collection-card, body.core .gal-card, body.core .watch-card{
   border: 1px solid var(--line);
