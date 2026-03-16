@@ -752,6 +752,23 @@ nav a:hover::after {
   display:block;
 }
 
+   /* ===== Galerie model – dimensiune controlată ===== */
+
+.spec-gallery img{
+  width:100%;
+  max-width:240px;
+  height:160px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:0.8rem;
+  border:1px solid rgba(148,163,184,0.4);
+  background:rgba(255,255,255,0.03);
+  box-shadow:0 10px 22px rgba(0,0,0,0.5);
+  display:block;
+  margin:0 auto;
+  cursor:zoom-in;
+}
+
 .spec-header-text {
   display: flex;
   flex-direction: column;
@@ -881,6 +898,11 @@ nav a:hover::after {
 
   .spec-list div {
     grid-template-columns: 1fr;
+  }
+
+   .spec-gallery img{
+    max-width:100%;
+    height:200px;
   }
 }
 
