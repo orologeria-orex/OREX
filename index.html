@@ -196,6 +196,21 @@ body{
   top: 1rem;
 }
 
+.site-notice {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  color: #cbd5e1;
+  background: linear-gradient(to right, #020617, #111827, #020617);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  z-index: 1101;
+}
+   
 /* ===== HEADER + NAV + LIMBI ===== */
 header {
   position: fixed;
@@ -1743,8 +1758,16 @@ footer {
   max-width: 640px;
 }
 
-  :root{ --header-h: 72px; } /* fallback */
+  :root{
+  --bg-main: #020617;
+  --fg-main: #e5e7eb;
+  --fg-muted: #9ca3af;
+  --accent: #8ea0ff;
+  --header-h: 110px;
+}
 
+:root{ --header-h: 110px; } /* fallback */
+  
 body{ padding-top: var(--header-h); }
 
 .hero{
@@ -1783,6 +1806,10 @@ body{ padding-top: var(--header-h); }
 
 </head>
 <body class="core">
+
+ <div class="site-notice">
+    Site în curs de dezvoltare – unele funcționalități pot fi indisponibile.
+  </div>
   
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
   <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
