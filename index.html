@@ -196,21 +196,6 @@ body{
   top: 1rem;
 }
 
-.site-notice {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  padding: 0.45rem 1rem;
-  font-size: 0.74rem;
-  letter-spacing: 0.05em;
-  color: #cbd5e1;
-  background: linear-gradient(to right, #020617, #111827, #020617);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-  z-index: 1101;
-}
-
 header {
   position: fixed;
   top: 32px;
@@ -1773,12 +1758,12 @@ footer {
 }
 
  body{
-  padding-top: calc(var(--header-h) + 32px);
+  padding-top: var(--header-h);
 }
 
 .hero{
-  padding-top: 2rem;
-  min-height: calc(100vh - var(--header-h) - 32px);
+  padding-top: calc(var(--header-h) + 2rem);
+  min-height: calc(100vh - var(--header-h));
 }
    
 </style>
@@ -1814,10 +1799,6 @@ footer {
 </head>
 <body class="core">
 
- <div class="site-notice">
-    Site în curs de dezvoltare – unele funcționalități pot fi indisponibile.
-  </div>
-  
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
   <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
 
