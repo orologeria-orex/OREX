@@ -2108,19 +2108,6 @@ footer {
 
 <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
   
-<script>
-(function(){
-  function setHeaderH(){
-    const header = document.querySelector('header');
-    if(!header) return;
-    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
-  }
-
-  window.addEventListener('load', () => requestAnimationFrame(setHeaderH));
-  window.addEventListener('resize', setHeaderH);
-})();
-</script>
-
   <script>
 (function(){
   function setHeaderH(){
@@ -3544,10 +3531,10 @@ document.addEventListener('DOMContentLoaded', function () {
       <p>Date de facturare și expediție</p>
     </div>
 
-    <form action="https://formspree.io/f/xlgodpre"
+    <form id="order-form"
+      action="https://formspree.io/f/xlgodpre"
       method="POST"
-      class="order-form"
-      onsubmit="setTimeout(() => alert('Cererea a fost trimisă cu succes. Vă vom contacta în scurt timp.'), 300)">
+      class="order-form">
       <div class="order-grid">
         <div class="order-field">
           <label for="model">Model</label>
@@ -3694,14 +3681,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </form>
   </div>
 </div> 
-
-   <script>
-document.getElementById('order-form').addEventListener('submit', function () {
-  setTimeout(() => {
-    alert('Cererea a fost trimisă cu succes. Vă vom contacta în scurt timp.');
-  }, 300);
-});
-</script>
       
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -3728,6 +3707,50 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-      
+     <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const openBtn = document.getElementById('open-order-modal');
+  const modal = document.getElementById('order-modal');
+  const closeBtn = document.getElementById('close-order-modal');
+  const backdrop = modal ? modal.querySelector('.order-modal-backdrop') : null;
+  const form = document.getElementById('order-form');
+  const successBox = document.getElementById('order-success');
+
+  function openModal() {
+    if (!modal) return;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('order-modal-open');
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('order-modal-open');
+  }
+
+  if (openBtn) openBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  if (form) {
+    form.addEventListener('submit', function () {
+      if (successBox) {
+        successBox.style.display = 'block';
+      }
+      setTimeout(() => {
+        alert('Cererea a fost trimisă cu succes. Vă vom contacta în scurt timp.');
+      }, 300);
+    });
+  }
+});
+</script> 
 </body>
 </html>
