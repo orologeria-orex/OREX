@@ -3444,6 +3444,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- SCRIPT 2: doar HERO video playlist -->
 <script>
+  
 // === HERO VIDEO PLAYLIST CU CROSSFADE REAL ===
 document.addEventListener('DOMContentLoaded', function () {
   const videoA = document.getElementById('hero-video-A');
@@ -3573,7 +3574,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         <div class="order-field">
           <label for="telefon">Telefon</label>
-          <input id="telefon" name="Telefon" type="tel" required>
+          <input id="telefon" name="Telefon" type="tel"
+       pattern="[0-9+ ]{8,15}"
+       title="Introduceți un număr valid"
+       required>
         </div>
 
         <div class="order-field">
@@ -3669,10 +3673,13 @@ document.addEventListener('DOMContentLoaded', function () {
         Sunt de acord cu prelucrarea datelor pentru procesarea comenzii.
       </label>
 
+      <input type="hidden" name="_redirect" value="https://orexwatch.ro/multumim.html">
+      
       <input type="hidden" name="_subject" value="Comandă nouă Orex® de pe site">
 
       <div class="order-actions">
         <button type="submit" class="order-submit">Trimite comanda</button>
+        onsubmit="setTimeout(() => alert('Cererea a fost trimisă cu succes. Vă vom contacta în scurt timp.'), 300)"
       </div>
     </form>
   </div>
