@@ -3545,7 +3545,10 @@ document.addEventListener('DOMContentLoaded', function () {
       <p>Date de facturare și expediție</p>
     </div>
 
-    <form action="https://formspree.io/f/xlgodpre" method="POST" class="order-form">
+    <form action="https://formspree.io/f/xlgodpre"
+      method="POST"
+      class="order-form"
+      onsubmit="setTimeout(() => alert('Cererea a fost trimisă cu succes. Vă vom contacta în scurt timp.'), 300)">
       <div class="order-grid">
         <div class="order-field">
           <label for="model">Model</label>
@@ -3679,7 +3682,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       <div class="order-actions">
         <button type="submit" class="order-submit">Trimite comanda</button>
-        onsubmit="setTimeout(() => alert('Cererea a fost trimisă cu succes. Vă vom contacta în scurt timp.'), 300)"
       </div>
       
       <p style="text-align:center; font-size:0.75rem; color:#9ca3af; margin-top:0.6rem;">
