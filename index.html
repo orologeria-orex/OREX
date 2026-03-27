@@ -168,7 +168,191 @@ body {
   --accent: #8ea0ff;
   --header-h: 86px; /* fallback */
 }
+/* ===== ORDER MODAL ===== */
+.order-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 99999;
+}
 
+.order-modal.active {
+  display: block;
+}
+
+.order-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.78);
+  backdrop-filter: blur(6px);
+}
+
+.order-modal-box {
+  position: relative;
+  width: min(960px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  margin: 1rem auto;
+  border-radius: 1.25rem;
+  padding: 1.3rem 1.25rem 1.5rem;
+  background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(2,6,23,0.98));
+  border: 1px solid rgba(148,163,184,0.28);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+  color: #e5e7eb;
+}
+
+.order-modal-head {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding-right: 2rem;
+}
+
+.order-modal-head h2 {
+  font-size: 1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem 0;
+}
+
+.order-modal-head p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #9ca3af;
+}
+
+.order-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(148,163,184,0.38);
+  background: rgba(15,23,42,0.85);
+  color: #e5e7eb;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.order-close:hover {
+  background: rgba(30,41,59,0.98);
+  border-color: rgba(226,232,240,0.45);
+}
+
+.order-form {
+  max-width: 100%;
+}
+
+.order-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.order-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.order-full {
+  grid-column: 1 / -1;
+}
+
+.order-field label,
+.order-subtitle {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #cbd5e1;
+}
+
+.order-subtitle {
+  margin: 1.2rem 0 0.8rem;
+}
+
+.order-field input,
+.order-field select,
+.order-field textarea {
+  width: 100%;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(148,163,184,0.30);
+  background: rgba(15,23,42,0.84);
+  color: #f8fafc;
+  padding: 0.85rem 0.95rem;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.order-field input:focus,
+.order-field select:focus,
+.order-field textarea:focus {
+  border-color: rgba(191,219,254,0.9);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.14);
+  background: rgba(15,23,42,0.96);
+}
+
+.order-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 1rem 0 1.25rem;
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.order-check input {
+  margin-top: 0.15rem;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.order-submit {
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(229,231,235,0.8);
+  background: linear-gradient(135deg, rgba(148,163,184,0.55), rgba(255,255,255,0.85));
+  color: #0f172a;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.order-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+body.order-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .order-modal-box {
+    width: calc(100vw - 1rem);
+    margin: 0.5rem auto;
+    max-height: calc(100vh - 1rem);
+    padding: 1rem 0.9rem 1.2rem;
+  }
+
+  .order-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-full {
+    grid-column: auto;
+  }
+}
 body{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
@@ -1908,10 +2092,44 @@ footer {
   window.addEventListener('resize', setHeaderH);
 })();
 </script>
-
+  
 </head>
-<body class="core">
+    <body class="core">
 
+<script>
+(function () {
+  const modal = document.getElementById('order-modal');
+  const openBtn = document.getElementById('open-order-modal');
+  const closeBtn = document.getElementById('close-order-modal');
+  const backdrop = modal ? modal.querySelector('.order-modal-backdrop') : null;
+
+  if (!modal || !openBtn || !closeBtn || !backdrop) return;
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('order-modal-open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('order-modal-open');
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+})();
+</script>
+    
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
   <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
 
@@ -1931,7 +2149,7 @@ footer {
       <a href="#mecanism">Tehnologie</a>
       <a href="#suport-clienti">Suport clienți</a>
       <a href="/garantie.html">Garanție Orex®</a>
-      <a href="#contact">Comenzi</a>
+      <a href="#" id="open-order-modal">Comenzi</a>
     </nav>
 
     <!-- 🔀 Comutator RO / EN -->
@@ -3308,6 +3526,184 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-   
+    
+   <script>
+(function () {
+  const modal = document.getElementById('order-modal');
+  const openBtn = document.getElementById('open-order-modal');
+  const closeBtn = document.getElementById('close-order-modal');
+  const backdrop = modal ? modal.querySelector('.order-modal-backdrop') : null;
+
+  if (!modal || !openBtn || !closeBtn || !backdrop) return;
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('order-modal-open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('order-modal-open');
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+})();
+</script>
+
+   <div id="order-modal" class="order-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="order-modal-backdrop"></div>
+
+  <div class="order-modal-box">
+    <button type="button" class="order-close" id="close-order-modal" aria-label="Închide">×</button>
+
+    <div class="order-modal-head">
+      <h2>Comandă Orex®</h2>
+      <p>Date de facturare și expediție</p>
+    </div>
+
+    <form action="https://formspree.io/f/xlgodpre" method="POST" class="order-form">
+      <div class="order-grid">
+        <div class="order-field">
+          <label for="model">Model</label>
+          <select id="model" name="Model comandat" required>
+            <option value="">Selectează modelul</option>
+            <option>Orex Deluxe C – Miezul Nopții</option>
+            <option>Orex Deluxe C – Albastru Infinit</option>
+            <option>Orex Deluxe C – Sânge Burgund</option>
+          </select>
+        </div>
+
+        <div class="order-field">
+          <label for="cantitate">Cantitate</label>
+          <input id="cantitate" name="Cantitate" type="number" min="1" value="1" required>
+        </div>
+
+        <div class="order-field">
+          <label for="nume">Nume și prenume</label>
+          <input id="nume" name="Nume client" type="text" required>
+        </div>
+
+        <div class="order-field">
+          <label for="email">Email</label>
+          <input id="email" name="Email client" type="email" required>
+        </div>
+
+        <div class="order-field">
+          <label for="telefon">Telefon</label>
+          <input id="telefon" name="Telefon" type="tel" required>
+        </div>
+
+        <div class="order-field">
+          <label for="tipclient">Tip client</label>
+          <select id="tipclient" name="Tip client" required>
+            <option value="">Selectează</option>
+            <option>Persoană fizică</option>
+            <option>Persoană juridică</option>
+          </select>
+        </div>
+      </div>
+
+      <h3 class="order-subtitle">Facturare</h3>
+
+      <div class="order-grid">
+        <div class="order-field order-full">
+          <label for="fact_nume">Nume / Denumire firmă</label>
+          <input id="fact_nume" name="Facturare - Nume / Firmă" type="text" required>
+        </div>
+
+        <div class="order-field">
+          <label for="fact_cui">CUI / CIF</label>
+          <input id="fact_cui" name="Facturare - CUI/CIF" type="text">
+        </div>
+
+        <div class="order-field">
+          <label for="fact_regcom">Nr. Reg. Com.</label>
+          <input id="fact_regcom" name="Facturare - Nr. Reg. Com." type="text">
+        </div>
+
+        <div class="order-field order-full">
+          <label for="fact_adresa">Adresă facturare</label>
+          <input id="fact_adresa" name="Facturare - Adresă" type="text" required>
+        </div>
+
+        <div class="order-field">
+          <label for="fact_oras">Oraș</label>
+          <input id="fact_oras" name="Facturare - Oraș" type="text" required>
+        </div>
+
+        <div class="order-field">
+          <label for="fact_judet">Județ</label>
+          <input id="fact_judet" name="Facturare - Județ" type="text" required>
+        </div>
+
+        <div class="order-field">
+          <label for="fact_codpostal">Cod poștal</label>
+          <input id="fact_codpostal" name="Facturare - Cod poștal" type="text">
+        </div>
+
+        <div class="order-field">
+          <label for="fact_tara">Țară</label>
+          <input id="fact_tara" name="Facturare - Țară" type="text" value="România">
+        </div>
+      </div>
+
+      <h3 class="order-subtitle">Expediție</h3>
+
+      <div class="order-grid">
+        <div class="order-field order-full">
+          <label for="livrare_adresa">Adresă livrare</label>
+          <input id="livrare_adresa" name="Livrare - Adresă" type="text" required>
+        </div>
+
+        <div class="order-field">
+          <label for="livrare_oras">Oraș</label>
+          <input id="livrare_oras" name="Livrare - Oraș" type="text" required>
+        </div>
+
+        <div class="order-field">
+          <label for="livrare_judet">Județ</label>
+          <input id="livrare_judet" name="Livrare - Județ" type="text" required>
+        </div>
+
+        <div class="order-field">
+          <label for="livrare_codpostal">Cod poștal</label>
+          <input id="livrare_codpostal" name="Livrare - Cod poștal" type="text">
+        </div>
+
+        <div class="order-field">
+          <label for="livrare_tara">Țară</label>
+          <input id="livrare_tara" name="Livrare - Țară" type="text" value="România">
+        </div>
+      </div>
+
+      <div class="order-field">
+        <label for="observatii">Observații</label>
+        <textarea id="observatii" name="Observații" rows="5"></textarea>
+      </div>
+
+      <label class="order-check">
+        <input type="checkbox" name="Acord GDPR" required>
+        Sunt de acord cu prelucrarea datelor pentru procesarea comenzii.
+      </label>
+
+      <input type="hidden" name="_subject" value="Comandă nouă Orex® de pe site">
+
+      <div class="order-actions">
+        <button type="submit" class="order-submit">Trimite comanda</button>
+      </div>
+    </form>
+  </div>
+</div> 
 </body>
 </html>
