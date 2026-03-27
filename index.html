@@ -538,7 +538,48 @@ nav a:hover {
 nav a:hover::before {
   width: 100%;
 }
+   
+.nav-btn {
+  position: relative;
+  display: inline-block;
+  padding: 0.25rem 0;
+  font-size: 0.73rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(226, 232, 240, 0.78);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
 
+.nav-btn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.4rem;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.9),
+    rgba(255,255,255,0)
+  );
+  transition: width 0.24s ease;
+}
+
+.nav-btn:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.nav-btn:hover::before {
+  width: 100%;
+}
 /* ===== LIMBI ===== */
 .lang-switch {
   justify-self: end;
@@ -2096,40 +2137,6 @@ footer {
 </head>
     <body class="core">
 
-<script>
-(function () {
-  const modal = document.getElementById('order-modal');
-  const openBtn = document.getElementById('open-order-modal');
-  const closeBtn = document.getElementById('close-order-modal');
-  const backdrop = modal ? modal.querySelector('.order-modal-backdrop') : null;
-
-  if (!modal || !openBtn || !closeBtn || !backdrop) return;
-
-  function openModal(e) {
-    if (e) e.preventDefault();
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('order-modal-open');
-  }
-
-  function closeModal() {
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('order-modal-open');
-  }
-
-  openBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-  backdrop.addEventListener('click', closeModal);
-
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-})();
-</script>
-    
   <!-- LINK PENTRU ACCESIBILITATE (recomandat de Google Lighthouse) -->
   <a href="#main-content" class="skip-link">Sari la conținutul principal</a>
 
@@ -2149,7 +2156,9 @@ footer {
       <a href="#mecanism">Tehnologie</a>
       <a href="#suport-clienti">Suport clienți</a>
       <a href="/garantie.html">Garanție Orex®</a>
-      <a href="#" id="open-order-modal">Comenzi</a>
+      <button id="open-order-modal" style="background:none;border:none;color:inherit;cursor:pointer;">
+  Comenzi
+</button>
     </nav>
 
     <!-- 🔀 Comutator RO / EN -->
@@ -3527,41 +3536,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
     
-   <script>
-(function () {
-  const modal = document.getElementById('order-modal');
-  const openBtn = document.getElementById('open-order-modal');
-  const closeBtn = document.getElementById('close-order-modal');
-  const backdrop = modal ? modal.querySelector('.order-modal-backdrop') : null;
-
-  if (!modal || !openBtn || !closeBtn || !backdrop) return;
-
-  function openModal(e) {
-    if (e) e.preventDefault();
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('order-modal-open');
-  }
-
-  function closeModal() {
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('order-modal-open');
-  }
-
-  openBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-  backdrop.addEventListener('click', closeModal);
-
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-})();
-</script>
-
-   <div id="order-modal" class="order-modal" aria-hidden="true" role="dialog" aria-modal="true">
+     <div id="order-modal" class="order-modal" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="order-modal-backdrop"></div>
 
   <div class="order-modal-box">
@@ -3705,5 +3680,41 @@ document.addEventListener('DOMContentLoaded', function () {
     </form>
   </div>
 </div> 
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const modal = document.getElementById('order-modal');
+  const openBtn = document.getElementById('open-order-modal');
+  const closeBtn = document.getElementById('close-order-modal');
+  const backdrop = modal ? modal.querySelector('.order-modal-backdrop') : null;
+
+  if (!modal || !openBtn || !closeBtn || !backdrop) return;
+
+  function openModal(e) {
+    e.preventDefault();
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('order-modal-open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('order-modal-open');
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+});
+</script>
 </body>
 </html>
