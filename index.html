@@ -3705,38 +3705,29 @@ document.getElementById('order-form').addEventListener('submit', function () {
       
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('img').forEach(function (img) {
+    img.setAttribute('draggable', 'false');
+    img.setAttribute('oncontextmenu', 'return false');
 
-  const modal = document.getElementById('order-modal');
-  const openBtn = document.getElementById('open-order-modal');
-  const closeBtn = document.getElementById('close-order-modal');
-  const backdrop = modal ? modal.querySelector('.order-modal-backdrop') : null;
+    img.addEventListener('dragstart', function (e) {
+      e.preventDefault();
+      return false;
+    });
 
-  if (!modal || !openBtn || !closeBtn || !backdrop) return;
+    img.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+      return false;
+    });
 
-  function openModal(e) {
-    e.preventDefault();
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('order-modal-open');
-  }
-
-  function closeModal() {
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('order-modal-open');
-  }
-
-  openBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-  backdrop.addEventListener('click', closeModal);
-
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
+    img.addEventListener('mousedown', function (e) {
+      if (e.button === 2) {
+        e.preventDefault();
+        return false;
+      }
+    });
   });
-
 });
 </script>
+      
 </body>
 </html>
