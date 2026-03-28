@@ -579,6 +579,91 @@ nav a:hover::before {
 
 .nav-btn:hover::before {
   width: 100%;
+
+/* ===== NAV CTA – COMENZI / ORDERS ===== */
+.nav-cta {
+  justify-self: center;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0.62rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(226, 232, 240, 0.28);
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.10),
+      rgba(148,163,184,0.08));
+  color: #f8fafc;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.22),
+    inset 0 1px 0 rgba(255,255,255,0.10);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    color 0.22s ease;
+  white-space: nowrap;
+}
+
+.nav-cta::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
+  pointer-events: none;
+}
+
+.nav-cta:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.46);
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.16),
+      rgba(148,163,184,0.12));
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.32),
+    inset 0 1px 0 rgba(255,255,255,0.16);
+  color: #ffffff;
+}
+
+.nav-cta:active {
+  transform: translateY(0);
+  box-shadow:
+    0 6px 14px rgba(0,0,0,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.nav-cta:focus-visible {
+  outline: none;
+  border-color: rgba(191,219,254,0.95);
+  box-shadow:
+    0 0 0 3px rgba(59,130,246,0.18),
+    0 10px 24px rgba(0,0,0,0.28);
+}
+
+/* să nu primească stilul de underline rezervat linkurilor */
+nav .nav-cta::before {
+  inset: 1px;
+  width: auto;
+  height: auto;
+  left: 1px;
+  bottom: 1px;
+  transform: none;
+}
+  
 }
 /* ===== LIMBI ===== */
 .lang-switch {
@@ -2142,7 +2227,9 @@ footer {
       <a href="#mecanism">Tehnologie</a>
       <a href="#suport-clienti">Suport clienți</a>
       <a href="/garantie.html">Garanție Orex®</a>
-      <button id="open-order-modal" style="background:none;border:none;color:inherit;cursor:pointer;">
+      <button id="open-order-modal" class="nav-cta" type="button">
+  Comenzi
+</button>
   Comenzi
 </button>
     </nav>
