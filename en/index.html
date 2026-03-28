@@ -1787,6 +1787,255 @@ footer {
     transform: translateY(0);
   }
 }
+
+    /* ===== PROMO BAR ===== */
+.promo-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 3rem 0.55rem 1rem;
+  background: linear-gradient(90deg, #7c2d12, #b91c1c, #7c2d12);
+  color: #fff;
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+}
+
+.promo-topbar strong {
+  font-weight: 700;
+}
+
+.promo-topbar-close {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+body.has-promo-bar {
+  padding-top: calc(var(--header-h) + 42px);
+}
+
+body.has-promo-bar header {
+  top: 42px;
+}
+
+/* ===== PRODUCT PRICE ===== */
+.card-price {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.old-price {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.new-price {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.discount-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 6px 14px rgba(220,38,38,0.28);
+}
+
+.product-badge {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 2;
+  padding: 0.32rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(15,23,42,0.94);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #f8fafc;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+}
+
+/* ===== PROMO POPUP ===== */
+.promo-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 99998;
+}
+
+.promo-modal.active {
+  display: block;
+}
+
+.promo-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(7px);
+}
+
+.promo-box {
+  position: relative;
+  width: min(560px, calc(100vw - 1.2rem));
+  margin: 6vh auto 0;
+  padding: 1.5rem 1.2rem 1.35rem;
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(2,6,23,0.98));
+  border: 1px solid rgba(148,163,184,0.28);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+  color: #e5e7eb;
+  text-align: center;
+}
+
+.promo-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(148,163,184,0.35);
+  background: rgba(15,23,42,0.84);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.promo-kicker {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+}
+
+.promo-title {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+  color: #fff;
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
+
+.promo-text {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  max-width: 440px;
+  margin: 0 auto 1rem;
+  line-height: 1.6;
+}
+
+.promo-countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem auto 1.2rem;
+  max-width: 420px;
+}
+
+.promo-unit {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(148,163,184,0.25);
+  border-radius: 0.9rem;
+  padding: 0.75rem 0.35rem;
+}
+
+.promo-num {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.promo-label {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+}
+
+.promo-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.promo-btn,
+.promo-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: 0.25s ease;
+}
+
+.promo-btn {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(203,213,225,0.8));
+  color: #0f172a;
+  border: 1px solid rgba(255,255,255,0.75);
+}
+
+.promo-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.promo-btn-secondary {
+  color: #e5e7eb;
+  border: 1px solid rgba(148,163,184,0.45);
+  background: transparent;
+}
+
+.promo-btn-secondary:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+@media (max-width: 640px) {
+  .promo-countdown {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
   </style>
 
   <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
@@ -1806,6 +2055,11 @@ footer {
 </head>
 <body class="core">
 
+<div id="promo-topbar" class="promo-topbar" role="region" aria-label="Promoție">
+  <span id="promo-topbar-text"></span>
+  <button class="promo-topbar-close" id="promo-topbar-close" aria-label="Închide">×</button>
+</div>
+  
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
@@ -1930,34 +2184,52 @@ footer {
 
       <div class="collections-grid">
         <article class="card-premium">
+          <div class="product-badge" data-i18n="limitedEdition">Limited offer</div>
           <img src="/Orex-noublack.JPG" alt="Orex® Comte des Carpates Deluxe “C” - Midnight" class="js-lightbox" loading="lazy" decoding="async">
           <div class="card-body">
             <div class="card-title">Orex® • Deluxe “C” • Midnight</div>
             <div class="card-meta">
               black dial • 316L steel • anti-reflective sapphire crystal • Sellita SW200-1 • steel bracelet
             </div>
+            <div class="card-price">
+  <span class="old-price">7.500 lei</span>
+  <span class="new-price">5.200 lei</span>
+  <span class="discount-badge">-31%</span>
+</div>
           </div>
           <a href="#" class="btn-detalii-elegant" data-target="detalii-deluxe-c"><span>Details</span></a>
         </article>
 
         <article class="card-premium">
+          <div class="product-badge" data-i18n="limitedEdition">Launch offer</div>
           <img src="/Orex-noublue.jpg" alt="Orex® Comte des Carpates Deluxe “C” – Infinite Blue" class="js-lightbox" loading="lazy" decoding="async">
           <div class="card-body">
             <div class="card-title">Orex® • Deluxe “C” • Infinite Blue</div>
             <div class="card-meta">
               blue dial • sunray finish • 316L steel • anti-reflective sapphire crystal • Sellita SW200-1 • steel bracelet
             </div>
+            <div class="card-price">
+  <span class="old-price">7.500 lei</span>
+  <span class="new-price">5.000 lei</span>
+  <span class="discount-badge">-33%</span>
+</div>
           </div>
           <a href="#" class="btn-detalii-elegant" data-target="detalii-deluxe-ocean"><span>Details</span></a>
         </article>
 
         <article class="card-premium">
+          <div class="product-badge" data-i18n="limitedEdition">Special offer</div>
           <img src="/Orex-nourosu.jpg" alt="Orex® Comte des Carpates Deluxe “C” – Burgundy Blood" class="js-lightbox" loading="lazy" decoding="async">
           <div class="card-body">
             <div class="card-title">Orex® • Deluxe “C” • Burgundy Blood</div>
             <div class="card-meta">
               red dial • 316L steel • anti-reflective sapphire crystal • Sellita SW200-1 • steel bracelet
             </div>
+            <div class="card-price">
+  <span class="old-price">7.500 lei</span>
+  <span class="new-price">4.800 lei</span>
+  <span class="discount-badge">-36%</span>
+</div>
           </div>
           <a href="#" class="btn-detalii-elegant" data-target="detalii-deluxe-vampir"><span>Details</span></a>
         </article>
@@ -3006,5 +3278,215 @@ footer {
     });
   });
   </script>
+
+  <div id="promo-modal" class="promo-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="promo-backdrop"></div>
+
+  <div class="promo-box">
+    <button type="button" class="promo-close" id="promo-close" aria-label="Închide">×</button>
+
+    <div class="promo-kicker" id="promo-kicker">Ofertă specială</div>
+    <h2 class="promo-title" id="promo-title">Promoție de lansare Orex®</h2>
+    <p class="promo-text" id="promo-text">
+      Beneficiați acum de prețuri speciale pentru modelele selectate din colecția Comte des Carpates.
+    </p>
+
+    <div class="promo-countdown" id="promo-countdown">
+      <div class="promo-unit">
+        <span class="promo-num" id="promo-days">00</span>
+        <span class="promo-label" id="label-days">Zile</span>
+      </div>
+      <div class="promo-unit">
+        <span class="promo-num" id="promo-hours">00</span>
+        <span class="promo-label" id="label-hours">Ore</span>
+      </div>
+      <div class="promo-unit">
+        <span class="promo-num" id="promo-minutes">00</span>
+        <span class="promo-label" id="label-minutes">Minute</span>
+      </div>
+      <div class="promo-unit">
+        <span class="promo-num" id="promo-seconds">00</span>
+        <span class="promo-label" id="label-seconds">Secunde</span>
+      </div>
+    </div>
+
+    <div class="promo-actions">
+      <a href="#colectii" class="promo-btn" id="promo-main-btn">Vezi oferta</a>
+      <button type="button" class="promo-btn-secondary" id="promo-secondary-btn">Mai târziu</button>
+    </div>
+  </div>
+</div>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const htmlLang = (document.documentElement.getAttribute('lang') || 'ro').toLowerCase();
+  const isEn = htmlLang.startsWith('en');
+
+  const t = isEn ? {
+    topbar: 'Launch offer: <strong>up to 20% off</strong> on selected Orex® models.',
+    topbarClose: 'Close',
+    limitedEdition: 'Limited edition',
+    launchOffer: 'Launch offer',
+    specialPrice: 'Special price',
+    promoKicker: 'Special offer',
+    promoTitle: 'Orex® launch promotion',
+    promoText: 'Enjoy special pricing now for selected models from the Comte des Carpates collection.',
+    promoMainBtn: 'View offer',
+    promoSecondaryBtn: 'Later',
+    days: 'Days',
+    hours: 'Hours',
+    minutes: 'Minutes',
+    seconds: 'Seconds'
+  } : {
+    topbar: 'Ofertă de lansare: <strong>până la 20% reducere</strong> la modele Orex® selectate.',
+    topbarClose: 'Închide',
+    limitedEdition: 'Ediție limitată',
+    launchOffer: 'Ofertă de lansare',
+    specialPrice: 'Preț special',
+    promoKicker: 'Ofertă specială',
+    promoTitle: 'Promoție de lansare Orex®',
+    promoText: 'Beneficiați acum de prețuri speciale pentru modelele selectate din colecția Comte des Carpates.',
+    promoMainBtn: 'Vezi oferta',
+    promoSecondaryBtn: 'Mai târziu',
+    days: 'Zile',
+    hours: 'Ore',
+    minutes: 'Minute',
+    seconds: 'Secunde'
+  };
+
+  const promoEnd = new Date('2026-12-31T23:59:59');
+
+  const topbar = document.getElementById('promo-topbar');
+  const topbarText = document.getElementById('promo-topbar-text');
+  const topbarClose = document.getElementById('promo-topbar-close');
+
+  if (topbar && topbarText) {
+    topbarText.innerHTML = t.topbar;
+    document.body.classList.add('has-promo-bar');
+  }
+
+  if (topbarClose) {
+    topbarClose.setAttribute('aria-label', t.topbarClose);
+    topbarClose.addEventListener('click', function () {
+      if (topbar) topbar.style.display = 'none';
+      document.body.classList.remove('has-promo-bar');
+      const header = document.querySelector('header');
+      if (header) header.style.top = '0';
+    });
+  }
+
+  document.querySelectorAll('[data-i18n="limitedEdition"]').forEach(el => el.textContent = t.limitedEdition);
+  document.querySelectorAll('[data-i18n="launchOffer"]').forEach(el => el.textContent = t.launchOffer);
+  document.querySelectorAll('[data-i18n="specialPrice"]').forEach(el => el.textContent = t.specialPrice);
+
+  const modal = document.getElementById('promo-modal');
+  const promoClose = document.getElementById('promo-close');
+  const promoSecondaryBtn = document.getElementById('promo-secondary-btn');
+  const promoBackdrop = modal ? modal.querySelector('.promo-backdrop') : null;
+
+  const promoKicker = document.getElementById('promo-kicker');
+  const promoTitle = document.getElementById('promo-title');
+  const promoText = document.getElementById('promo-text');
+  const promoMainBtn = document.getElementById('promo-main-btn');
+
+  const labelDays = document.getElementById('label-days');
+  const labelHours = document.getElementById('label-hours');
+  const labelMinutes = document.getElementById('label-minutes');
+  const labelSeconds = document.getElementById('label-seconds');
+
+  if (promoKicker) promoKicker.textContent = t.promoKicker;
+  if (promoTitle) promoTitle.textContent = t.promoTitle;
+  if (promoText) promoText.textContent = t.promoText;
+  if (promoMainBtn) promoMainBtn.textContent = t.promoMainBtn;
+  if (promoSecondaryBtn) promoSecondaryBtn.textContent = t.promoSecondaryBtn;
+  if (labelDays) labelDays.textContent = t.days;
+  if (labelHours) labelHours.textContent = t.hours;
+  if (labelMinutes) labelMinutes.textContent = t.minutes;
+  if (labelSeconds) labelSeconds.textContent = t.seconds;
+
+  function openPromo() {
+    if (!modal) return;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('order-modal-open');
+  }
+
+  function closePromo() {
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('order-modal-open');
+  }
+
+  const promoDismissed = sessionStorage.getItem('orexPromoClosed');
+  if (!promoDismissed) {
+    setTimeout(openPromo, 2200);
+  }
+
+  if (promoClose) {
+    promoClose.addEventListener('click', function () {
+      closePromo();
+      sessionStorage.setItem('orexPromoClosed', '1');
+    });
+  }
+
+  if (promoSecondaryBtn) {
+    promoSecondaryBtn.addEventListener('click', function () {
+      closePromo();
+      sessionStorage.setItem('orexPromoClosed', '1');
+    });
+  }
+
+  if (promoBackdrop) {
+    promoBackdrop.addEventListener('click', function () {
+      closePromo();
+      sessionStorage.setItem('orexPromoClosed', '1');
+    });
+  }
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+      closePromo();
+      sessionStorage.setItem('orexPromoClosed', '1');
+    }
+  });
+
+  const daysEl = document.getElementById('promo-days');
+  const hoursEl = document.getElementById('promo-hours');
+  const minutesEl = document.getElementById('promo-minutes');
+  const secondsEl = document.getElementById('promo-seconds');
+
+  function pad(n) {
+    return String(n).padStart(2, '0');
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = promoEnd - now;
+
+    if (diff <= 0) {
+      if (daysEl) daysEl.textContent = '00';
+      if (hoursEl) hoursEl.textContent = '00';
+      if (minutesEl) minutesEl.textContent = '00';
+      if (secondsEl) secondsEl.textContent = '00';
+      return;
+    }
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    if (daysEl) daysEl.textContent = pad(days);
+    if (hoursEl) hoursEl.textContent = pad(hours);
+    if (minutesEl) minutesEl.textContent = pad(minutes);
+    if (secondsEl) secondsEl.textContent = pad(seconds);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+});
+</script>
 </body>
 </html>
