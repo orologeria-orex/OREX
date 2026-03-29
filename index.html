@@ -2030,6 +2030,15 @@ body.has-promo-bar header {
   background: rgba(255,255,255,0.05);
 }
 
+    #promo-main-btn {
+  transition: all 0.25s ease;
+}
+
+#promo-main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
 @media (max-width: 640px) {
   .promo-countdown {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2091,7 +2100,7 @@ body.has-promo-bar header {
 @keyframes promoBoxIn {
   from {
     opacity: 0;
-    transform: translateY(18px) scale(0.96);
+    transform: translateY(40px) scale(0.94);
   }
   to {
     opacity: 1;
@@ -3306,7 +3315,7 @@ body.has-promo-bar header {
     if (openBtn) openBtn.addEventListener('click', openModal);
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (backdrop) backdrop.addEventListener('click', closeModal);
-
+   
     window.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
         closeModal();
@@ -3561,6 +3570,12 @@ if (promoBackdrop) {
   });
 }
 
+window.addEventListener('scroll', () => {
+  if (modal && modal.classList.contains('active')) {
+    closePromo();
+  }
+}, { once: true });
+  
 window.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
     sessionStorage.setItem('orexPromoClosed', '1');
