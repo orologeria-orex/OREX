@@ -3188,9 +3188,51 @@ body.has-promo-bar header {
       if (e.key === 'ArrowRight') show(current + 1);
     });
 
-    imgBox.addEventListener('click', () => show(current + 1));
+      imgBox.addEventListener('click', () => show(current + 1));
   })();
-    <script>
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
+    const wrapper = document.getElementById('detalii-tehnice');
+    const cards = document.querySelectorAll('#detalii-tehnice .detalii-card');
+    const closeBtn = document.querySelector('.detalii-close-btn');
+
+    function showCard(id) {
+      if (!wrapper) return;
+
+      wrapper.classList.add('active');
+      wrapper.classList.remove('theme-midnight', 'theme-blue', 'theme-burgundy');
+
+      cards.forEach(card => card.classList.remove('active'));
+
+      const card = document.getElementById(id);
+      if (card) {
+        card.classList.add('active');
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function hideAll() {
+      if (!wrapper) return;
+      wrapper.classList.remove('active', 'theme-midnight', 'theme-blue', 'theme-burgundy');
+      cards.forEach(card => card.classList.remove('active'));
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (!btn.dataset.target) return;
+        e.preventDefault();
+        showCard(btn.dataset.target);
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', hideAll);
+    }
+  });
+  </script>
 document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
   const wrapper = document.getElementById('detalii-tehnice');
