@@ -2252,9 +2252,8 @@ body.has-promo-bar header {
   color: #cbd5e1;
 }
 
-/* ascundem butonul de închidere dacă mergem pe selector premium */
 .detalii-close-btn {
-  display: none;
+  display: block;
 }
   </style>
 
@@ -3253,53 +3252,6 @@ body.has-promo-bar header {
     });
   })();
   </script>
-
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('#colectii .card-premium[data-model]');
-  const detailWrapper = document.getElementById('detalii-tehnice');
-  const detailCards = document.querySelectorAll('#detalii-tehnice .detalii-card');
-
-  function activateModel(id, themeClass, doScroll = true) {
-    if (!detailWrapper) return;
-
-    cards.forEach(card => {
-      card.classList.toggle('is-active', card.dataset.model === id);
-    });
-
-    detailCards.forEach(card => {
-      card.classList.remove('active');
-    });
-
-    const activeDetail = document.getElementById(id);
-    if (activeDetail) {
-      activeDetail.classList.add('active');
-    }
-
-    detailWrapper.classList.remove('theme-midnight', 'theme-blue', 'theme-burgundy');
-    if (themeClass) {
-      detailWrapper.classList.add(themeClass);
-    }
-
-    if (doScroll) {
-      detailWrapper.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  }
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      activateModel(card.dataset.model, card.dataset.theme, true);
-    });
-  });
-
-  if (cards.length) {
-    activateModel(cards[0].dataset.model, cards[0].dataset.theme, false);
-  }
-});
-</script>
 
   <script>
   document.addEventListener('DOMContentLoaded', function () {
