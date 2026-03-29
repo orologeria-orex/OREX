@@ -896,6 +896,47 @@ nav .nav-cta::before {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
+    .card-premium {
+  position: relative;
+}
+
+/* BADGE NOU / NEW */
+.badge-new {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: #f8fafc;
+
+  background: linear-gradient(135deg,
+    rgba(220,38,38,0.9),
+    rgba(185,28,28,0.9)
+  );
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 6px 14px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+
+  z-index: 5;
+}
+
+/* variantă mai subtilă (dacă vrei mai premium decât "promo") */
+.badge-new.subtle {
+  background: rgba(15,23,42,0.85);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #e5e7eb;
+}
+
 .card-premium img {
   width: 100%;
   height: 210px;
@@ -2266,6 +2307,7 @@ body.has-promo-bar header {
 
       <div class="collections-grid">
         <article class="card-premium">
+          <div class="badge-new">NOU</div>
           <div class="product-badge" data-i18n="limitedEdition">Ediție limitată</div>
           <img src="/Orex-noublack.JPG" alt="Orex® Comte des Carpates Deluxe „C” - Midnight" class="js-lightbox" loading="lazy" decoding="async">
           <div class="card-body">
@@ -2283,6 +2325,7 @@ body.has-promo-bar header {
         </article>
 
         <article class="card-premium">
+          <div class="badge-new">NOU</div>
           <div class="product-badge" data-i18n="limitedEdition">Ofertă de lansare</div>
           <img src="/Orex-noublue.jpg" alt="Orex® Comte des Carpates Deluxe „C” – Infinite Blue" class="js-lightbox" loading="lazy" decoding="async">
           <div class="card-body">
@@ -2300,6 +2343,7 @@ body.has-promo-bar header {
         </article>
 
         <article class="card-premium">
+          <div class="badge-new">NOU</div>
           <div class="product-badge" data-i18n="limitedEdition">Ofertă specială</div>
           <img src="/Orex-nourosu.jpg" alt="Orex® Comte des Carpates Deluxe „C” – Burgundy Blood" class="js-lightbox" loading="lazy" decoding="async">
           <div class="card-body">
