@@ -2036,6 +2036,80 @@ body.has-promo-bar header {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+    .promo-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 99998;
+}
+
+.promo-modal.active {
+  display: block;
+}
+
+.promo-modal.closing .promo-backdrop {
+  animation: promoFadeOut 0.28s ease forwards;
+}
+
+.promo-modal.closing .promo-box {
+  animation: promoBoxOut 0.28s ease forwards;
+}
+
+.promo-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(7px);
+  animation: promoFadeIn 0.28s ease forwards;
+}
+
+.promo-box {
+  position: relative;
+  width: min(560px, calc(100vw - 1.2rem));
+  margin: 6vh auto 0;
+  padding: 1.5rem 1.2rem 1.35rem;
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(2,6,23,0.98));
+  border: 1px solid rgba(148,163,184,0.28);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+  color: #e5e7eb;
+  text-align: center;
+  animation: promoBoxIn 0.32s ease forwards;
+  transform-origin: center top;
+}
+
+@keyframes promoFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes promoFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes promoBoxIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes promoBoxOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+}
   </style>
 
   <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
@@ -3405,51 +3479,77 @@ document.addEventListener('DOMContentLoaded', function () {
   if (labelSeconds) labelSeconds.textContent = t.seconds;
 
   function openPromo() {
-    if (!modal) return;
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('order-modal-open');
-  }
+  if (!modal) return;
+  modal.classList.remove('closing');
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('order-modal-open');
+}
 
-  function closePromo() {
-    if (!modal) return;
-    modal.classList.remove('active');
+  function closePromo(callback) {
+  if (!modal) return;
+
+  modal.classList.add('closing');
+
+  setTimeout(() => {
+    modal.classList.remove('active', 'closing');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('order-modal-open');
-  }
+
+    if (typeof callback === 'function') {
+      callback();
+    }
+  }, 280);
+}
 
   const promoDismissed = sessionStorage.getItem('orexPromoClosed');
   if (!promoDismissed) {
     setTimeout(openPromo, 2200);
   }
 
-  if (promoClose) {
-    promoClose.addEventListener('click', function () {
-      closePromo();
-      sessionStorage.setItem('orexPromoClosed', '1');
-    });
-  }
+if (promoMainBtn) {
+  promoMainBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    sessionStorage.setItem('orexPromoClosed', '1');
 
-  if (promoSecondaryBtn) {
-    promoSecondaryBtn.addEventListener('click', function () {
-      closePromo();
-      sessionStorage.setItem('orexPromoClosed', '1');
-    });
-  }
+    const targetSelector = this.getAttribute('href');
+    const target = targetSelector ? document.querySelector(targetSelector) : null;
 
-  if (promoBackdrop) {
-    promoBackdrop.addEventListener('click', function () {
-      closePromo();
-      sessionStorage.setItem('orexPromoClosed', '1');
+    closePromo(() => {
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
-  }
-
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-      closePromo();
-      sessionStorage.setItem('orexPromoClosed', '1');
-    }
   });
+}
+  
+  if (promoClose) {
+  promoClose.addEventListener('click', function () {
+    sessionStorage.setItem('orexPromoClosed', '1');
+    closePromo();
+  });
+}
+
+if (promoSecondaryBtn) {
+  promoSecondaryBtn.addEventListener('click', function () {
+    sessionStorage.setItem('orexPromoClosed', '1');
+    closePromo();
+  });
+}
+
+if (promoBackdrop) {
+  promoBackdrop.addEventListener('click', function () {
+    sessionStorage.setItem('orexPromoClosed', '1');
+    closePromo();
+  });
+}
+
+window.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+    sessionStorage.setItem('orexPromoClosed', '1');
+    closePromo();
+  }
+});
 
   const daysEl = document.getElementById('promo-days');
   const hoursEl = document.getElementById('promo-hours');
