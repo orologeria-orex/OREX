@@ -2151,6 +2151,111 @@ body.has-promo-bar header {
     transform: translateY(10px) scale(0.97);
   }
 }
+
+    /* ===== COLECTII PREMIUM SELECTOR ===== */
+#colectii .card-premium {
+  cursor: pointer;
+  position: relative;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease;
+}
+
+#colectii .card-premium:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+}
+
+#colectii .card-premium.is-active {
+  border-color: rgba(255,255,255,0.45);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,1),
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 0 28px rgba(255,255,255,0.06);
+}
+
+#colectii .card-premium.is-active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+.collection-indicator {
+  width: 60px;
+  height: 2px;
+  margin: 1.2rem auto 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+/* ===== DETALII PREMIUM ===== */
+#detalii-tehnice {
+  transition: background 0.45s ease, box-shadow 0.45s ease;
+  border-radius: 1.2rem;
+}
+
+/* teme pe model */
+#detalii-tehnice.theme-midnight {
+  background:
+    radial-gradient(circle at top, rgba(15,23,42,0.5), rgba(2,6,23,0));
+}
+
+#detalii-tehnice.theme-blue {
+  background:
+    radial-gradient(circle at top, rgba(30,58,138,0.22), rgba(2,6,23,0));
+}
+
+#detalii-tehnice.theme-burgundy {
+  background:
+    radial-gradient(circle at top, rgba(127,29,29,0.22), rgba(2,6,23,0));
+}
+
+/* animație schimbare detalii */
+.detalii-card {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.detalii-card.active {
+  display: block;
+  animation: premiumDetailIn 0.42s ease forwards;
+}
+
+@keyframes premiumDetailIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* titlul galeriei un pic mai premium */
+.spec-gallery-title {
+  margin: 1.2rem 0 0.8rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #cbd5e1;
+}
+
+/* ascundem butonul de închidere dacă mergem pe selector premium */
+.detalii-close-btn {
+  display: none;
+}
   </style>
 
   <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
@@ -2262,6 +2367,7 @@ body.has-promo-bar header {
 
       <div class="collections-grid">
         <article class="card-premium">
+          <article class="card-premium" data-model="detalii-deluxe-c" data-theme="theme-midnight">
           <div class="badge-new">NOU</div>
           <div class="product-badge" data-i18n="limitedEdition">Ediție limitată</div>
           <img src="/Orex-noublack.jpg" alt="Orex® Comte des Carpates Deluxe „C” - Midnight" class="js-lightbox" loading="lazy" decoding="async">
@@ -2280,6 +2386,7 @@ body.has-promo-bar header {
         </article>
 
         <article class="card-premium">
+          <article class="card-premium" data-model="detalii-deluxe-ocean" data-theme="theme-blue">
           <div class="badge-new">NOU</div>
           <div class="product-badge" data-i18n="limitedEdition">Ofertă de lansare</div>
           <img src="/Orex-noublue.jpg" alt="Orex® Comte des Carpates Deluxe „C” – Infinite Blue" class="js-lightbox" loading="lazy" decoding="async">
@@ -2298,6 +2405,7 @@ body.has-promo-bar header {
         </article>
 
         <article class="card-premium">
+          <article class="card-premium" data-model="detalii-deluxe-vampir" data-theme="theme-burgundy">
           <div class="badge-new">NOU</div>
           <div class="product-badge" data-i18n="limitedEdition">Ofertă specială</div>
           <img src="/Orex-nourosu.jpg" alt="Orex® Comte des Carpates Deluxe „C” – Burgundy Blood" class="js-lightbox" loading="lazy" decoding="async">
@@ -2306,6 +2414,7 @@ body.has-promo-bar header {
             <div class="card-meta">
               cadran roșu • oțel 316L • cristal de safir antireflex • Sellita SW200-1 • brățară din oțel
             </div>
+            <div class="collection-indicator"></div>
             <div class="card-price">
   <span class="old-price">7.500 lei</span>
   <span class="new-price">4.800 lei</span>
@@ -3150,93 +3259,51 @@ body.has-promo-bar header {
   </script>
 
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const videoA = document.getElementById('hero-video-A');
-    const videoB = document.getElementById('hero-video-B');
-    if (!videoA || !videoB) return;
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('#colectii .card-premium[data-model]');
+  const detailWrapper = document.getElementById('detalii-tehnice');
+  const detailCards = document.querySelectorAll('#detalii-tehnice .detalii-card');
 
-    const playlist = [
-      '/orex-fundal.mp4',
-      '/orex-fundal1.mp4'
-    ];
+  function activateModel(id, themeClass, doScroll = true) {
+    if (!detailWrapper) return;
 
-    const positions = {
-      '/orex-fundal.mp4' :  '50% 50%',
-      '/orex-fundal1.mp4':  '50% 15%'
-    };
+    cards.forEach(card => {
+      card.classList.toggle('is-active', card.dataset.model === id);
+    });
 
-    const CROSSFADE = 3.0;
+    detailCards.forEach(card => {
+      card.classList.remove('active');
+    });
 
-    let active   = videoA;
-    let inactive = videoB;
-    let index = 0;
-    let isCrossfading = false;
-
-    function setSource(video, src) {
-      video.src = src;
-      video.style.objectPosition = positions[src] || '50% 50%';
-      video.load();
+    const activeDetail = document.getElementById(id);
+    if (activeDetail) {
+      activeDetail.classList.add('active');
     }
 
-    function onTimeUpdate() {
-      if (!active.duration || isNaN(active.duration)) return;
-      const remaining = active.duration - active.currentTime;
-
-      if (!isCrossfading && remaining <= CROSSFADE) {
-        isCrossfading = true;
-        active.removeEventListener('timeupdate', onTimeUpdate);
-        crossfadeToNext();
-      }
+    detailWrapper.classList.remove('theme-midnight', 'theme-blue', 'theme-burgundy');
+    if (themeClass) {
+      detailWrapper.classList.add(themeClass);
     }
 
-    function scheduleWatcher() {
-      active.addEventListener('timeupdate', onTimeUpdate);
-    }
-
-    function crossfadeToNext() {
-      index = (index + 1) % playlist.length;
-      const nextSrc = playlist[index];
-
-      setSource(inactive, nextSrc);
-
-      inactive.addEventListener('canplay', function handler() {
-        inactive.removeEventListener('canplay', handler);
-
-        try { inactive.currentTime = 0; } catch(e) {}
-        inactive.play().catch(() => {});
-        active.play().catch(() => {});
-
-        inactive.style.opacity = 1;
-        active.style.opacity   = 0;
-
-        setTimeout(() => {
-          const tmp = active;
-          active   = inactive;
-          inactive = tmp;
-          isCrossfading = false;
-          scheduleWatcher();
-        }, CROSSFADE * 1000 + 200);
+    if (doScroll) {
+      detailWrapper.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     }
+  }
 
-    function onEnded(e) {
-      if (e.target === active && !isCrossfading) {
-        crossfadeToNext();
-      }
-    }
-
-    videoA.addEventListener('ended', onEnded);
-    videoB.addEventListener('ended', onEnded);
-
-    setSource(active, playlist[index]);
-    active.addEventListener('canplay', function initHandler() {
-      active.removeEventListener('canplay', initHandler);
-      active.play().catch(() => {});
-      active.style.opacity = 1;
-      scheduleWatcher();
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      activateModel(card.dataset.model, card.dataset.theme, true);
     });
   });
-  </script>
+
+  if (cards.length) {
+    activateModel(cards[0].dataset.model, cards[0].dataset.theme, false);
+  }
+});
+</script>
 
   <script>
   document.addEventListener('DOMContentLoaded', function () {
