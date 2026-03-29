@@ -3190,49 +3190,44 @@ body.has-promo-bar header {
 
     imgBox.addEventListener('click', () => show(current + 1));
   })();
-<script>
+    <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('#colectii .card-premium[data-model]');
-  const detailWrapper = document.getElementById('detalii-tehnice');
-  const detailCards = document.querySelectorAll('#detalii-tehnice .detalii-card');
+  const buttons = document.querySelectorAll('.btn-detalii-elegant[data-target]');
+  const wrapper = document.getElementById('detalii-tehnice');
+  const cards = document.querySelectorAll('#detalii-tehnice .detalii-card');
+  const closeBtn = document.querySelector('.detalii-close-btn');
 
-  function activateModel(id, themeClass, doScroll = true) {
-    if (!detailWrapper) return;
+  function showCard(id) {
+    if (!wrapper) return;
 
-    cards.forEach(card => {
-      card.classList.toggle('is-active', card.dataset.model === id);
-    });
+    wrapper.classList.add('active');
+    wrapper.classList.remove('theme-midnight', 'theme-blue', 'theme-burgundy');
 
-    detailCards.forEach(card => {
-      card.classList.remove('active');
-    });
+    cards.forEach(card => card.classList.remove('active'));
 
-    const activeDetail = document.getElementById(id);
-    if (activeDetail) {
-      activeDetail.classList.add('active');
-    }
-
-    detailWrapper.classList.remove('theme-midnight', 'theme-blue', 'theme-burgundy');
-    if (themeClass) {
-      detailWrapper.classList.add(themeClass);
-    }
-
-    if (doScroll) {
-      detailWrapper.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    const card = document.getElementById(id);
+    if (card) {
+      card.classList.add('active');
+      wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      activateModel(card.dataset.model, card.dataset.theme, true);
+  function hideAll() {
+    if (!wrapper) return;
+    wrapper.classList.remove('active', 'theme-midnight', 'theme-blue', 'theme-burgundy');
+    cards.forEach(card => card.classList.remove('active'));
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (!btn.dataset.target) return;
+      e.preventDefault();
+      showCard(btn.dataset.target);
     });
   });
 
-  if (cards.length) {
-    activateModel(cards[0].dataset.model, cards[0].dataset.theme, false);
+  if (closeBtn) {
+    closeBtn.addEventListener('click', hideAll);
   }
 });
 </script>
