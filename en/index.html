@@ -2253,9 +2253,8 @@ body.has-promo-bar header {
   color: #cbd5e1;
 }
 
-/* ascundem butonul de închidere dacă mergem pe selector premium */
 .detalii-close-btn {
-  display: none;
+  display: block;
 }
   </style>
 
@@ -3238,96 +3237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const videoA = document.getElementById('hero-video-A');
-    const videoB = document.getElementById('hero-video-B');
-    if (!videoA || !videoB) return;
-
-    const playlist = [
-      '/orex-fundal.mp4',
-      '/orex-fundal1.mp4'
-    ];
-
-    const positions = {
-      '/orex-fundal.mp4' :  '50% 50%',
-      '/orex-fundal1.mp4':  '50% 15%'
-    };
-
-    const CROSSFADE = 3.0;
-
-    let active   = videoA;
-    let inactive = videoB;
-    let index = 0;
-    let isCrossfading = false;
-
-    function setSource(video, src) {
-      video.src = src;
-      video.style.objectPosition = positions[src] || '50% 50%';
-      video.load();
-    }
-
-    function onTimeUpdate() {
-      if (!active.duration || isNaN(active.duration)) return;
-      const remaining = active.duration - active.currentTime;
-
-      if (!isCrossfading && remaining <= CROSSFADE) {
-        isCrossfading = true;
-        active.removeEventListener('timeupdate', onTimeUpdate);
-        crossfadeToNext();
-      }
-    }
-
-    function scheduleWatcher() {
-      active.addEventListener('timeupdate', onTimeUpdate);
-    }
-
-    function crossfadeToNext() {
-      index = (index + 1) % playlist.length;
-      const nextSrc = playlist[index];
-
-      setSource(inactive, nextSrc);
-
-      inactive.addEventListener('canplay', function handler() {
-        inactive.removeEventListener('canplay', handler);
-
-        try { inactive.currentTime = 0; } catch(e) {}
-        inactive.play().catch(() => {});
-        active.play().catch(() => {});
-
-        inactive.style.opacity = 1;
-        active.style.opacity   = 0;
-
-        setTimeout(() => {
-          const tmp = active;
-          active   = inactive;
-          inactive = tmp;
-          isCrossfading = false;
-          scheduleWatcher();
-        }, CROSSFADE * 1000 + 200);
-      });
-    }
-
-    function onEnded(e) {
-      if (e.target === active && !isCrossfading) {
-        crossfadeToNext();
-      }
-    }
-
-    videoA.addEventListener('ended', onEnded);
-    videoB.addEventListener('ended', onEnded);
-
-    setSource(active, playlist[index]);
-    active.addEventListener('canplay', function initHandler() {
-      active.removeEventListener('canplay', initHandler);
-      active.play().catch(() => {});
-      active.style.opacity = 1;
-      scheduleWatcher();
-    });
-  });
-  </script>
-
-  <script>
+<script>
   document.addEventListener('DOMContentLoaded', function () {
     const openBtn = document.getElementById('open-order-modal');
     const modal = document.getElementById('order-modal');
