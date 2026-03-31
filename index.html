@@ -666,12 +666,12 @@ nav .nav-cta::before {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: 110%;
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: -3;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 3s ease;
 }
 
@@ -2313,11 +2313,9 @@ body.has-promo-bar header {
 
   <main id="main-content">
     <section id="hero" class="hero">
-      <video id="hero-video-A" autoplay muted playsinline preload="auto"></video>
-      <source src="/orex-fundal.mp4" type="video/mp4">
-      </video>
-      <video id="hero-video-B" autoplay muted playsinline preload="auto"></video>
-      <div class="hero-overlay"></div>
+     <video id="hero-video-A" autoplay muted playsinline preload="auto"></video>
+<video id="hero-video-B" autoplay muted playsinline preload="auto"></video>
+<div class="hero-overlay"></div>
 
       <div class="hero-inner">
         <h2 class="hero-subtitle">CEASUL OREX®</h2>
@@ -3594,19 +3592,20 @@ window.addEventListener('keydown', function (e) {
 <script>
   
 // === HERO VIDEO PLAYLIST CU CROSSFADE REAL ===
+<script>
 document.addEventListener('DOMContentLoaded', function () {
   const videoA = document.getElementById('hero-video-A');
   const videoB = document.getElementById('hero-video-B');
   if (!videoA || !videoB) return;
 
   const playlist = [
-    'orex-fundal.mp4',
-    'orex-fundal1.mp4'
+    '/orex-fundal.mp4',
+    '/orex-fundal1.mp4'
   ];
 
   const positions = {
-    'orex-fundal.mp4': '50% 50%',
-    'orex-fundal1.mp4': '50% 15%'
+    '/orex-fundal.mp4': '50% 50%',
+    '/orex-fundal1.mp4': '50% 15%'
   };
 
   const CROSSFADE = 3.0;
@@ -3648,13 +3647,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
       try {
         inactive.currentTime = 0;
-      } catch(e) {}
+      } catch (e) {}
 
       inactive.play().catch(() => {});
       active.play().catch(() => {});
 
-      inactive.style.opacity = 1;
-      active.style.opacity = 0;
+      inactive.style.opacity = '1';
+      active.style.opacity = '0';
 
       setTimeout(() => {
         const tmp = active;
@@ -3679,7 +3678,7 @@ document.addEventListener('DOMContentLoaded', function () {
   active.addEventListener('canplay', function initHandler() {
     active.removeEventListener('canplay', initHandler);
     active.play().catch(() => {});
-    active.style.opacity = 1;
+    active.style.opacity = '1';
     scheduleWatcher();
   });
 });
