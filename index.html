@@ -1431,32 +1431,35 @@ nav .nav-cta::before {
   margin: 1.5rem auto 0;
   display: grid;
   gap: 1.4rem;
+  justify-items: center;
 }
 
- .event-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-    
-.event-grid img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    border-radius:8px;
-}
-    
 .event-item {
-    max-width: 550px;
-    margin: 0 auto;
-    text-align: center;
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .event-img {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
-    background: #111;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #111;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.event-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background: #111;
+  border-radius: 8px;
 }
     
 .event-meta {
