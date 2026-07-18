@@ -134,6 +134,13 @@
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
+    @font-face {
+    font-family: 'OREX';
+    src: url('fonts/OrexOMyFont-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+    
 :root{
   --bg-main: #020617;
   --fg-main: #e5e7eb;
@@ -445,6 +452,21 @@ header.header-hidden {
     drop-shadow(0 0 24px rgba(255,255,255,0.10));
 }
 
+.orex-logo-text{
+    font-family:"OREX Custom", sans-serif;
+    font-size:44px;
+    color:#fff;
+    text-decoration:none;
+    letter-spacing:2px;
+    line-height:1;
+    display:inline-block;
+}
+
+.registered-mark{
+    font-size:14px;
+    vertical-align:top;
+}
+    
 nav {
   justify-self: center;
   display: flex;
@@ -2316,8 +2338,10 @@ body.has-promo-bar header {
   <header>
     <div class="header-inner">
       <div class="logo-wrap">
-        <img src="/orex-logo.png" alt="O*rex® – logo oficial" class="logo-img">
-      </div>
+    <a href="/" class="orex-logo-text">
+        OREX<span class="registered-mark">®</span>
+    </a>
+</div>
 
       <nav aria-label="Navigare principală">
         <a href="#despre">Despre</a>
