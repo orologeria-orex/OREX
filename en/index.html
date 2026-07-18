@@ -133,6 +133,39 @@
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
+ .orex-logo{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+}
+
+.orex-o{
+    height:46px;
+    width:auto;
+    margin-right:4px;
+}
+
+.orex-text{
+    font-family:"Playfair Display", serif;
+    font-size:40px;
+    letter-spacing:2px;
+    color:white;
+}
+
+.orex-symbol{
+    font-size: 1.35em;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: -0.05em;
+}
+    
+.registered{
+    font-size:12px;
+    margin-left:2px;
+    margin-top:-18px;
+}
+    
 :root{
   --bg-main: #020617;
   --fg-main: #e5e7eb;
@@ -2286,8 +2319,12 @@ body.has-promo-bar header {
   <header>
     <div class="header-inner">
       <div class="logo-wrap">
-        <img src="/orex-logo.png" alt="⌀rex® – official logo" class="logo-img">
-      </div>
+  <a href="/" class="orex-logo">
+    <img src="/orex-o.png" alt="O" class="orex-o">
+    <span class="orex-text">REX</span>
+    <span class="registered">®</span>
+  </a>
+</div>
 
       <nav aria-label="Main navigation">
         <a href="#despre">About</a>
