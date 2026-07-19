@@ -2412,6 +2412,7 @@ body.has-promo-bar header {
     window.addEventListener('resize', setHeaderH);
   })();
   </script>
+  
 </head>
 <body class="core">
 
@@ -4224,5 +4225,106 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const excludedTags = new Set([
+        "SCRIPT",
+        "STYLE",
+        "NOSCRIPT",
+        "TEXTAREA",
+        "INPUT",
+        "SELECT",
+        "OPTION",
+        "CODE",
+        "PRE"
+    ]);
+
+    const walker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_TEXT,
+        {
+            acceptNode(node) {
+                const parent = node.parentElement;
+
+                if (!parent) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+
+                if (excludedTags.has(parent.tagName)) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+
+                /* Nu modifică logo-ul din header */
+                if (parent.closest("header")) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+
+                /* Nu procesează din nou cuvintele deja transformate */
+                if (parent.closest(".orex-word")) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+
+                if (!/\bOrex(?:®)?\b/i.test(node.nodeValue)) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        }
+    );
+
+    const nodes = [];
+
+    while (walker.nextNode()) {
+        nodes.push(walker.currentNode);
+    }
+
+    nodes.forEach(function (textNode) {
+        const text = textNode.nodeValue;
+        const fragment = document.createDocumentFragment();
+
+        const regex = /\bOrex(®)?\b/gi;
+        let lastIndex = 0;
+        let match;
+
+        while ((match = regex.exec(text)) !== null) {
+            fragment.appendChild(
+                document.createTextNode(text.slice(lastIndex, match.index))
+            );
+
+            const word = document.createElement("span");
+            word.className = "orex-word";
+
+            const letterO = document.createElement("span");
+            letterO.className = "vivaldi-o";
+            letterO.textContent = "O";
+
+            const rex = document.createElement("span");
+            rex.className = "rex";
+            rex.textContent = "rex";
+
+            word.appendChild(letterO);
+            word.appendChild(rex);
+
+            if (match[1]) {
+                const registered = document.createElement("sup");
+                registered.textContent = "®";
+                word.appendChild(registered);
+            }
+
+            fragment.appendChild(word);
+            lastIndex = regex.lastIndex;
+        }
+
+        fragment.appendChild(
+            document.createTextNode(text.slice(lastIndex))
+        );
+
+        textNode.parentNode.replaceChild(fragment, textNode);
+    });
+});
+</script>
+  
   </body>
 </html>
