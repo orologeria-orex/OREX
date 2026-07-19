@@ -34,13 +34,46 @@
       --accent:#8ea0ff;
     }
     *{ box-sizing:border-box; margin:0; padding:0; }
-    body{
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
-      color: var(--fg);
-      line-height: 1.65;
-      padding: 2.4rem 1.2rem 3rem;
-    }
+    html,
+body.orex-history-page {
+  min-height: 100%;
+  background-color: #020617;
+}
+
+body.orex-history-page {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, #0b1220 0%, #020617 55%, #000 100%);
+  color: #e5e7eb;
+  line-height: 1.65;
+  padding: 2.4rem 1.2rem 3rem;
+}
+    body.orex-history-page .back,
+body.orex-history-page .lang-mini {
+  color: #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  text-decoration: none;
+}
+
+body.orex-history-page .back:hover,
+body.orex-history-page .lang-mini:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.10);
+  text-decoration: none;
+}
+
+body.orex-history-page .lang-mini.active {
+  color: #ffffff;
+  background-color: rgba(142, 160, 255, 0.18);
+  border-color: #bfdbfe;
+}
+
+body.orex-history-page .orex-word,
+body.orex-history-page .orex-word .vivaldi-o,
+body.orex-history-page .orex-word .rex {
+  color: inherit;
+}
     a{ color: var(--accent); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
@@ -208,7 +241,7 @@
  </style>
 </head>
 
-<body class="core">
+<body class="orex-history-page">
   <div class="wrap">
     <div class="topbar">
   <a class="back" href="/#istoria-orex">← Înapoi la site</a>
