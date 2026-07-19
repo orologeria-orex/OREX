@@ -137,16 +137,15 @@
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
-   .orex-o{
-    font-family: "Vivaldi", "Vivaldi Web", cursive;
-    font-size: 1.15em;
-    font-style: italic;
-    display: inline-block;
+  @font-face {
+    font-family: "Vivaldi";
+    src: url("/fonts/vivaldi.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
 }
 
 .orex-word{
-    display:inline-flex;
-    align-items:baseline;
+    display:inline;
 }
 
 .orex-word .o{
@@ -160,6 +159,11 @@
     font-family:"Playfair Display", serif;
     font-style:italic;
     font-weight:400;
+}
+
+.orex-word sup{
+    font-size:0.6em;
+    vertical-align:super;
 }
     
    .orex-logo{
