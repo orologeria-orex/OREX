@@ -138,22 +138,52 @@
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 @import url(https://db.onlinewebfonts.com/c/5075da953e0dc2c913d0603b29106d4e?family=Vivaldi+Std);
-    
-  @font-face {
-    font-family: "Vivaldi Std";
-    src: url("https://db.onlinewebfonts.com/t/5075da953e0dc2c913d0603b29106d4e.eot");
-    src: url("https://db.onlinewebfonts.com/t/5075da953e0dc2c913d0603b29106d4e.eot?#iefix") format("embedded-opentype"),
-         url("https://db.onlinewebfonts.com/t/5075da953e0dc2c913d0603b29106d4e.woff2") format("woff2"),
-         url("https://db.onlinewebfonts.com/t/5075da953e0dc2c913d0603b29106d4e.woff") format("woff"),
-         url("https://db.onlinewebfonts.com/t/5075da953e0dc2c913d0603b29106d4e.ttf") format("truetype"),
-         url("https://db.onlinewebfonts.com/t/5075da953e0dc2c913d0603b29106d4e.svg#Vivaldi Std") format("svg");
-    font-display: swap;
+
+    /* Headerul existent */
+.orex-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
 }
 
-.orex-word{
-    display:inline;
+.orex-logo .orex-o {
+    height: 46px;
+    width: auto;
+    display: block;
+    margin-right: 4px;
 }
 
+.orex-logo .orex-text {
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+/* Orex afișat în conținutul site-ului */
+.orex-word {
+    display: inline;
+    white-space: nowrap;
+}
+
+   .orex-word .vivaldi-o {
+    font-family: "Vivaldi Std", cursive;
+    font-size: 1.55em;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 0;
+    display: inline-block;
+    vertical-align: -0.12em;
+    margin-right: -0.04em;
+}
+
+.orex-word .rex {
+    font-family: "Playfair Display", serif;
+    font-size: 1em;
+    font-weight: 500;
+    font-style: italic;
+} 
 .orex-word .o{
     font-family:'Vivaldi Std', cursive;
     font-size:1.35em;
@@ -161,24 +191,14 @@
     margin-right:2px;
 }
 
-.orex-word .rex{
-    font-family:"Playfair Display", serif;
-    font-style:italic;
-    font-weight:400;
-}
-
-.orex-word sup{
-    font-size:0.6em;
-    vertical-align:super;
+.orex-word sup {
+    font-family: Arial, sans-serif;
+    font-size: 0.48em;
+    font-style: normal;
+    vertical-align: super;
+    margin-left: 0.08em;
 }
     
-   .orex-logo{
-    display:flex;
-    align-items:center;
-    text-decoration:none;
-    color:white;
-}
-
 .orex-o{
     height:46px;
     width:auto;
