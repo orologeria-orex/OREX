@@ -161,15 +161,18 @@
 
 /* Functioneaza atat cu <span class="vivaldi-o">O</span>,
    cat si cu <img class="orex-o-img"> */
+
 .orex-word .vivaldi-o {
     display: inline-block;
     flex: 0 0 auto;
     width: 0.78em;
     height: 1.05em;
     background: url("/orex-o.png") center / contain no-repeat;
-    font-size: 0;
+    font-size: inherit;
     line-height: 0;
     color: transparent;
+    text-indent: -9999px;
+    overflow: hidden;
     margin-right: 0.02em;
     transform: none;
 }
