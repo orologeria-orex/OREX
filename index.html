@@ -149,55 +149,68 @@
   <style>
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap");
 
-/* OREX - imagine locala pentru litera O */
-
+/* OREX - litera O din fisierul local, fara Vivaldi Std */
 .orex-word {
     display: inline-flex;
     align-items: center;
+    vertical-align: middle;
     white-space: nowrap;
     text-transform: none !important;
     letter-spacing: normal !important;
 }
 
+/* Functioneaza atat cu <span class="vivaldi-o">O</span>,
+   cat si cu <img class="orex-o-img"> */
+.orex-word .vivaldi-o {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 0.78em;
+    height: 1.05em;
+    background: url("/orex-o.png") center / contain no-repeat;
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+    margin-right: 0.02em;
+    transform: none;
+}
 .orex-word .orex-o-img {
-    display: block !important;
-    height: 1.15em !important;
-    width: auto !important;
-    max-width: none !important;
+    display: block;
+    flex: 0 0 auto;
+    width: auto;
+    height: 1.05em;
+    max-width: none;
     object-fit: contain;
-    flex-shrink: 0;
     margin-right: 0.02em;
 }
-
 .orex-word .rex {
     font-family: "Playfair Display", Georgia, serif;
+    font-size: 1em;
     font-style: italic;
     font-weight: 500;
     text-transform: lowercase !important;
 }
-
 .orex-word sup {
     font-family: Arial, sans-serif;
     font-size: 0.45em;
+    font-style: normal;
+    line-height: 1;
     align-self: flex-start;
     margin-left: 0.08em;
 }
 
-    /* Headerul existent */
+/* Headerul original ramane separat de textele .orex-word */
 .orex-logo {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: white;
 }
-
 .orex-logo .orex-o {
     height: 46px;
     width: auto;
     display: block;
     margin-right: 4px;
 }
-
 .orex-logo .orex-text {
     font-family: "Playfair Display", serif;
     font-size: 40px;
@@ -205,38 +218,6 @@
     color: white;
 }
 
-/* Orex afișat în conținutul site-ului */
-.orex-word {
-    display: inline;
-    white-space: nowrap;
-}
-
-   .orex-word .vivaldi-o {
-    font-family: "Vivaldi Std", cursive;
-    font-size: 1.55em;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 0;
-    display: inline-block;
-    vertical-align: -0.12em;
-    margin-right: -0.04em;
-}
-
-.orex-word .rex {
-    font-family: "Playfair Display", serif;
-    font-size: 1em;
-    font-weight: 500;
-    font-style: italic;
-} 
-
-.orex-word sup {
-    font-family: Arial, sans-serif;
-    font-size: 0.48em;
-    font-style: normal;
-    vertical-align: super;
-    margin-left: 0.08em;
-}
-    
 .orex-o{
     height:46px;
     width:auto;
@@ -2436,49 +2417,21 @@ body.has-promo-bar header {
   display: block;
 }
 
-/* Corecție Orex în sloganul Hero */
+/* Hero: mentinem acelasi O local ca in restul paginii */
 .hero-line .orex-word {
-  display: inline-block;
-  white-space: nowrap;
-  text-transform: none !important;
-  letter-spacing: 0 !important;
-  font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-weight: 400;
 }
-
-.hero-line .orex-word .vivaldi-o {
-  font-family: "Vivaldi Std", cursive !important;
-  font-size: 1.55em;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  line-height: 0;
-  display: inline-block;
-  vertical-align: -0.12em;
-  margin-right: -0.04em;
-  text-transform: none !important;
-  letter-spacing: 0 !important;
-}
-
 .hero-line .orex-word .rex {
-  font-family: "Playfair Display", Georgia, serif !important;
-  font-size: 1em;
-  font-style: italic !important;
-  font-weight: 500 !important;
-  text-transform: lowercase !important;
-  letter-spacing: 0.02em !important;
+    letter-spacing: 0.02em !important;
 }
 
-.hero-line .orex-word sup {
-  font-family: Arial, sans-serif;
-  font-size: 0.45em;
-  font-style: normal;
-  font-weight: 400;
-  vertical-align: super;
-  margin-left: 0.08em;
-  text-transform: none !important;
-  letter-spacing: 0 !important;
-} 
-    
-  </style>
+</style>
 
   <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
 
