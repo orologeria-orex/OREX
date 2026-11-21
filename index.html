@@ -149,34 +149,23 @@
   <style>
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap");
 
-/* OREX - litera O din imagine locala */
+/* OREX - imagine locala pentru litera O */
 
 .orex-word {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     white-space: nowrap;
     text-transform: none !important;
-    letter-spacing: normal;
+    letter-spacing: normal !important;
 }
 
-/* OREX - litera O reprezentata exclusiv prin imagine */
-
-.orex-word .vivaldi-o {
-    display: inline-block !important;
-    width: 0.9em !important;
-    height: 1em !important;
-
-    background-image: url("/orex-o.png") !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-    background-size: contain !important;
-
-    font-size: 0 !important;
-    line-height: 0 !important;
-    color: transparent !important;
-
-    vertical-align: baseline !important;
-    transform: none !important;
+.orex-word .orex-o-img {
+    display: block !important;
+    height: 1.15em !important;
+    width: auto !important;
+    max-width: none !important;
+    object-fit: contain;
+    flex-shrink: 0;
     margin-right: 0.02em;
 }
 
@@ -184,18 +173,16 @@
     font-family: "Playfair Display", Georgia, serif;
     font-style: italic;
     font-weight: 500;
-    font-size: 1em;
     text-transform: lowercase !important;
 }
 
 .orex-word sup {
     font-family: Arial, sans-serif;
     font-size: 0.45em;
-    font-style: normal;
+    align-self: flex-start;
     margin-left: 0.08em;
 }
 
-    
     /* Headerul existent */
 .orex-logo {
     display: flex;
@@ -2575,8 +2562,9 @@ body.has-promo-bar header {
 
     <p class="hero-line">
       <span class="orex-word">
-        <span class="vivaldi-o">O</span><span class="rex">rex</span><sup>®</sup>
-      </span>
+    <img src="/orex-o.png" alt="O" class="orex-o-img">
+    <span class="rex">rex</span><sup>®</sup>
+</span>
       ÎI DĂ UN CHIP
     </p>
 
@@ -2671,7 +2659,8 @@ body.has-promo-bar header {
       <div class="card-body">
         <div class="card-title">
     <span class="orex-word">
-    <span class="vivaldi-o">O</span><span class="rex">rex</span><sup>®</sup>
+    <img src="/orex-o.png" alt="O" class="orex-o-img">
+    <span class="rex">rex</span><sup>®</sup>
 </span>
     • Deluxe „C” • Burgundy Blood
 </div>
@@ -2697,7 +2686,8 @@ body.has-promo-bar header {
       <div class="card-body">
         <div class="card-title">
     <span class="orex-word">
-    <span class="vivaldi-o">O</span><span class="rex">rex</span><sup>®</sup>
+    <img src="/orex-o.png" alt="O" class="orex-o-img">
+    <span class="rex">rex</span><sup>®</sup>
 </span>
     • Deluxe „C” • Midnight
 </div>
@@ -2720,7 +2710,8 @@ body.has-promo-bar header {
       <div class="card-body">
         <div class="card-title">
     <span class="orex-word">
-    <span class="vivaldi-o">O</span><span class="rex">rex</span><sup>®</sup>
+    <img src="/orex-o.png" alt="O" class="orex-o-img">
+    <span class="rex">rex</span><sup>®</sup>
 </span>
     • Deluxe „C” • Burgundy Blood
 </div>
@@ -2744,7 +2735,8 @@ body.has-promo-bar header {
       <div class="card-body">
         <div class="card-title">
     <span class="orex-word">
-    <span class="vivaldi-o">O</span><span class="rex">rex</span><sup>®</sup>
+    <img src="/orex-o.png" alt="O" class="orex-o-img">
+    <span class="rex">rex</span><sup>®</sup>
 </span>
     • Deluxe „C” • Infinite Blue
 </div>
@@ -2817,7 +2809,8 @@ body.has-promo-bar header {
       <div class="card-body">
         <div class="card-title">
     <span class="orex-word">
-    <span class="vivaldi-o">O</span><span class="rex">rex</span><sup>®</sup>
+    <img src="/orex-o.png" alt="O" class="orex-o-img">
+    <span class="rex">rex</span><sup>®</sup>
 </span>
     • Deluxe „C” • George Enescu
 </div>
