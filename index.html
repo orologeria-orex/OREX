@@ -2440,6 +2440,88 @@ body.has-promo-bar header {
     letter-spacing: 0.02em !important;
 }
 
+
+/* OREX - Cookie Consent */
+
+#orex-cookie-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 440px;
+    max-width: calc(100vw - 48px);
+    padding: 24px;
+    background: #0b1220;
+    color: #e5e7eb;
+    border: 1px solid #475569;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.65);
+    font-family: system-ui, sans-serif;
+    z-index: 99999;
+}
+
+.orex-cookie-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #f8fafc;
+}
+
+#orex-cookie-banner p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #cbd5e1;
+    margin-bottom: 18px;
+}
+
+.orex-cookie-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.orex-cookie-actions button {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    background: transparent;
+    color: #e5e7eb;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.orex-cookie-actions button:hover {
+    background: #1e293b;
+}
+
+#orex-cookie-settings {
+    position: fixed;
+    bottom: 12px;
+    left: 12px;
+    padding: 6px 12px;
+    background: #0b1220;
+    color: #94a3b8;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    z-index: 99998;
+}
+
+#orex-cookie-banner[hidden],
+#orex-cookie-settings[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 520px) {
+    #orex-cookie-banner {
+        bottom: 12px;
+        left: 12px;
+        width: calc(100vw - 24px);
+        max-width: none;
+        padding: 18px;
+    }
+}
+    
 </style>
 
   <meta name="google-site-verification" content="KRBr32HJwukmxAylH5vrrAxLZLYOiokwB4JELzlyB9s">
@@ -4641,6 +4723,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+
+
+<!-- OREX - Cookie Consent -->
+<div id="orex-cookie-banner" hidden>
+    <div class="orex-cookie-title">
+        Confidențialitate și cookie-uri
+    </div>
+
+    <p>
+        Utilizăm cookie-uri de analiză Google Analytics
+        pentru a înțelege modul în care este utilizat
+        site-ul și pentru a îmbunătăți experiența
+        vizitatorilor. Acestea sunt activate numai
+        cu acordul dumneavoastră.
+    </p>
+
+    <div class="orex-cookie-actions">
+        <button type="button" id="orex-cookie-reject">
+            Refuz
+        </button>
+
+        <button type="button" id="orex-cookie-accept">
+            Accept
+        </button>
+    </div>
+</div>
+
+<button type="button" id="orex-cookie-settings" hidden>
+    Preferințe cookie
+</button>
   
   </body>
 </html>
