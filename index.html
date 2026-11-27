@@ -4767,16 +4767,85 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 (function () {
     const consentKey = "orex_cookie_consent";
+    const measurementId = "G-QKSZY63NJ9";
 
     const banner = document.getElementById("orex-cookie-banner");
     const settings = document.getElementById("orex-cookie-settings");
     const accept = document.getElementById("orex-cookie-accept");
     const reject = document.getElementById("orex-cookie-reject");
 
+    let analyticsLoaded = false;
+
+    function enableAnalytics() {
+        window["ga-disable-" + measurementId] = false;
+
+        if (analyticsLoaded) return;
+        analyticsLoaded = true;
+
+        window.dataLayer = window.dataLayer || [];
+
+        window.gtag = function () {
+            window.dataLayer.push(arguments);
+        };
+
+        gtag("consent", "default", {
+            analytics_storage: "granted",
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied"
+        });
+
+        gtag("js", new Date());
+
+        const script = document.createElement("script");
+        script.async = true;
+        script.src =
+            "https://www.googletagmanager.com/gtm.js?id=" +
+            measurementId;
+
+        document.head.appendChild(script);
+    }
+
+    function disableAnalytics() {
+        window["ga-disable-" + measurementId] = true;
+
+        if (typeof window.gtag === "function") {
+            window.gtag("consent", "update", {
+                analytics_storage: "denied",
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied"
+            });
+        }
+
+        document.cookie.split(";").forEach(function (cookie) {
+            const name = cookie.split("=")[0].trim();
+
+            if (name === "_ga" || name.startsWith("_ga_")) {
+                document.cookie =
+                    name + "=; Max-Age=0; path=/";
+                document.cookie =
+                    name + "=; Max-Age=0; path=/; domain=orexwatch.ro";
+                document.cookie =
+                    name + "=; Max-Age=0; path=/; domain=.orexwatch.ro";
+            }
+        });
+    }
+
     function saveConsent(value) {
         localStorage.setItem(consentKey, value);
         banner.hidden = true;
         settings.hidden = false;
+
+        if (value === "accepted") {
+            enableAnalytics();
+        } else {
+            disableAnalytics();
+
+            if (analyticsLoaded) {
+                window.location.reload();
+            }
+        }
     }
 
     accept.addEventListener("click", function () {
@@ -4797,9 +4866,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (consent === "accepted" || consent === "rejected") {
         banner.hidden = true;
         settings.hidden = false;
+
+        if (consent === "accepted") {
+            enableAnalytics();
+        } else {
+            disableAnalytics();
+        }
     } else {
         banner.hidden = false;
         settings.hidden = true;
+        disableAnalytics();
     }
 })();
 </script>
