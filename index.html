@@ -4753,6 +4753,47 @@ document.addEventListener("DOMContentLoaded", function () {
 <button type="button" id="orex-cookie-settings" hidden>
     Preferințe cookie
 </button>
+
+
+<script>
+(function () {
+    const consentKey = "orex_cookie_consent";
+
+    const banner = document.getElementById("orex-cookie-banner");
+    const settings = document.getElementById("orex-cookie-settings");
+    const accept = document.getElementById("orex-cookie-accept");
+    const reject = document.getElementById("orex-cookie-reject");
+
+    function saveConsent(value) {
+        localStorage.setItem(consentKey, value);
+        banner.hidden = true;
+        settings.hidden = false;
+    }
+
+    accept.addEventListener("click", function () {
+        saveConsent("accepted");
+    });
+
+    reject.addEventListener("click", function () {
+        saveConsent("rejected");
+    });
+
+    settings.addEventListener("click", function () {
+        banner.hidden = false;
+        settings.hidden = true;
+    });
+
+    const consent = localStorage.getItem(consentKey);
+
+    if (consent === "accepted" || consent === "rejected") {
+        banner.hidden = true;
+        settings.hidden = false;
+    } else {
+        banner.hidden = false;
+        settings.hidden = true;
+    }
+})();
+</script>
   
   </body>
 </html>
